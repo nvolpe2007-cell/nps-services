@@ -1,0 +1,54 @@
+{
+  "colorScheme": "light",
+  "fonts": [
+    {
+      "family": "Times New Roman",
+      "count": 3
+    }
+  ],
+  "colors": {
+    "primary": "#000000",
+    "accent": "#004182",
+    "background": "#FFFFFF",
+    "textPrimary": "#004182",
+    "link": "#004182"
+  },
+  "typography": {
+    "fontFamilies": {
+      "primary": "Times New Roman",
+      "heading": "Times New Roman"
+    },
+    "fontStacks": {
+      "body": [
+        "Times New Roman"
+      ],
+      "heading": [
+        "Times New Roman"
+      ],
+      "paragraph": [
+        "Times New Roman"
+      ]
+    },
+    "fontSizes": {
+      "h1": "16px",
+      "h2": "16px",
+      "body": "16px"
+    }
+  },
+  "spacing": {
+    "baseUnit": 4,
+    "borderRadius": "8px"
+  },
+  "components": {},
+  "images": {
+    "logo": null,
+    "favicon": "https://f9f4c39f-239a-4299-ab94-0125277ed2b6-00-32wq3s14mhz1k.riker.replit.dev/favicon.png",
+    "ogImage": "https://f9f4c39f-239a-4299-ab94-0125277ed2b6-00-32wq3s14mhz1k.riker.replit.dev/opengraph.jpg"
+  },
+  "__framework_hints": [],
+  "confidence": {
+    "buttons": 0,
+    "colors": 0,
+    "overall": 0
+  }
+}
