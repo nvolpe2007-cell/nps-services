@@ -51,11 +51,9 @@ export function Footer() {
                 { name: "Contact", href: "/contact" },
               ].map((link) => (
                 <li key={link.name}>
-                  <Link href={link.href}>
-                    <a className="text-slate-400 hover:text-white transition-colors flex items-center text-sm">
-                      <ArrowRight className="h-3 w-3 mr-2 text-primary" />
-                      {link.name}
-                    </a>
+                  <Link href={link.href} className="text-slate-400 hover:text-white transition-colors flex items-center text-sm">
+                    <ArrowRight className="h-3 w-3 mr-2 text-primary" />
+                    {link.name}
                   </Link>
                 </li>
               ))}
@@ -105,8 +103,8 @@ export function Footer() {
         <div className="border-t border-slate-800 pt-8 mt-8 flex flex-col md:flex-row justify-between items-center text-sm text-slate-500">
           <p>&copy; {new Date().getFullYear()} N&P Services. All rights reserved.</p>
           <div className="flex space-x-6 mt-4 md:mt-0">
-            <Link href="/privacy"><a className="hover:text-white">Privacy Policy</a></Link>
-            <Link href="/terms"><a className="hover:text-white">Terms of Service</a></Link>
+            <Link href="/privacy" className="hover:text-white">Privacy Policy</Link>
+            <Link href="/terms" className="hover:text-white">Terms of Service</Link>
           </div>
         </div>
       </div>
