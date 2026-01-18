@@ -6,6 +6,7 @@ import specImage from "@assets/generated_images/construction_hero_background.png
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";
+import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
@@ -30,130 +31,88 @@ const slides = [
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
-  const [direction, setDirection] = useState(1);
+  const simpleMode = useSimpleAnimations();
 
   useEffect(() => {
+    const interval = simpleMode ? 8000 : 6000;
     const timer = setInterval(() => {
-      setDirection(1);
       setCurrent((prev) => (prev + 1) % slides.length);
-    }, 6000);
+    }, interval);
     return () => clearInterval(timer);
-  }, []);
+  }, [simpleMode]);
 
-  const goTo = (index: number) => {
-    setDirection(index > current ? 1 : -1);
-    setCurrent(index);
-  };
-
-  const next = () => {
-    setDirection(1);
-    setCurrent((prev) => (prev + 1) % slides.length);
-  };
-
-  const prev = () => {
-    setDirection(-1);
-    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
-  };
-
-  const slideVariants = {
-    enter: (direction: number) => ({
-      x: direction > 0 ? "100%" : "-100%",
-      opacity: 0,
-      scale: 1.1,
-    }),
-    center: {
-      x: 0,
-      opacity: 1,
-      scale: 1,
-      transition: {
-        x: { type: "spring" as const, stiffness: 50, damping: 20 },
-        opacity: { duration: 0.8 },
-        scale: { duration: 1.2 },
-      },
-    },
-    exit: (direction: number) => ({
-      x: direction > 0 ? "-100%" : "100%",
-      opacity: 0,
-      scale: 0.95,
-      transition: {
-        x: { type: "spring" as const, stiffness: 50, damping: 20 },
-        opacity: { duration: 0.5 },
-      },
-    }),
-  };
+  const goTo = (index: number) => setCurrent(index);
+  const next = () => setCurrent((prev) => (prev + 1) % slides.length);
+  const prev = () => setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
 
   return (
-    <section className="relative h-screen min-h-[800px] overflow-hidden bg-black">
-      {/* Slideshow Background */}
-      <AnimatePresence initial={false} custom={direction} mode="popLayout">
+    <section className="relative h-screen min-h-[600px] md:min-h-[800px] overflow-hidden bg-black">
+      {/* Slideshow Background - Simple crossfade on mobile */}
+      <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          custom={direction}
-          variants={slideVariants}
-          initial="enter"
-          animate="center"
-          exit="exit"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
+          transition={{ duration: simpleMode ? 0.5 : 0.8 }}
           className="absolute inset-0"
         >
           <img
             src={slides[current].image}
             alt={slides[current].title}
             className="w-full h-full object-cover"
+            loading="eager"
           />
-          {/* Gradient overlay */}
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
         </motion.div>
       </AnimatePresence>
 
-      {/* Animated grid lines overlay */}
-      <div className="absolute inset-0 pointer-events-none opacity-10">
-        <div className="absolute inset-0" style={{
-          backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
-          backgroundSize: '100px 100px',
-        }} />
-      </div>
+      {/* Grid overlay - hidden on mobile for performance */}
+      {!simpleMode && (
+        <div className="absolute inset-0 pointer-events-none opacity-10">
+          <div className="absolute inset-0" style={{
+            backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+            backgroundSize: '100px 100px',
+          }} />
+        </div>
+      )}
 
       {/* Content */}
       <div className="relative h-full flex items-center z-10">
-        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+        <div className="container mx-auto px-4 md:px-12 lg:px-20">
           <div className="max-w-4xl">
             {/* Badge */}
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 10 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.2 }}
-              className="mb-6"
+              transition={{ duration: 0.4 }}
+              className="mb-4 md:mb-6"
             >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 border-l-4 border-white">
-                <span className="text-xs font-bold tracking-[0.2em] uppercase text-white">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-2 border-l-4 border-white">
+                <span className="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase text-white">
                   Houston's Trusted Builder
                 </span>
               </div>
             </motion.div>
 
-            {/* Title with animated underline */}
+            {/* Title */}
             <AnimatePresence mode="wait">
               <motion.div
                 key={current}
-                initial={{ opacity: 0, y: 40 }}
+                initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, y: -20 }}
-                transition={{ duration: 0.6 }}
+                exit={{ opacity: 0 }}
+                transition={{ duration: 0.4 }}
               >
-                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[0.95] tracking-tight">
+                <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-3 md:mb-4 leading-[0.95] tracking-tight">
                   {slides[current].title}
                 </h1>
-                <motion.div
-                  className="h-1 bg-white mb-6"
-                  initial={{ width: 0 }}
-                  animate={{ width: "120px" }}
-                  transition={{ delay: 0.3, duration: 0.8 }}
-                />
-                <p className="text-xl md:text-2xl text-white/60 font-light mb-2">
+                <div className="h-1 bg-white mb-4 md:mb-6 w-20 md:w-[120px]" />
+                <p className="text-lg md:text-2xl text-white/60 font-light mb-1 md:mb-2">
                   {slides[current].subtitle}
                 </p>
-                <p className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
+                <p className="text-base md:text-xl text-white/80 max-w-xl leading-relaxed">
                   {slides[current].description}
                 </p>
               </motion.div>
@@ -161,25 +120,25 @@ export function Hero() {
 
             {/* CTA Buttons */}
             <motion.div
-              className="flex flex-col sm:flex-row gap-4 mt-10"
-              initial={{ opacity: 0, y: 30 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.5 }}
+              className="flex flex-col sm:flex-row gap-3 md:gap-4 mt-8 md:mt-10"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.3, duration: 0.4 }}
             >
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-white text-black hover:bg-white/90 rounded-none group"
+                  className="w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-xs md:text-sm font-bold tracking-wider uppercase bg-white text-black hover:bg-white/90 rounded-none"
                 >
                   Get Free Estimate
-                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
+                  <ChevronRight className="ml-2 h-4 w-4" />
                 </Button>
               </Link>
               <Link href="/portfolio">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-transparent text-white border-2 border-white/30 hover:border-white hover:bg-white/10 rounded-none group"
+                  className="w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-xs md:text-sm font-bold tracking-wider uppercase bg-transparent text-white border-2 border-white/30 hover:border-white hover:bg-white/10 rounded-none"
                 >
                   <Play className="mr-2 h-4 w-4" />
                   View Our Work
@@ -190,44 +149,37 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Slide Navigation Arrows */}
+      {/* Navigation Arrows - Larger touch targets on mobile */}
       <button
         onClick={prev}
-        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-white/20 flex items-center justify-center transition-all group"
+        className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm active:bg-white/30 md:hover:bg-white/20 flex items-center justify-center transition-colors"
         aria-label="Previous slide"
       >
-        <ChevronLeft className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+        <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-white" />
       </button>
       <button
         onClick={next}
-        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-white/20 flex items-center justify-center transition-all group"
+        className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm active:bg-white/30 md:hover:bg-white/20 flex items-center justify-center transition-colors"
         aria-label="Next slide"
       >
-        <ChevronRight className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+        <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-white" />
       </button>
 
       {/* Slide Indicators */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+      <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 md:gap-3">
         {slides.map((_, index) => (
           <button
             key={index}
             onClick={() => goTo(index)}
-            className={`relative h-1 transition-all duration-500 ${
-              index === current ? "w-12 bg-white" : "w-6 bg-white/30 hover:bg-white/50"
+            className={`h-1.5 md:h-1 transition-all duration-300 ${
+              index === current ? "w-8 md:w-12 bg-white" : "w-4 md:w-6 bg-white/30 active:bg-white/50"
             }`}
             aria-label={`Go to slide ${index + 1}`}
-          >
-            {index === current && (
-              <motion.div
-                className="absolute inset-0 bg-white"
-                layoutId="activeSlide"
-              />
-            )}
-          </button>
+          />
         ))}
       </div>
 
-      {/* Side Stats */}
+      {/* Side Stats - Hidden on mobile */}
       <div className="absolute right-8 md:right-12 bottom-24 z-20 hidden lg:flex flex-col gap-8">
         {[
           { value: "17+", label: "Years" },
@@ -237,9 +189,9 @@ export function Hero() {
           <motion.div
             key={i}
             className="text-right"
-            initial={{ opacity: 0, x: 20 }}
-            animate={{ opacity: 1, x: 0 }}
-            transition={{ delay: 0.8 + i * 0.1 }}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
           >
             <div className="text-3xl font-bold text-white">{stat.value}</div>
             <div className="text-xs text-white/50 uppercase tracking-wider">{stat.label}</div>

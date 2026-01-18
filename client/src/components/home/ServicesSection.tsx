@@ -1,7 +1,8 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Home, Building2, Truck, PaintBucket, Trees, Car, ArrowRight } from "lucide-react";
+import { Home, Building2, Truck, PaintBucket, Trees, Car, ArrowRight, ChevronDown } from "lucide-react";
 import { Link } from "wouter";
+import { useSimpleAnimations, useMobile } from "@/hooks/useMobile";
 
 const services = [
   {
@@ -50,94 +51,107 @@ const services = [
 
 export function ServicesSection() {
   const ref = useRef(null);
-  const isInView = useInView(ref, { once: true, margin: "-100px" });
-  const [hoveredIndex, setHoveredIndex] = useState<number | null>(null);
+  const isInView = useInView(ref, { once: true, margin: "-50px" });
+  const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
+  const simpleMode = useSimpleAnimations();
+  const isMobile = useMobile();
+
+  const toggleExpand = (index: number) => {
+    setExpandedIndex(expandedIndex === index ? null : index);
+  };
 
   return (
-    <section ref={ref} className="py-32 bg-white">
-      <div className="container mx-auto px-6 md:px-12">
+    <section ref={ref} className="py-16 md:py-32 bg-white">
+      <div className="container mx-auto px-4 md:px-12">
         {/* Header */}
         <motion.div
-          className="max-w-3xl mb-20"
-          initial={{ opacity: 0, y: 40 }}
+          className="max-w-3xl mb-12 md:mb-20"
+          initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6 }}
+          transition={{ duration: 0.4 }}
         >
-          <span className="text-sm font-bold tracking-[0.3em] uppercase text-black/40 block mb-4">
+          <span className="text-xs md:text-sm font-bold tracking-[0.2em] md:tracking-[0.3em] uppercase text-black/40 block mb-3 md:mb-4">
             What We Do
           </span>
-          <h2 className="text-4xl md:text-5xl lg:text-6xl font-bold text-black mb-6 leading-tight">
+          <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black mb-4 md:mb-6 leading-tight">
             Comprehensive<br />
             Construction Services
           </h2>
-          <p className="text-xl text-black/60 leading-relaxed">
+          <p className="text-base md:text-xl text-black/60 leading-relaxed">
             From residential renovations to large-scale commercial projects, we deliver quality craftsmanship across the Greater Houston area.
           </p>
         </motion.div>
 
-        {/* Services List - Editorial Style */}
+        {/* Services List */}
         <div className="border-t border-black/10">
           {services.map((service, index) => (
             <motion.div
               key={service.id}
-              className="border-b border-black/10 py-8 cursor-pointer group"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              onMouseEnter={() => setHoveredIndex(index)}
-              onMouseLeave={() => setHoveredIndex(null)}
+              className="border-b border-black/10 py-5 md:py-8"
+              initial={{ opacity: 0 }}
+              animate={isInView ? { opacity: 1 } : {}}
+              transition={{ duration: 0.3, delay: simpleMode ? 0 : index * 0.05 }}
             >
-              <div className="flex flex-col lg:flex-row lg:items-center gap-6">
-                {/* Number */}
-                <div className="text-5xl font-bold text-black/10 group-hover:text-black/30 transition-colors w-24 flex-shrink-0">
+              {/* Mobile: Tap to expand / Desktop: Hover */}
+              <div 
+                className={`flex flex-col md:flex-row md:items-center gap-4 md:gap-6 ${isMobile ? 'cursor-pointer' : 'group cursor-pointer'}`}
+                onClick={() => isMobile && toggleExpand(index)}
+              >
+                {/* Number - Hidden on mobile */}
+                <div className="hidden md:block text-5xl font-bold text-black/10 group-hover:text-black/30 transition-colors w-24 flex-shrink-0">
                   {service.id}
                 </div>
 
                 {/* Icon & Title */}
-                <div className="flex items-center gap-6 lg:w-80 flex-shrink-0">
-                  <motion.div
-                    className="w-14 h-14 bg-black/5 group-hover:bg-black flex items-center justify-center transition-colors duration-300"
-                    animate={hoveredIndex === index ? { rotate: 360 } : { rotate: 0 }}
-                    transition={{ duration: 0.5 }}
-                  >
-                    <service.icon className="h-6 w-6 text-black/60 group-hover:text-white transition-colors" />
-                  </motion.div>
-                  <h3 className="text-xl font-bold text-black group-hover:translate-x-2 transition-transform">
-                    {service.title}
-                  </h3>
+                <div className="flex items-center gap-4 md:gap-6 md:w-80 flex-shrink-0">
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-black/5 md:group-hover:bg-black flex items-center justify-center transition-colors duration-300">
+                    <service.icon className="h-5 w-5 md:h-6 md:w-6 text-black/60 md:group-hover:text-white transition-colors" />
+                  </div>
+                  <div className="flex-1">
+                    <h3 className="text-lg md:text-xl font-bold text-black">
+                      {service.title}
+                    </h3>
+                    {/* Description visible on mobile always */}
+                    <p className="text-sm text-black/50 mt-1 md:hidden line-clamp-2">
+                      {service.description}
+                    </p>
+                  </div>
+                  {/* Mobile expand indicator */}
+                  {isMobile && (
+                    <ChevronDown 
+                      className={`h-5 w-5 text-black/30 transition-transform duration-200 ${expandedIndex === index ? 'rotate-180' : ''}`} 
+                    />
+                  )}
                 </div>
 
-                {/* Description */}
-                <p className="text-black/50 flex-1 lg:max-w-md">
+                {/* Description - Desktop only */}
+                <p className="hidden md:block text-black/50 flex-1 lg:max-w-md">
                   {service.description}
                 </p>
 
-                {/* Arrow */}
-                <motion.div
-                  className="lg:ml-auto"
-                  animate={hoveredIndex === index ? { x: 10 } : { x: 0 }}
-                >
+                {/* Arrow - Desktop only */}
+                <div className="hidden md:block ml-auto">
                   <div className="w-12 h-12 border border-black/10 group-hover:border-black group-hover:bg-black flex items-center justify-center transition-all">
                     <ArrowRight className="h-5 w-5 text-black/30 group-hover:text-white transition-colors" />
                   </div>
-                </motion.div>
+                </div>
               </div>
 
-              {/* Expanded Items */}
+              {/* Expanded Items - Mobile tap / Desktop hover */}
               <motion.div
                 className="overflow-hidden"
                 initial={false}
                 animate={{
-                  height: hoveredIndex === index ? "auto" : 0,
-                  opacity: hoveredIndex === index ? 1 : 0,
+                  height: (isMobile ? expandedIndex === index : false) ? "auto" : 0,
+                  opacity: (isMobile ? expandedIndex === index : false) ? 1 : 0,
                 }}
-                transition={{ duration: 0.3 }}
+                transition={{ duration: 0.2 }}
               >
-                <div className="pt-6 pl-24 lg:pl-32 flex flex-wrap gap-3">
+                <div className="pt-4 pl-16 flex flex-wrap gap-2">
                   {service.items.map((item) => (
                     <span
                       key={item}
-                      className="px-4 py-2 bg-black/5 text-sm text-black/70"
+                      className="px-3 py-1.5 bg-black/5 text-xs text-black/70"
                     >
                       {item}
                     </span>
@@ -150,20 +164,16 @@ export function ServicesSection() {
 
         {/* CTA */}
         <motion.div
-          className="mt-16 text-center"
-          initial={{ opacity: 0, y: 30 }}
-          animate={isInView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.6, delay: 0.6 }}
+          className="mt-10 md:mt-16 text-center"
+          initial={{ opacity: 0 }}
+          animate={isInView ? { opacity: 1 } : {}}
+          transition={{ duration: 0.4, delay: 0.3 }}
         >
           <Link href="/services">
-            <motion.button
-              className="inline-flex items-center gap-3 bg-black text-white px-10 py-5 text-sm font-bold tracking-wider uppercase hover:bg-black/90 transition-colors"
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-            >
+            <button className="inline-flex items-center gap-3 bg-black text-white px-8 md:px-10 py-4 md:py-5 text-xs md:text-sm font-bold tracking-wider uppercase active:bg-black/80 md:hover:bg-black/90 transition-colors">
               Explore All Services
               <ArrowRight className="h-4 w-4" />
-            </motion.button>
+            </button>
           </Link>
         </motion.div>
       </div>
