@@ -34,29 +34,27 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/">
-            <a className="flex items-center space-x-3 cursor-pointer group">
-              <div className="border border-white/30 p-1.5 group-hover:border-white transition-colors">
-                <div className="w-4 h-4 bg-white" />
-              </div>
-              <span className="text-sm font-bold tracking-[0.2em] uppercase">
-                N&P Services
-              </span>
-            </a>
+          <Link href="/" className="flex items-center space-x-3 cursor-pointer group">
+            <div className="border border-white/30 p-1.5 group-hover:border-white transition-colors">
+              <div className="w-4 h-4 bg-white" />
+            </div>
+            <span className="text-sm font-bold tracking-[0.2em] uppercase">
+              N&P Services
+            </span>
           </Link>
 
           {/* Desktop Navigation */}
           <div className="hidden md:flex items-center space-x-12">
             {navLinks.map((link) => (
-              <Link key={link.name} href={link.href}>
-                <a
-                  className={cn(
-                    "text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:text-white/70",
-                    location === link.href ? "text-white" : "text-white/80"
-                  )}
-                >
-                  {link.name}
-                </a>
+              <Link 
+                key={link.name} 
+                href={link.href}
+                className={cn(
+                  "text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:text-white/70",
+                  location === link.href ? "text-white" : "text-white/80"
+                )}
+              >
+                {link.name}
               </Link>
             ))}
           </div>
@@ -84,16 +82,16 @@ export function Navbar() {
       {isOpen && (
         <div className="md:hidden absolute top-full left-0 right-0 bg-[#1a1a1a] border-t border-white/10 p-6 flex flex-col space-y-6 animate-in slide-in-from-top-5 shadow-2xl">
           {navLinks.map((link) => (
-            <Link key={link.name} href={link.href}>
-              <a
-                className={cn(
-                  "block text-sm font-bold uppercase tracking-widest py-2 border-b border-white/5",
-                  location === link.href ? "text-white" : "text-white/70"
-                )}
-                onClick={() => setIsOpen(false)}
-              >
-                {link.name}
-              </a>
+            <Link 
+              key={link.name} 
+              href={link.href}
+              className={cn(
+                "block text-sm font-bold uppercase tracking-widest py-2 border-b border-white/5",
+                location === link.href ? "text-white" : "text-white/70"
+              )}
+              onClick={() => setIsOpen(false)}
+            >
+              {link.name}
             </Link>
           ))}
           <div className="pt-4">
