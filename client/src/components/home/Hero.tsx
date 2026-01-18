@@ -1,205 +1,251 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
 import heroBg from "@assets/generated_images/aerial_residential_property.png";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { useRef } from "react";
-import { SplitTextReveal } from "@/components/animations/AnimatedText";
-import { MagneticButton } from "@/components/animations/ScrollReveal";
+import comImage from "@assets/generated_images/commercial_building_site.png";
+import specImage from "@assets/generated_images/construction_hero_background.png";
+import { motion, AnimatePresence } from "framer-motion";
+import { useEffect, useState } from "react";
+import { ChevronRight, Play, ChevronLeft } from "lucide-react";
+
+const slides = [
+  {
+    image: heroBg,
+    title: "Building Excellence",
+    subtitle: "Since 2008",
+    description: "Houston's Premier Construction & Asphalt Experts",
+  },
+  {
+    image: comImage,
+    title: "Commercial Projects",
+    subtitle: "Built to Last",
+    description: "From Ground Up to Finishing Touches",
+  },
+  {
+    image: specImage,
+    title: "Quality Craftsmanship",
+    subtitle: "A+ BBB Rated",
+    description: "Trusted by Hundreds Across Greater Houston",
+  },
+];
 
 export function Hero() {
-  const containerRef = useRef(null);
-  const { scrollYProgress } = useScroll({
-    target: containerRef,
-    offset: ["start start", "end start"],
-  });
+  const [current, setCurrent] = useState(0);
+  const [direction, setDirection] = useState(1);
 
-  const imageY = useTransform(scrollYProgress, [0, 1], ["0%", "30%"]);
-  const imageScale = useTransform(scrollYProgress, [0, 1], [1, 1.2]);
-  const textY = useTransform(scrollYProgress, [0, 1], ["0%", "50%"]);
-  const opacity = useTransform(scrollYProgress, [0, 0.5], [1, 0]);
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setDirection(1);
+      setCurrent((prev) => (prev + 1) % slides.length);
+    }, 6000);
+    return () => clearInterval(timer);
+  }, []);
+
+  const goTo = (index: number) => {
+    setDirection(index > current ? 1 : -1);
+    setCurrent(index);
+  };
+
+  const next = () => {
+    setDirection(1);
+    setCurrent((prev) => (prev + 1) % slides.length);
+  };
+
+  const prev = () => {
+    setDirection(-1);
+    setCurrent((prev) => (prev - 1 + slides.length) % slides.length);
+  };
+
+  const slideVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? "100%" : "-100%",
+      opacity: 0,
+      scale: 1.1,
+    }),
+    center: {
+      x: 0,
+      opacity: 1,
+      scale: 1,
+      transition: {
+        x: { type: "spring" as const, stiffness: 50, damping: 20 },
+        opacity: { duration: 0.8 },
+        scale: { duration: 1.2 },
+      },
+    },
+    exit: (direction: number) => ({
+      x: direction > 0 ? "-100%" : "100%",
+      opacity: 0,
+      scale: 0.95,
+      transition: {
+        x: { type: "spring" as const, stiffness: 50, damping: 20 },
+        opacity: { duration: 0.5 },
+      },
+    }),
+  };
 
   return (
-    <section
-      ref={containerRef}
-      className="relative h-screen min-h-[700px] flex items-center overflow-hidden"
-    >
-      {/* Parallax Background Image */}
-      <motion.div
-        className="absolute inset-0 z-0"
-        style={{ y: imageY, scale: imageScale }}
-      >
-        <img
-          src={heroBg}
-          alt="Luxury Residential Construction"
-          className="w-full h-full object-cover"
-        />
-        {/* Animated gradient overlay */}
+    <section className="relative h-screen min-h-[800px] overflow-hidden bg-black">
+      {/* Slideshow Background */}
+      <AnimatePresence initial={false} custom={direction} mode="popLayout">
         <motion.div
+          key={current}
+          custom={direction}
+          variants={slideVariants}
+          initial="enter"
+          animate="center"
+          exit="exit"
           className="absolute inset-0"
-          initial={{ background: "linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), rgba(0,0,0,0.4))" }}
-          animate={{
-            background: [
-              "linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), rgba(0,0,0,0.4))",
-              "linear-gradient(to top, rgba(0,0,0,0.85), rgba(0,0,0,0.25), rgba(0,0,0,0.35))",
-              "linear-gradient(to top, rgba(0,0,0,0.9), rgba(0,0,0,0.3), rgba(0,0,0,0.4))",
-            ],
-          }}
-          transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-        />
-      </motion.div>
-
-      {/* Floating particles */}
-      <div className="absolute inset-0 z-[1] pointer-events-none overflow-hidden">
-        {[...Array(20)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-1 h-1 bg-white/20 rounded-full"
-            initial={{
-              x: Math.random() * 100 + "%",
-              y: "110%",
-              opacity: Math.random() * 0.5 + 0.2,
-            }}
-            animate={{
-              y: "-10%",
-              opacity: [0.2, 0.5, 0.2],
-            }}
-            transition={{
-              duration: Math.random() * 10 + 15,
-              repeat: Infinity,
-              delay: Math.random() * 5,
-              ease: "linear",
-            }}
-            style={{
-              width: Math.random() * 3 + 1,
-              height: Math.random() * 3 + 1,
-            }}
+        >
+          <img
+            src={slides[current].image}
+            alt={slides[current].title}
+            className="w-full h-full object-cover"
           />
-        ))}
+          {/* Gradient overlay */}
+          <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
+          <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
+        </motion.div>
+      </AnimatePresence>
+
+      {/* Animated grid lines overlay */}
+      <div className="absolute inset-0 pointer-events-none opacity-10">
+        <div className="absolute inset-0" style={{
+          backgroundImage: `linear-gradient(to right, white 1px, transparent 1px), linear-gradient(to bottom, white 1px, transparent 1px)`,
+          backgroundSize: '100px 100px',
+        }} />
       </div>
 
       {/* Content */}
-      <motion.div
-        className="container mx-auto px-4 md:px-8 relative z-10 text-white pt-24"
-        style={{ y: textY, opacity }}
-      >
-        <div className="max-w-5xl">
-          {/* Animated badge */}
-          <motion.div
-            initial={{ opacity: 0, y: 30, scale: 0.8 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2, type: "spring" }}
-            className="mb-8"
-          >
+      <div className="relative h-full flex items-center z-10">
+        <div className="container mx-auto px-6 md:px-12 lg:px-20">
+          <div className="max-w-4xl">
+            {/* Badge */}
             <motion.div
-              className="inline-flex items-center gap-3 bg-white/10 backdrop-blur-md border border-white/20 px-5 py-2 rounded-full"
-              whileHover={{ scale: 1.05, backgroundColor: "rgba(255,255,255,0.15)" }}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.2 }}
+              className="mb-6"
             >
-              <motion.span
-                className="w-2 h-2 bg-green-400 rounded-full"
-                animate={{ scale: [1, 1.3, 1], opacity: [1, 0.7, 1] }}
-                transition={{ duration: 2, repeat: Infinity }}
-              />
-              <span className="text-xs md:text-sm font-medium tracking-[0.15em] uppercase text-white/90">
-                Est. 2008 • A+ BBB Rated
-              </span>
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-4 py-2 border-l-4 border-white">
+                <span className="text-xs font-bold tracking-[0.2em] uppercase text-white">
+                  Houston's Trusted Builder
+                </span>
+              </div>
             </motion.div>
-          </motion.div>
 
-          {/* Split text headline */}
-          <div className="mb-8">
-            <SplitTextReveal
-              text="Building Houston's"
-              className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.1] text-white"
-              delay={0.4}
-            />
-            <SplitTextReveal
-              text="Finest Projects"
-              className="text-5xl md:text-7xl lg:text-8xl font-medium tracking-tight leading-[1.1] text-white"
-              delay={0.8}
-            />
-          </div>
+            {/* Title with animated underline */}
+            <AnimatePresence mode="wait">
+              <motion.div
+                key={current}
+                initial={{ opacity: 0, y: 40 }}
+                animate={{ opacity: 1, y: 0 }}
+                exit={{ opacity: 0, y: -20 }}
+                transition={{ duration: 0.6 }}
+              >
+                <h1 className="text-6xl md:text-7xl lg:text-8xl font-bold text-white mb-4 leading-[0.95] tracking-tight">
+                  {slides[current].title}
+                </h1>
+                <motion.div
+                  className="h-1 bg-white mb-6"
+                  initial={{ width: 0 }}
+                  animate={{ width: "120px" }}
+                  transition={{ delay: 0.3, duration: 0.8 }}
+                />
+                <p className="text-xl md:text-2xl text-white/60 font-light mb-2">
+                  {slides[current].subtitle}
+                </p>
+                <p className="text-lg md:text-xl text-white/80 max-w-xl leading-relaxed">
+                  {slides[current].description}
+                </p>
+              </motion.div>
+            </AnimatePresence>
 
-          {/* Animated line */}
-          <motion.div
-            className="w-24 h-[2px] bg-gradient-to-r from-white to-transparent mb-8"
-            initial={{ scaleX: 0, originX: 0 }}
-            animate={{ scaleX: 1 }}
-            transition={{ duration: 1, delay: 1.5 }}
-          />
-
-          {/* Description with reveal */}
-          <motion.p
-            className="text-lg md:text-xl text-white/80 mb-12 max-w-xl font-light leading-relaxed"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.2 }}
-          >
-            Premier construction firm specializing in residential remodeling, commercial builds, and Houston's leading asphalt & paving solutions.
-          </motion.p>
-
-          {/* Magnetic buttons */}
-          <motion.div
-            className="flex flex-col sm:flex-row gap-5"
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5 }}
-          >
-            <MagneticButton>
+            {/* CTA Buttons */}
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4 mt-10"
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.5 }}
+            >
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="h-16 px-10 text-sm font-bold tracking-widest uppercase bg-white text-black hover:bg-white/90 rounded-none border-0 relative overflow-hidden group"
+                  className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-white text-black hover:bg-white/90 rounded-none group"
                 >
-                  <span className="relative z-10">Get Your Estimate</span>
-                  <motion.div
-                    className="absolute inset-0 bg-gradient-to-r from-blue-500 to-purple-500"
-                    initial={{ x: "-100%" }}
-                    whileHover={{ x: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  Get Free Estimate
+                  <ChevronRight className="ml-2 h-4 w-4 group-hover:translate-x-1 transition-transform" />
                 </Button>
               </Link>
-            </MagneticButton>
-            <MagneticButton>
               <Link href="/portfolio">
                 <Button
                   size="lg"
                   variant="outline"
-                  className="h-16 px-10 text-sm font-bold tracking-widest uppercase bg-transparent text-white border-2 border-white/40 hover:border-white rounded-none relative overflow-hidden group"
+                  className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-transparent text-white border-2 border-white/30 hover:border-white hover:bg-white/10 rounded-none group"
                 >
-                  <span className="relative z-10 group-hover:text-black transition-colors duration-300">View Portfolio</span>
-                  <motion.div
-                    className="absolute inset-0 bg-white"
-                    initial={{ y: "100%" }}
-                    whileHover={{ y: 0 }}
-                    transition={{ duration: 0.3 }}
-                  />
+                  <Play className="mr-2 h-4 w-4" />
+                  View Our Work
                 </Button>
               </Link>
-            </MagneticButton>
-          </motion.div>
+            </motion.div>
+          </div>
         </div>
-      </motion.div>
+      </div>
 
-      {/* Animated scroll indicator */}
-      <motion.div
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 flex flex-col items-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 2 }}
+      {/* Slide Navigation Arrows */}
+      <button
+        onClick={prev}
+        className="absolute left-4 md:left-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-white/20 flex items-center justify-center transition-all group"
+        aria-label="Previous slide"
       >
-        <motion.div
-          className="w-6 h-10 border-2 border-white/30 rounded-full flex justify-center pt-2"
-          animate={{ borderColor: ["rgba(255,255,255,0.3)", "rgba(255,255,255,0.6)", "rgba(255,255,255,0.3)"] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        >
+        <ChevronLeft className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+      </button>
+      <button
+        onClick={next}
+        className="absolute right-4 md:right-8 top-1/2 -translate-y-1/2 z-20 w-12 h-12 bg-white/10 backdrop-blur-sm hover:bg-white/20 flex items-center justify-center transition-all group"
+        aria-label="Next slide"
+      >
+        <ChevronRight className="h-6 w-6 text-white group-hover:scale-110 transition-transform" />
+      </button>
+
+      {/* Slide Indicators */}
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-3">
+        {slides.map((_, index) => (
+          <button
+            key={index}
+            onClick={() => goTo(index)}
+            className={`relative h-1 transition-all duration-500 ${
+              index === current ? "w-12 bg-white" : "w-6 bg-white/30 hover:bg-white/50"
+            }`}
+            aria-label={`Go to slide ${index + 1}`}
+          >
+            {index === current && (
+              <motion.div
+                className="absolute inset-0 bg-white"
+                layoutId="activeSlide"
+              />
+            )}
+          </button>
+        ))}
+      </div>
+
+      {/* Side Stats */}
+      <div className="absolute right-8 md:right-12 bottom-24 z-20 hidden lg:flex flex-col gap-8">
+        {[
+          { value: "17+", label: "Years" },
+          { value: "500+", label: "Projects" },
+          { value: "A+", label: "BBB Rating" },
+        ].map((stat, i) => (
           <motion.div
-            className="w-1.5 h-3 bg-white rounded-full"
-            animate={{ y: [0, 12, 0], opacity: [1, 0.3, 1] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
-          />
-        </motion.div>
-      </motion.div>
+            key={i}
+            className="text-right"
+            initial={{ opacity: 0, x: 20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ delay: 0.8 + i * 0.1 }}
+          >
+            <div className="text-3xl font-bold text-white">{stat.value}</div>
+            <div className="text-xs text-white/50 uppercase tracking-wider">{stat.label}</div>
+          </motion.div>
+        ))}
+      </div>
     </section>
   );
 }
