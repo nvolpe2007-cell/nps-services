@@ -72,7 +72,6 @@ export function Hero() {
 
       {/* Scroll indicator */}
       <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce duration-1000">
-         <span className="text-[10px] uppercase tracking-widest text-white/60 mb-2">Scroll</span>
          <div className="w-[1px] h-12 bg-white/20"></div>
       </div>
     </section>
