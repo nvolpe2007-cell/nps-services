@@ -21,10 +21,10 @@ export default function Home() {
                 Excellence in Construction Since 2008
               </h2>
               <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-                N&P Services is a premier construction firm based in League City, Texas. Founded by Margarito Garcia, we have built a reputation for delivering top-tier construction solutions with a focus on quality, sustainability, and client satisfaction.
+                N&P Services is a premier construction firm based in League City, Texas, proudly serving the Greater Houston area. Founded by Margarito Garcia, we have built a reputation for delivering top-tier construction solutions with a focus on quality, sustainability, and client satisfaction.
               </p>
               <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-                Whether it's a dream home renovation, a complex commercial build, or specialized site work, our A+ rated team brings precision and integrity to every project.
+                We are <strong>Houston's parking lot and asphalt experts</strong>, also specializing in residential remodeling and commercial builds. Our A+ rated team brings precision and integrity to every project, operating as a trusted sole proprietorship dedicated to your vision.
               </p>
               <Link href="/about">
                 <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-white">

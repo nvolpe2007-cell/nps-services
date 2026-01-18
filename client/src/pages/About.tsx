@@ -31,14 +31,14 @@ export default function About() {
           <div className="lg:w-1/2">
             <h2 className="text-3xl font-bold font-heading text-primary mb-6">Our History & Mission</h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              Founded in 2008 by Margarito Garcia, N&P Services began with a simple mission: to deliver construction services that homeowners and businesses could truly rely on. With over 17 years of experience, we have grown from a small operation into a leading construction firm in League City, Texas.
+              Founded in 2008 by Margarito Garcia, N&P Services began with a simple mission: to deliver construction services that homeowners and businesses could truly rely on. Operating as a dedicated sole proprietorship, we treat every client like our only client. With over 17 years of experience, we have grown into a leading construction firm in League City, serving the entire Greater Houston region.
             </p>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
-              We are dedicated to top-tier construction solutions with a relentless focus on quality, sustainability, and client satisfaction. Our A+ rating from the BBB is a testament to our commitment to doing things right.
+              We are widely recognized as <strong>Houston's parking lot and asphalt experts</strong>, while also delivering top-tier residential and commercial construction solutions. Our A+ rating from the BBB is a testament to our commitment to precision, integrity, and customer satisfaction.
             </p>
             
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {["17+ Years Experience", "A+ BBB Rated", "Family Owned", "Quality Guaranteed"].map((item) => (
+              {["17+ Years Experience", "A+ BBB Rated", "Parking Lot Experts", "Greater Houston Area"].map((item) => (
                 <div key={item} className="flex items-center text-slate-800 font-semibold">
                   <CheckCircle2 className="h-5 w-5 text-primary mr-3" />
                   {item}
