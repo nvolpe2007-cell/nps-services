@@ -69,11 +69,6 @@ export function Hero() {
           </motion.div>
         </div>
       </div>
-
-      {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center animate-bounce duration-1000">
-         <div className="w-[1px] h-12 bg-white/20"></div>
-      </div>
     </section>
   );
 }

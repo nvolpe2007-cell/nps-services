@@ -9,6 +9,8 @@ import { Button } from "@/components/ui/button";
 import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "@/components/ui/card";
+import { useMutation } from "@tanstack/react-query";
+import { useState } from "react";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -31,13 +33,39 @@ export default function Contact() {
     },
   });
 
+  const submitContactForm = useMutation({
+    mutationFn: async (data: z.infer<typeof formSchema>) => {
+      const response = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+
+      if (!response.ok) {
+        const error = await response.json();
+        throw new Error(error.message || "Failed to send message");
+      }
+
+      return response.json();
+    },
+    onSuccess: (data) => {
+      toast({
+        title: "Request Sent!",
+        description: data.message,
+      });
+      form.reset();
+    },
+    onError: (error: Error) => {
+      toast({
+        title: "Error",
+        description: error.message,
+        variant: "destructive",
+      });
+    },
+  });
+
   function onSubmit(values: z.infer<typeof formSchema>) {
-    console.log(values);
-    toast({
-      title: "Request Sent!",
-      description: "We'll get back to you shortly to schedule your consultation.",
-    });
-    form.reset();
+    submitContactForm.mutate(values);
   }
 
   return (
@@ -87,7 +115,6 @@ export default function Contact() {
 
             {/* Google Map Embed */}
             <div className="h-80 rounded-xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
-               {/* Simulating map embed */}
                <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.761062967204!2d-95.093123!3d29.506456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86409a896688536b%3A0x6280436896677!2s207%20W%20Wilkins%20St%2C%20League%20City%2C%20TX%2077573!5e0!3m2!1sen!2sus!4v1625680000000!5m2!1sen!2sus" 
                 width="100%" 
@@ -187,8 +214,12 @@ export default function Contact() {
                     </FormItem>
                   )}
                 />
-                <Button type="submit" className="w-full text-lg py-6 font-bold shadow-md">
-                  Send Request
+                <Button 
+                  type="submit" 
+                  className="w-full text-lg py-6 font-bold shadow-md"
+                  disabled={submitContactForm.isPending}
+                >
+                  {submitContactForm.isPending ? "Sending..." : "Send Request"}
                 </Button>
               </form>
             </Form>
