@@ -2,6 +2,7 @@ import type { Express } from "express";
 import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
+import { sendContactNotificationSMS, isTwilioConfigured, getTwilioPhoneNumber } from "./sms";
 
 // Contact form schema
 const contactFormSchema = z.object({
@@ -21,42 +22,65 @@ export async function registerRoutes(
     try {
       const data = contactFormSchema.parse(req.body);
       
-      // Check if Resend integration is available
-      const resendApiKey = process.env.RESEND_API_KEY;
+      let emailSent = false;
+      let smsSent = false;
       
-      if (!resendApiKey) {
-        return res.status(503).json({ 
-          message: "Email service not configured. Please contact us directly at ninofarias@nandpservices.com or call (832) 704-5525." 
-        });
+      // Send SMS notification if Twilio is configured (primary notification method)
+      const twilioConfigured = await isTwilioConfigured();
+      if (twilioConfigured) {
+        // Use env var or fall back to Twilio's configured phone number
+        const notificationPhone = process.env.NOTIFICATION_PHONE_NUMBER || await getTwilioPhoneNumber();
+        if (notificationPhone) {
+          const smsResult = await sendContactNotificationSMS(notificationPhone, data);
+          if (smsResult.success) {
+            smsSent = true;
+            console.log("SMS notification sent successfully to", notificationPhone);
+          } else {
+            console.error("SMS notification failed:", smsResult.error);
+          }
+        } else {
+          console.warn("Twilio configured but no notification phone number available");
+        }
       }
 
-      // Send email using Resend
-      const response = await fetch("https://api.resend.com/emails", {
-        method: "POST",
-        headers: {
-          "Authorization": `Bearer ${resendApiKey}`,
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({
-          from: "N&P Services Website <onboarding@resend.dev>", // Default Resend sender for testing
-          to: ["ninofarias@nandpservices.com"], // Business email
-          subject: `New Contact Form Submission - ${data.service}`,
-          html: `
-            <h2>New Contact Form Submission</h2>
-            <p><strong>Name:</strong> ${data.name}</p>
-            <p><strong>Email:</strong> ${data.email}</p>
-            <p><strong>Phone:</strong> ${data.phone}</p>
-            <p><strong>Service:</strong> ${data.service}</p>
-            <p><strong>Message:</strong></p>
-            <p>${data.message.replace(/\n/g, '<br>')}</p>
-          `,
-        }),
-      });
+      // Send email using Resend (if configured)
+      const resendApiKey = process.env.RESEND_API_KEY;
+      if (resendApiKey) {
+        const response = await fetch("https://api.resend.com/emails", {
+          method: "POST",
+          headers: {
+            "Authorization": `Bearer ${resendApiKey}`,
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify({
+            from: "N&P Services Website <onboarding@resend.dev>",
+            to: ["ninofarias@nandpservices.com"],
+            subject: `New Contact Form Submission - ${data.service}`,
+            html: `
+              <h2>New Contact Form Submission</h2>
+              <p><strong>Name:</strong> ${data.name}</p>
+              <p><strong>Email:</strong> ${data.email}</p>
+              <p><strong>Phone:</strong> ${data.phone}</p>
+              <p><strong>Service:</strong> ${data.service}</p>
+              <p><strong>Message:</strong></p>
+              <p>${data.message.replace(/\n/g, '<br>')}</p>
+            `,
+          }),
+        });
 
-      if (!response.ok) {
-        const error = await response.json();
-        console.error("Resend API error:", error);
-        return res.status(500).json({ message: "Failed to send email. Please try again or contact us directly." });
+        if (response.ok) {
+          emailSent = true;
+        } else {
+          const error = await response.json();
+          console.error("Resend API error:", error);
+        }
+      }
+
+      // Check if at least one notification method succeeded
+      if (!emailSent && !smsSent) {
+        return res.status(503).json({ 
+          message: "Unable to send your message. Please contact us directly at ninofarias@nandpservices.com or call (832) 704-5525." 
+        });
       }
 
       return res.status(200).json({ 

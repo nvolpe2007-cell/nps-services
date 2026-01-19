@@ -62,7 +62,26 @@ The website design was inspired by a modern construction firm aesthetic featurin
 - Minimalist navigation
 - Strong CTAs
 
+## SMS Notifications (Twilio Integration)
+The website now supports SMS notifications via Twilio. When a contact form is submitted, an SMS alert is sent to the configured business phone number.
+
+**SMS Features:**
+- Automatic SMS notifications when contact form is submitted
+- Works independently of email - SMS sends even if email is not configured
+- Secure credential management via Replit's Twilio integration with 5-minute caching
+
+**Configuration:**
+- By default, SMS alerts are sent to the phone number configured in your Twilio integration
+- Optionally set `NOTIFICATION_PHONE_NUMBER` environment variable to override the destination phone
+- Twilio credentials are managed securely through Replit's integration system with 5-minute caching
+
+**How It Works:**
+- Contact form submissions attempt both SMS and email notifications
+- Success requires at least one notification method to work
+- If neither is configured, users see a fallback message with direct contact info
+
 ## Recent Changes (Jan 2026)
+- Added SMS notifications via Twilio integration
 - Converted from mockup to full-stack application
 - Added backend API for contact form
 - Prepared email integration (awaiting configuration)
