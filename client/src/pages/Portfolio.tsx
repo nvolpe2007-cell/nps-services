@@ -1,51 +1,70 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import resImage from "@assets/generated_images/residential_renovation.png";
-import comImage from "@assets/generated_images/commercial_building_site.png";
-import specImage from "@assets/generated_images/construction_hero_background.png";
+import outdoorKitchen1 from "@assets/portfolio/outdoor_kitchen_1.jpeg";
+import outdoorKitchen2 from "@assets/portfolio/outdoor_kitchen_2.jpeg";
+import outdoorKitchen3 from "@assets/portfolio/outdoor_kitchen_3.jpeg";
+import outdoorKitchen4 from "@assets/portfolio/outdoor_kitchen_4.jpeg";
+import outdoorKitchenConstruction from "@assets/portfolio/outdoor_kitchen_construction.jpeg";
+import drivewayFinished from "@assets/portfolio/driveway_finished.jpeg";
+import drivewayPrep from "@assets/portfolio/driveway_prep.jpeg";
+import commercialSlab from "@assets/portfolio/commercial_slab.jpeg";
 
 const projects = [
   {
     id: 1,
-    title: "Luxury Kitchen Remodel",
+    title: "Custom Outdoor Kitchen",
     category: "Residential",
-    image: resImage,
-    description: "Complete overhaul of a 1980s kitchen into a modern chef's workspace."
+    image: outdoorKitchen1,
+    description: "Full outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, and LED lighting."
   },
   {
     id: 2,
-    title: "Corporate Office Complex",
-    category: "Commercial",
-    image: comImage,
-    description: "New build steel structure for a tech company headquarters."
+    title: "Outdoor Kitchen - Grill Station",
+    category: "Residential",
+    image: outdoorKitchen3,
+    description: "Built-in Lynx power burner and storage with custom stonework and ambient lighting."
   },
   {
     id: 3,
-    title: "Community RV Park",
-    category: "Specialized",
-    image: specImage, // placeholder
-    description: "Full site development including utilities, pads, and roads."
+    title: "Outdoor Kitchen - Bar Area",
+    category: "Residential",
+    image: outdoorKitchen2,
+    description: "L-shaped outdoor kitchen with TV mount, seating counter, and professional appliances."
   },
   {
     id: 4,
-    title: "Shopping Center Parking",
-    category: "Specialized",
-    image: comImage, // placeholder
-    description: "Resurfacing and restriping for a major retail center."
+    title: "Outdoor Kitchen - Counter Detail",
+    category: "Residential",
+    image: outdoorKitchen4,
+    description: "Detailed stonework and granite countertops with integrated under-counter lighting."
   },
   {
     id: 5,
-    title: "Master Bathroom Suite",
+    title: "Outdoor Kitchen - Construction",
     category: "Residential",
-    image: resImage, // placeholder
-    description: "Spa-like bathroom addition with custom tiling."
+    image: outdoorKitchenConstruction,
+    description: "Metal framing and cement board prep work before stone veneer installation."
   },
   {
     id: 6,
-    title: "Warehouse Expansion",
+    title: "Residential Driveway",
+    category: "Concrete",
+    image: drivewayFinished,
+    description: "Curved concrete driveway with smooth finish for a League City residence."
+  },
+  {
+    id: 7,
+    title: "Driveway - Rebar Prep",
+    category: "Concrete",
+    image: drivewayPrep,
+    description: "Reinforced rebar grid and wooden forms before concrete pour."
+  },
+  {
+    id: 8,
+    title: "Commercial Foundation Slab",
     category: "Commercial",
-    image: comImage, // placeholder
-    description: "Adding 5000 sq ft of storage space to an existing facility."
+    image: commercialSlab,
+    description: "Large commercial concrete slab with plumbing stubs for new building construction."
   }
 ];
 
@@ -66,7 +85,7 @@ export default function Portfolio() {
 
         {/* Filter Buttons */}
         <div className="flex flex-wrap justify-center gap-4 mb-12">
-          {["All", "Residential", "Commercial", "Specialized"].map((cat) => (
+          {["All", "Residential", "Commercial", "Concrete"].map((cat) => (
             <Button
               key={cat}
               variant={filter === cat ? "default" : "outline"}
