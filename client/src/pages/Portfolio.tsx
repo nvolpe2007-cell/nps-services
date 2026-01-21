@@ -9,6 +9,15 @@ import outdoorKitchenConstruction from "@assets/portfolio/outdoor_kitchen_constr
 import drivewayFinished from "@assets/portfolio/driveway_finished.jpeg";
 import drivewayPrep from "@assets/portfolio/driveway_prep.jpeg";
 import commercialSlab from "@assets/portfolio/commercial_slab.jpeg";
+import bathroomShower from "@assets/portfolio/bathroom_shower.jpeg";
+import kitchenRemodel1 from "@assets/portfolio/kitchen_remodel_1.jpeg";
+import kitchenRemodel2 from "@assets/portfolio/kitchen_remodel_2.jpeg";
+import kitchenRemodel3 from "@assets/portfolio/kitchen_remodel_3.jpeg";
+import laundryRoom from "@assets/portfolio/laundry_room.jpeg";
+import rvParkExcavator from "@assets/portfolio/rv_park_excavator.jpeg";
+import rvParkUtilities from "@assets/portfolio/rv_park_utilities.jpeg";
+import rvParkGravel from "@assets/portfolio/rv_park_gravel.jpeg";
+import rvParkLiner from "@assets/portfolio/rv_park_liner.jpeg";
 
 const projects = [
   {
@@ -20,13 +29,34 @@ const projects = [
   },
   {
     id: 2,
+    title: "Kitchen Remodel",
+    category: "Residential",
+    images: [kitchenRemodel1, kitchenRemodel2, kitchenRemodel3, laundryRoom],
+    description: "Modern kitchen renovations featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and custom island."
+  },
+  {
+    id: 3,
+    title: "Bathroom Remodel",
+    category: "Residential",
+    images: [bathroomShower],
+    description: "Luxury bathroom with marble tile, frameless glass shower enclosure, built-in niche, and matte black fixtures."
+  },
+  {
+    id: 4,
     title: "Residential Driveway",
     category: "Residential",
     images: [drivewayFinished, drivewayPrep],
     description: "Curved concrete driveway with smooth finish, reinforced rebar grid, and professional forming."
   },
   {
-    id: 3,
+    id: 5,
+    title: "RV Park Development",
+    category: "Commercial",
+    images: [rvParkExcavator, rvParkUtilities, rvParkGravel, rvParkLiner],
+    description: "Full RV park site development including excavation, utility installation, grading, and liner placement for detention areas."
+  },
+  {
+    id: 6,
     title: "Commercial Foundation Slab",
     category: "Commercial",
     images: [commercialSlab],
