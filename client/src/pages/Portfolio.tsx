@@ -1,6 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
-import { ChevronLeft, ChevronRight } from "lucide-react";
+import { ChevronLeft, ChevronRight, ZoomIn, X } from "lucide-react";
 import outdoorKitchen1 from "@assets/portfolio/outdoor_kitchen_1.jpeg";
 import outdoorKitchen2 from "@assets/portfolio/outdoor_kitchen_2.jpeg";
 import outdoorKitchen3 from "@assets/portfolio/outdoor_kitchen_3.jpeg";
@@ -64,7 +64,88 @@ const projects = [
   }
 ];
 
-function ProjectCard({ project }: { project: typeof projects[0] }) {
+function Lightbox({ 
+  images, 
+  currentIndex, 
+  title,
+  onClose, 
+  onNext, 
+  onPrev,
+  onSetIndex
+}: { 
+  images: string[]; 
+  currentIndex: number; 
+  title: string;
+  onClose: () => void; 
+  onNext: () => void; 
+  onPrev: () => void;
+  onSetIndex: (idx: number) => void;
+}) {
+  const hasMultiple = images.length > 1;
+  
+  return (
+    <div 
+      className="fixed inset-0 bg-black/95 z-50 flex items-center justify-center"
+      onClick={onClose}
+    >
+      <button 
+        onClick={onClose}
+        className="absolute top-4 right-4 text-white p-2 hover:bg-white/10 rounded-full transition-colors"
+        aria-label="Close lightbox"
+      >
+        <X className="w-8 h-8" />
+      </button>
+      
+      <div className="absolute top-4 left-4 text-white">
+        <h3 className="text-xl font-bold">{title}</h3>
+        {hasMultiple && (
+          <span className="text-sm text-slate-300">{currentIndex + 1} of {images.length}</span>
+        )}
+      </div>
+      
+      {hasMultiple && (
+        <>
+          <button 
+            onClick={(e) => { e.stopPropagation(); onPrev(); }}
+            className="absolute left-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors"
+            aria-label="Previous image"
+          >
+            <ChevronLeft className="w-8 h-8" />
+          </button>
+          <button 
+            onClick={(e) => { e.stopPropagation(); onNext(); }}
+            className="absolute right-4 top-1/2 -translate-y-1/2 bg-white/10 hover:bg-white/20 text-white p-3 rounded-full transition-colors"
+            aria-label="Next image"
+          >
+            <ChevronRight className="w-8 h-8" />
+          </button>
+        </>
+      )}
+      
+      <img 
+        src={images[currentIndex]} 
+        alt={`${title} - Image ${currentIndex + 1}`}
+        className="max-h-[85vh] max-w-[90vw] object-contain"
+        onClick={(e) => e.stopPropagation()}
+      />
+      
+      {hasMultiple && (
+        <div className="absolute bottom-6 left-1/2 -translate-x-1/2 flex gap-2">
+          {images.map((_, idx) => (
+            <button
+              key={idx}
+              onClick={(e) => { e.stopPropagation(); onSetIndex(idx); }}
+              className={`w-3 h-3 rounded-full transition-colors ${idx === currentIndex ? 'bg-white' : 'bg-white/40 hover:bg-white/60'}`}
+              aria-label={`Go to image ${idx + 1}`}
+            />
+          ))}
+        </div>
+      )}
+    </div>
+  );
+}
+
+function ProjectCard({ project, onOpenLightbox }: { project: typeof projects[0]; onOpenLightbox: (images: string[], index: number, title: string) => void }) {
   const [currentIndex, setCurrentIndex] = useState(0);
   const hasMultiple = project.images.length > 1;
 
@@ -78,6 +159,11 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
     setCurrentIndex((prev) => (prev - 1 + project.images.length) % project.images.length);
   };
 
+  const handleZoom = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onOpenLightbox(project.images, currentIndex, project.title);
+  };
+
   return (
     <div className="group relative overflow-hidden rounded-xl shadow-lg bg-white h-80">
       <img 
@@ -85,6 +171,14 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
         alt={`${project.title} - Image ${currentIndex + 1}`} 
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
+      
+      <button 
+        onClick={handleZoom}
+        className="absolute top-3 right-3 bg-black/50 hover:bg-black/70 text-white p-2 rounded-full opacity-0 group-hover:opacity-100 transition-opacity z-10"
+        aria-label="Zoom in"
+      >
+        <ZoomIn className="w-5 h-5" />
+      </button>
       
       {hasMultiple && (
         <>
@@ -102,17 +196,6 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
           >
             <ChevronRight className="w-5 h-5" />
           </button>
-          
-          <div className="absolute bottom-20 left-1/2 -translate-x-1/2 flex gap-1.5 z-10">
-            {project.images.map((_, idx) => (
-              <button
-                key={idx}
-                onClick={(e) => { e.stopPropagation(); setCurrentIndex(idx); }}
-                className={`w-2 h-2 rounded-full transition-colors ${idx === currentIndex ? 'bg-white' : 'bg-white/50'}`}
-                aria-label={`Go to image ${idx + 1}`}
-              />
-            ))}
-          </div>
         </>
       )}
       
@@ -130,10 +213,35 @@ function ProjectCard({ project }: { project: typeof projects[0] }) {
 
 export default function Portfolio() {
   const [filter, setFilter] = useState("All");
+  const [lightbox, setLightbox] = useState<{ images: string[]; index: number; title: string } | null>(null);
 
   const filteredProjects = filter === "All" 
     ? projects 
     : projects.filter(p => p.category === filter);
+
+  const openLightbox = (images: string[], index: number, title: string) => {
+    setLightbox({ images, index, title });
+  };
+
+  const closeLightbox = () => setLightbox(null);
+
+  const nextLightboxImage = () => {
+    if (lightbox) {
+      setLightbox({ ...lightbox, index: (lightbox.index + 1) % lightbox.images.length });
+    }
+  };
+
+  const prevLightboxImage = () => {
+    if (lightbox) {
+      setLightbox({ ...lightbox, index: (lightbox.index - 1 + lightbox.images.length) % lightbox.images.length });
+    }
+  };
+
+  const setLightboxIndex = (idx: number) => {
+    if (lightbox) {
+      setLightbox({ ...lightbox, index: idx });
+    }
+  };
 
   return (
     <div className="pt-24 min-h-screen bg-background">
@@ -158,10 +266,22 @@ export default function Portfolio() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {filteredProjects.map((project) => (
-            <ProjectCard key={project.id} project={project} />
+            <ProjectCard key={project.id} project={project} onOpenLightbox={openLightbox} />
           ))}
         </div>
       </div>
+      
+      {lightbox && (
+        <Lightbox 
+          images={lightbox.images}
+          currentIndex={lightbox.index}
+          title={lightbox.title}
+          onClose={closeLightbox}
+          onNext={nextLightboxImage}
+          onPrev={prevLightboxImage}
+          onSetIndex={setLightboxIndex}
+        />
+      )}
     </div>
   );
 }
