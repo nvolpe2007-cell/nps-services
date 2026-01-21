@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import heroBg from "@assets/generated_images/aerial_residential_property.png";
-import comImage from "@assets/generated_images/commercial_building_site.png";
-import specImage from "@assets/generated_images/construction_hero_background.png";
+import texasHome1 from "@assets/stock_images/beautiful_modern_tex_0afd3e65.jpg";
+import texasHome2 from "@assets/stock_images/beautiful_modern_tex_1501e06d.jpg";
+import texasHome3 from "@assets/stock_images/beautiful_modern_tex_0e702b65.jpg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";
@@ -10,19 +10,19 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
-    image: heroBg,
+    image: texasHome1,
     title: "Building Excellence",
     subtitle: "Since 2008",
     description: "Houston's Premier Construction & Asphalt Experts",
   },
   {
-    image: comImage,
+    image: texasHome2,
     title: "Commercial Projects",
     subtitle: "Built to Last",
     description: "From Ground Up to Finishing Touches",
   },
   {
-    image: specImage,
+    image: texasHome3,
     title: "Quality Craftsmanship",
     subtitle: "A+ BBB Rated",
     description: "Trusted by Hundreds Across Greater Houston",
