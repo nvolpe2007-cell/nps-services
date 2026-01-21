@@ -1,10 +1,6 @@
 import { useState } from "react";
 import { Button } from "@/components/ui/button";
 import outdoorKitchen1 from "@assets/portfolio/outdoor_kitchen_1.jpeg";
-import outdoorKitchen2 from "@assets/portfolio/outdoor_kitchen_2.jpeg";
-import outdoorKitchen3 from "@assets/portfolio/outdoor_kitchen_3.jpeg";
-import outdoorKitchen4 from "@assets/portfolio/outdoor_kitchen_4.jpeg";
-import outdoorKitchenConstruction from "@assets/portfolio/outdoor_kitchen_construction.jpeg";
 import drivewayFinished from "@assets/portfolio/driveway_finished.jpeg";
 import drivewayPrep from "@assets/portfolio/driveway_prep.jpeg";
 import commercialSlab from "@assets/portfolio/commercial_slab.jpeg";
@@ -15,52 +11,24 @@ const projects = [
     title: "Custom Outdoor Kitchen",
     category: "Residential",
     image: outdoorKitchen1,
-    description: "Full outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, and LED lighting."
+    description: "Complete outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, Lynx power burner, TV mount, bar seating, and LED lighting."
   },
   {
     id: 2,
-    title: "Outdoor Kitchen - Grill Station",
-    category: "Residential",
-    image: outdoorKitchen3,
-    description: "Built-in Lynx power burner and storage with custom stonework and ambient lighting."
-  },
-  {
-    id: 3,
-    title: "Outdoor Kitchen - Bar Area",
-    category: "Residential",
-    image: outdoorKitchen2,
-    description: "L-shaped outdoor kitchen with TV mount, seating counter, and professional appliances."
-  },
-  {
-    id: 4,
-    title: "Outdoor Kitchen - Counter Detail",
-    category: "Residential",
-    image: outdoorKitchen4,
-    description: "Detailed stonework and granite countertops with integrated under-counter lighting."
-  },
-  {
-    id: 5,
-    title: "Outdoor Kitchen - Construction",
-    category: "Residential",
-    image: outdoorKitchenConstruction,
-    description: "Metal framing and cement board prep work before stone veneer installation."
-  },
-  {
-    id: 6,
     title: "Residential Driveway",
     category: "Concrete",
     image: drivewayFinished,
     description: "Curved concrete driveway with smooth finish for a League City residence."
   },
   {
-    id: 7,
+    id: 3,
     title: "Driveway - Rebar Prep",
     category: "Concrete",
     image: drivewayPrep,
     description: "Reinforced rebar grid and wooden forms before concrete pour."
   },
   {
-    id: 8,
+    id: 4,
     title: "Commercial Foundation Slab",
     category: "Commercial",
     image: commercialSlab,
