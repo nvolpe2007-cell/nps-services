@@ -6,7 +6,7 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
 import { Button } from "@/components/ui/button";
-import { MapPin, Phone, Mail, Clock } from "lucide-react";
+import { MapPin, Phone, Mail, Clock, ChevronRight } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
@@ -72,9 +72,19 @@ export default function Contact() {
     <div className="pt-24 min-h-screen bg-background">
       <div className="container mx-auto px-4 py-16">
         <h1 className="text-4xl font-bold font-heading text-center mb-6">Contact Us</h1>
-        <p className="text-center text-muted-foreground mb-16 max-w-2xl mx-auto">
+        <p className="text-center text-muted-foreground mb-8 max-w-2xl mx-auto">
           Ready to start your project? Get in touch for a free quote or consultation.
         </p>
+        <div className="flex justify-center mb-16">
+          <Button
+            size="lg"
+            className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-black text-white hover:bg-black/90 rounded-none"
+            onClick={() => document.getElementById('contact-form')?.scrollIntoView({ behavior: 'smooth' })}
+          >
+            Get Free Estimate
+            <ChevronRight className="ml-2 h-4 w-4" />
+          </Button>
+        </div>
 
         <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
@@ -128,7 +138,7 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
+          <div id="contact-form" className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
             <h2 className="text-2xl font-bold font-heading mb-6 text-slate-900">Request a Free Quote</h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
