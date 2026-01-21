@@ -149,21 +149,23 @@ export function Hero() {
         </div>
       </div>
 
-      {/* Navigation Arrows - Larger touch targets on mobile */}
-      <button
-        onClick={prev}
-        className="absolute left-2 md:left-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm active:bg-white/30 md:hover:bg-white/20 flex items-center justify-center transition-colors"
-        aria-label="Previous slide"
-      >
-        <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-white" />
-      </button>
-      <button
-        onClick={next}
-        className="absolute right-2 md:right-8 top-1/2 -translate-y-1/2 z-20 w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm active:bg-white/30 md:hover:bg-white/20 flex items-center justify-center transition-colors"
-        aria-label="Next slide"
-      >
-        <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-white" />
-      </button>
+      {/* Navigation Arrows - Positioned at bottom corners to avoid overlapping content */}
+      <div className="absolute bottom-20 md:bottom-24 right-4 md:right-12 z-20 flex gap-2">
+        <button
+          onClick={prev}
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm active:bg-white/30 md:hover:bg-white/20 flex items-center justify-center transition-colors"
+          aria-label="Previous slide"
+        >
+          <ChevronLeft className="h-5 w-5 md:h-6 md:w-6 text-white" />
+        </button>
+        <button
+          onClick={next}
+          className="w-10 h-10 md:w-12 md:h-12 bg-white/10 backdrop-blur-sm active:bg-white/30 md:hover:bg-white/20 flex items-center justify-center transition-colors"
+          aria-label="Next slide"
+        >
+          <ChevronRight className="h-5 w-5 md:h-6 md:w-6 text-white" />
+        </button>
+      </div>
 
       {/* Slide Indicators */}
       <div className="absolute bottom-6 md:bottom-10 left-1/2 -translate-x-1/2 z-20 flex items-center gap-2 md:gap-3">
