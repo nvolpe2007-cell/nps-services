@@ -42,28 +42,28 @@ const projects = [
     id: 1,
     title: "20,000 Sq Ft Concrete Slab",
     category: "Commercial",
-    images: [industrialConcrete, concreteDemo, concreteRebar, concretePour, concreteFinished],
+    images: [concreteDemo, concreteRebar, concretePour, concreteFinished, industrialConcrete],
     description: "Complete demolition and rebuild of a 20,000 sq ft commercial concrete slab, including rebar reinforcement, professional pouring, and precision finishing."
   },
   {
     id: 2,
     title: "Metal Building Construction",
     category: "Commercial",
-    images: [steelBuilding, steelFrame, metalInterior],
-    description: "Full metal building construction from steel frame erection to exterior paneling and interior insulation installation."
+    images: [steelFrame, metalInterior, steelBuilding],
+    description: "Full metal building construction from steel frame erection to interior insulation and exterior paneling."
   },
   {
     id: 3,
     title: "Commercial Foundation Work",
     category: "Commercial",
-    images: [concretePourCrew, foundationPrep, foundationRebar],
+    images: [foundationPrep, foundationRebar, concretePourCrew],
     description: "Large-scale foundation preparation including vapor barrier installation, rebar grid layout, and crew pouring for commercial buildings."
   },
   {
     id: 4,
     title: "Wood Framing & Trusses",
     category: "Commercial",
-    images: [woodFraming, woodTruss],
+    images: [woodTruss, woodFraming],
     description: "Professional wood framing and truss installation for commercial and multi-family construction projects."
   },
   {
