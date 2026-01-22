@@ -21,7 +21,8 @@ export function Navbar() {
     { name: "Home", href: "/" },
     { name: "Services", href: "/services" },
     { name: "Portfolio", href: "/portfolio" },
-    { name: "About", href: "/about" }, // "Team" in reference
+    { name: "Reviews", href: "/reviews" },
+    { name: "About", href: "/about" },
     { name: "Contact", href: "/contact" },
   ];
 

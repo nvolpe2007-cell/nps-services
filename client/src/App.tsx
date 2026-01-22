@@ -15,6 +15,7 @@ import Services from "@/pages/Services";
 import Portfolio from "@/pages/Portfolio";
 import Blog from "@/pages/Blog";
 import Contact from "@/pages/Contact";
+import Testimonials from "@/pages/Testimonials";
 
 function ScrollToTop() {
   const [location] = useLocation();
@@ -34,6 +35,7 @@ function Router() {
       <Route path="/services" component={Services} />
       <Route path="/portfolio" component={Portfolio} />
       <Route path="/blog" component={Blog} />
+      <Route path="/reviews" component={Testimonials} />
       <Route path="/contact" component={Contact} />
       <Route component={NotFound} />
     </Switch>
