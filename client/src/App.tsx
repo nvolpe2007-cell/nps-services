@@ -7,6 +7,7 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import NotFound from "@/pages/not-found";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
+import { StickyCallButton } from "@/components/StickyCallButton";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
@@ -49,6 +50,7 @@ function App() {
             <Router />
           </main>
           <Footer />
+          <StickyCallButton />
         </div>
         <Toaster />
       </TooltipProvider>

@@ -1,8 +1,6 @@
 import { motion } from "framer-motion";
 import teamImage from "@assets/generated_images/professional_construction_team.png";
-import { CheckCircle2, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { CheckCircle2 } from "lucide-react";
 
 export default function About() {
   return (
@@ -11,18 +9,9 @@ export default function About() {
       <div className="bg-slate-100 py-16">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-heading text-slate-900 mb-4">About N&P Services</h1>
-          <p className="text-xl text-muted-foreground max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-muted-foreground max-w-2xl mx-auto">
             Building trust through quality craftsmanship since 2008.
           </p>
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-black text-white hover:bg-black/90 rounded-none"
-            >
-              Get Free Estimate
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
       </div>
 

@@ -1,8 +1,6 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Hammer, Building, Truck, Check, ChevronRight } from "lucide-react";
-import { Button } from "@/components/ui/button";
-import { Link } from "wouter";
+import { Hammer, Building, Truck } from "lucide-react";
 import resImage from "@assets/generated_images/residential_renovation.png";
 import comImage from "@assets/generated_images/commercial_building_site.png";
 import specImage from "@assets/generated_images/construction_hero_background.png";
@@ -13,18 +11,9 @@ export default function Services() {
       <div className="bg-slate-900 text-white py-20">
         <div className="container mx-auto px-4 text-center">
           <h1 className="text-4xl md:text-5xl font-bold font-heading mb-6">Our Services</h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto mb-8">
+          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
             Comprehensive construction solutions for every need, delivered with precision.
           </p>
-          <Link href="/contact">
-            <Button
-              size="lg"
-              className="h-14 px-8 text-sm font-bold tracking-wider uppercase bg-white text-black hover:bg-white/90 rounded-none"
-            >
-              Get Free Estimate
-              <ChevronRight className="ml-2 h-4 w-4" />
-            </Button>
-          </Link>
         </div>
       </div>
 

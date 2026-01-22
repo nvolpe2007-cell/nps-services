@@ -17,26 +17,6 @@ export async function registerRoutes(
   httpServer: Server,
   app: Express
 ): Promise<Server> {
-  // Test SMS endpoint
-  app.get("/api/test-sms", async (req, res) => {
-    try {
-      const result = await sendContactNotificationSMS("+13106069426", {
-        name: "Test User",
-        email: "test@example.com", 
-        phone: "555-123-4567",
-        service: "Test",
-        message: "This is a test SMS from N&P Services website!"
-      });
-      if (result.success) {
-        res.json({ success: true, message: "SMS sent!" });
-      } else {
-        res.status(500).json({ success: false, error: result.error });
-      }
-    } catch (error) {
-      res.status(500).json({ success: false, error: String(error) });
-    }
-  });
-
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {
