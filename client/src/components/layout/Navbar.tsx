@@ -40,7 +40,7 @@ export function Navbar() {
             <img 
               src={logo} 
               alt="N&P Services LLC" 
-              className="h-16 w-auto object-contain bg-white p-2 rounded"
+              className="h-20 w-auto object-contain bg-white p-3 rounded-md shadow-sm"
             />
           </Link>
 
