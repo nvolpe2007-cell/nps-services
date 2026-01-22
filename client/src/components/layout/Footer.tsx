@@ -1,5 +1,6 @@
 import { Link } from "wouter";
-import { Facebook, MapPin, Phone, Mail, ArrowRight, Hammer } from "lucide-react";
+import { Facebook, MapPin, Phone, Mail, ArrowRight } from "lucide-react";
+import logo from "@/assets/logo.jpg";
 
 export function Footer() {
   return (
@@ -8,12 +9,13 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
           {/* Brand Info */}
           <div className="space-y-4">
-            <div className="flex items-center space-x-2 mb-4">
-              <div className="bg-primary p-1.5 rounded-md">
-                <Hammer className="h-5 w-5 text-white" />
-              </div>
-              <span className="text-xl font-bold font-heading">N&P Services</span>
-            </div>
+            <Link href="/" className="block mb-4">
+              <img 
+                src={logo} 
+                alt="N&P Services LLC" 
+                className="h-20 w-auto object-contain bg-white p-2 rounded-md"
+              />
+            </Link>
             <p className="text-slate-400 text-sm leading-relaxed">
               Excellence in construction. Building your vision with precision and integrity for over 17 years.
             </p>
