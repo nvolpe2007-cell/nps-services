@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import concreteFinished from "@assets/project_photos/concrete_finished.jpeg";
-import industrialConcrete from "@assets/project_photos/industrial_concrete.jpeg";
-import concretePour from "@assets/project_photos/concrete_pour.jpeg";
+import steelBuilding from "@assets/project_photos/steel_building.jpeg";
+import concretePourCrew from "@assets/project_photos/concrete_pour_crew.jpeg";
+import steelFrame from "@assets/project_photos/steel_frame.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";
@@ -10,22 +10,22 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
-    image: concreteFinished,
-    title: "20,000 Sq Ft Projects",
-    subtitle: "Commercial Concrete",
-    description: "Complete Demolition & Rebuild Specialists",
+    image: steelBuilding,
+    title: "Steel Buildings",
+    subtitle: "Commercial & Industrial",
+    description: "Complete Metal Building Construction & Erection",
   },
   {
-    image: industrialConcrete,
-    title: "Industrial Solutions",
+    image: concretePourCrew,
+    title: "Large-Scale Concrete",
     subtitle: "Houston's Experts",
-    description: "Heavy-Duty Commercial Concrete & Site Work",
+    description: "20,000+ Sq Ft Slabs, Foundations & Site Work",
   },
   {
-    image: concretePour,
-    title: "Quality Craftsmanship",
+    image: steelFrame,
+    title: "Ground-Up Builds",
     subtitle: "A+ BBB Rated",
-    description: "Professional Pours & Precision Finishing",
+    description: "From Foundation to Finish - 17+ Years Experience",
   },
 ];
 

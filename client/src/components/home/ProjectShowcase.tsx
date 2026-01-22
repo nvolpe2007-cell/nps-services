@@ -2,32 +2,32 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
-import concreteDemo from "@assets/project_photos/concrete_demo.jpeg";
-import industrialConcrete from "@assets/project_photos/industrial_concrete.jpeg";
-import interiorLounge from "@assets/project_photos/interior_lounge.jpeg";
+import foundationRebar from "@assets/project_photos/foundation_rebar.jpeg";
+import steelBuilding from "@assets/project_photos/steel_building.jpeg";
+import kitchenIsland from "@assets/project_photos/kitchen_island.jpeg";
 import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const projects = [
   {
     id: 1,
-    title: "20,000 Sq Ft Concrete Slab",
-    category: "Demolition & Rebuild",
+    title: "Commercial Foundation Work",
+    category: "Concrete & Site Work",
     location: "Greater Houston, TX",
-    image: concreteDemo,
+    image: foundationRebar,
   },
   {
     id: 2,
-    title: "Industrial Facility Concrete",
-    category: "Commercial Concrete",
-    location: "Houston, TX",
-    image: industrialConcrete,
+    title: "Metal Building Construction",
+    category: "Commercial",
+    location: "League City, TX",
+    image: steelBuilding,
   },
   {
     id: 3,
-    title: "Commercial Interior Build-Out",
+    title: "Custom Kitchen Build",
     category: "Residential",
     location: "League City, TX",
-    image: interiorLounge,
+    image: kitchenIsland,
   },
 ];
 
