@@ -7,10 +7,10 @@ import { useSimpleAnimations, useMobile } from "@/hooks/useMobile";
 const services = [
   {
     id: "01",
-    icon: Home,
-    title: "Residential Construction",
-    description: "Complete home building and renovation services including kitchens, bathrooms, additions, decks, and siding.",
-    items: ["New Home Builds", "Kitchen Remodels", "Bathroom Renovations", "Room Additions"],
+    icon: Car,
+    title: "Asphalt & Parking Lots",
+    description: "Houston's parking lot and asphalt experts. We handle everything from new installations to repairs and striping.",
+    items: ["New Installations", "Resurfacing", "Striping & Marking", "Pothole Repair"],
   },
   {
     id: "02",
@@ -21,31 +21,31 @@ const services = [
   },
   {
     id: "03",
-    icon: Car,
-    title: "Asphalt & Parking Lots",
-    description: "Houston's parking lot and asphalt experts. We handle everything from new installations to repairs and striping.",
-    items: ["New Installations", "Resurfacing", "Striping & Marking", "Pothole Repair"],
-  },
-  {
-    id: "04",
     icon: PaintBucket,
     title: "Concrete Services",
     description: "Expert concrete work for driveways, sidewalks, foundations, and decorative applications.",
     items: ["Driveways", "Sidewalks", "Foundations", "Decorative Concrete"],
   },
   {
-    id: "05",
+    id: "04",
     icon: Trees,
     title: "Site Work",
     description: "Complete site preparation including land clearing, grading, drainage, and utility installation.",
     items: ["Land Clearing", "Grading", "Drainage Systems", "Utility Installation"],
   },
   {
-    id: "06",
+    id: "05",
     icon: Truck,
     title: "Specialized Services",
     description: "RV park development, detention ponds, demolition, and other specialized construction needs.",
     items: ["RV Parks", "Detention Ponds", "Demolition", "Excavation"],
+  },
+  {
+    id: "06",
+    icon: Home,
+    title: "Residential Construction",
+    description: "Complete home building and renovation services including kitchens, bathrooms, additions, decks, and siding.",
+    items: ["New Home Builds", "Kitchen Remodels", "Bathroom Renovations", "Room Additions"],
   },
 ];
 

@@ -2,32 +2,32 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
-import resImage from "@assets/generated_images/residential_renovation.png";
-import comImage from "@assets/generated_images/commercial_building_site.png";
-import specImage from "@assets/generated_images/construction_hero_background.png";
+import parkingImage from "@assets/stock_images/commercial_parking_l_61187a9b.jpg";
+import comImage from "@assets/stock_images/commercial_building__f1df6d36.jpg";
+import concreteImage from "@assets/stock_images/concrete_driveway_si_0e9ad17c.jpg";
 import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const projects = [
   {
     id: 1,
-    title: "Modern Home Renovation",
-    category: "Residential",
-    location: "League City, TX",
-    image: resImage,
+    title: "Shopping Center Parking",
+    category: "Asphalt & Paving",
+    location: "Houston, TX",
+    image: parkingImage,
   },
   {
     id: 2,
-    title: "Commercial Complex",
+    title: "Office Building Project",
     category: "Commercial",
-    location: "Houston, TX",
+    location: "Clear Lake, TX",
     image: comImage,
   },
   {
     id: 3,
-    title: "Parking Lot Installation",
-    category: "Asphalt & Paving",
-    location: "Clear Lake, TX",
-    image: specImage,
+    title: "Commercial Concrete Work",
+    category: "Concrete & Site Work",
+    location: "League City, TX",
+    image: concreteImage,
   },
 ];
 
