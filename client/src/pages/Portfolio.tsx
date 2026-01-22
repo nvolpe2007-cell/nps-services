@@ -84,35 +84,28 @@ const projects = [
     id: 7,
     title: "Custom Kitchen Builds",
     category: "Residential",
-    images: [newKitchenIsland, newKitchenCounter, newKitchenModern],
-    description: "Beautiful custom kitchens featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and large islands."
+    images: [newKitchenIsland, newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
+    description: "Beautiful custom kitchens and remodels featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and modern finishes."
   },
   {
     id: 8,
-    title: "Kitchen Remodels",
-    category: "Residential",
-    images: [kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
-    description: "Complete kitchen renovations with modern fixtures, custom cabinetry, and quality finishes."
-  },
-  {
-    id: 9,
     title: "Custom Outdoor Kitchen",
     category: "Residential",
     images: [outdoorKitchen1, outdoorKitchen2, outdoorKitchen3, outdoorKitchen4, outdoorKitchenConstruction],
     description: "Complete outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, Lynx power burner, TV mount, bar seating, and LED lighting."
   },
   {
-    id: 10,
+    id: 9,
     title: "Bathroom Remodel",
     category: "Residential",
     images: [bathroomShower, laundryRoom],
     description: "Luxury bathroom with marble tile, frameless glass shower enclosure, built-in niche, and matte black fixtures."
   },
   {
-    id: 11,
+    id: 10,
     title: "Residential Driveway",
     category: "Residential",
-    images: [drivewayFinished, drivewayPrep, commercialSlab],
+    images: [drivewayPrep, drivewayFinished, commercialSlab],
     description: "Curved concrete driveway with smooth finish, reinforced rebar grid, and professional forming."
   }
 ];
