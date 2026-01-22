@@ -82,13 +82,18 @@ export default function Contact() {
             <Card className="p-8 shadow-lg border-none bg-slate-900 text-white">
               <h2 className="text-2xl font-bold font-heading mb-6">Get In Touch</h2>
               <div className="space-y-6">
-                <div className="flex items-start">
+                <button 
+                  onClick={() => {
+                    document.getElementById('map-section')?.scrollIntoView({ behavior: 'smooth' });
+                  }}
+                  className="flex items-start text-left hover:opacity-80 transition-opacity w-full"
+                >
                   <MapPin className="h-6 w-6 text-primary mr-4 mt-1" />
                   <div>
                     <h3 className="font-bold">Address</h3>
                     <p className="text-slate-300">207 West Wilkins Street<br/>League City, TX 77573</p>
                   </div>
-                </div>
+                </button>
                 <div className="flex items-center">
                   <Phone className="h-6 w-6 text-primary mr-4" />
                   <div>
@@ -114,7 +119,7 @@ export default function Contact() {
             </Card>
 
             {/* Google Map Embed */}
-            <div className="h-80 rounded-xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
+            <div id="map-section" className="h-80 rounded-xl overflow-hidden shadow-lg border border-slate-200 bg-slate-100">
                <iframe 
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3469.761062967204!2d-95.093123!3d29.506456!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x86409a896688536b%3A0x6280436896677!2s207%20W%20Wilkins%20St%2C%20League%20City%2C%20TX%2077573!5e0!3m2!1sen!2sus!4v1625680000000!5m2!1sen!2sus" 
                 width="100%" 
