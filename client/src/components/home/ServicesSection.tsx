@@ -11,6 +11,7 @@ const services = [
     title: "Asphalt & Parking Lots",
     description: "Houston's parking lot and asphalt experts. We handle everything from new installations to repairs and striping.",
     items: ["New Installations", "Resurfacing", "Striping & Marking", "Pothole Repair"],
+    portfolioFilter: "Commercial",
   },
   {
     id: "02",
@@ -18,6 +19,7 @@ const services = [
     title: "Commercial Projects",
     description: "Full-service commercial construction from ground-up builds to tenant improvements and facility upgrades.",
     items: ["Office Buildings", "Retail Spaces", "Multi-Family Housing", "Industrial Facilities"],
+    portfolioFilter: "Commercial",
   },
   {
     id: "03",
@@ -25,6 +27,7 @@ const services = [
     title: "Concrete Services",
     description: "Expert concrete work for driveways, sidewalks, foundations, and decorative applications.",
     items: ["Driveways", "Sidewalks", "Foundations", "Decorative Concrete"],
+    portfolioFilter: "Commercial",
   },
   {
     id: "04",
@@ -32,6 +35,7 @@ const services = [
     title: "Site Work",
     description: "Complete site preparation including land clearing, grading, drainage, and utility installation.",
     items: ["Land Clearing", "Grading", "Drainage Systems", "Utility Installation"],
+    portfolioFilter: "Commercial",
   },
   {
     id: "05",
@@ -39,6 +43,7 @@ const services = [
     title: "Specialized Services",
     description: "RV park development, detention ponds, demolition, and other specialized construction needs.",
     items: ["RV Parks", "Detention Ponds", "Demolition", "Excavation"],
+    portfolioFilter: "Commercial",
   },
   {
     id: "06",
@@ -46,6 +51,7 @@ const services = [
     title: "Residential Construction",
     description: "Complete home building and renovation services including kitchens, bathrooms, additions, decks, and siding.",
     items: ["New Home Builds", "Kitchen Remodels", "Bathroom Renovations", "Room Additions"],
+    portfolioFilter: "Residential",
   },
 ];
 
@@ -130,11 +136,11 @@ export function ServicesSection() {
                 </p>
 
                 {/* Arrow - Desktop only */}
-                <div className="hidden md:block ml-auto">
+                <Link href={`/portfolio?filter=${service.portfolioFilter}`} className="hidden md:block ml-auto">
                   <div className="w-12 h-12 border border-black/10 group-hover:border-red-600 group-hover:bg-red-600 flex items-center justify-center transition-all">
                     <ArrowRight className="h-5 w-5 text-black/30 group-hover:text-white transition-colors" />
                   </div>
-                </div>
+                </Link>
               </div>
 
               {/* Expanded Items - Mobile tap / Desktop hover */}
