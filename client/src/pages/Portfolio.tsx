@@ -18,35 +18,53 @@ import rvParkExcavator from "@assets/portfolio/rv_park_excavator.jpeg";
 import rvParkUtilities from "@assets/portfolio/rv_park_utilities.jpeg";
 import rvParkGravel from "@assets/portfolio/rv_park_gravel.jpeg";
 import rvParkLiner from "@assets/portfolio/rv_park_liner.jpeg";
+import concreteDemo from "@assets/portfolio/concrete_demo.jpeg";
+import concreteRebar from "@assets/portfolio/concrete_rebar.jpeg";
+import concretePour from "@assets/portfolio/concrete_pour.jpeg";
+import concreteFinished from "@assets/portfolio/concrete_finished.jpeg";
+import industrialConcrete from "@assets/portfolio/industrial_concrete.jpeg";
+import steelFrame from "@assets/portfolio/steel_frame.jpeg";
+import steelBuilding from "@assets/portfolio/steel_building.jpeg";
+import metalInterior from "@assets/portfolio/metal_building_interior.jpeg";
+import woodTruss from "@assets/portfolio/wood_truss.jpeg";
+import woodFraming from "@assets/portfolio/wood_framing.jpeg";
+import foundationPrep from "@assets/portfolio/foundation_prep.jpeg";
+import foundationRebar from "@assets/portfolio/foundation_rebar.jpeg";
+import concretePourCrew from "@assets/portfolio/concrete_pour_crew.jpeg";
+import newKitchenIsland from "@assets/portfolio/new_kitchen_island.jpeg";
+import newKitchenCounter from "@assets/portfolio/new_kitchen_counter.jpeg";
+import newKitchenModern from "@assets/portfolio/new_kitchen_modern.jpeg";
+import interiorLounge from "@assets/portfolio/interior_lounge.jpeg";
+import interiorBar from "@assets/portfolio/interior_bar.jpeg";
 
 const projects = [
   {
     id: 1,
-    title: "Custom Outdoor Kitchen",
-    category: "Residential",
-    images: [outdoorKitchen1, outdoorKitchen2, outdoorKitchen3, outdoorKitchen4, outdoorKitchenConstruction],
-    description: "Complete outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, Lynx power burner, TV mount, bar seating, and LED lighting."
+    title: "20,000 Sq Ft Concrete Slab",
+    category: "Commercial",
+    images: [concreteDemo, concreteRebar, concretePour, concreteFinished, industrialConcrete],
+    description: "Complete demolition and rebuild of a 20,000 sq ft commercial concrete slab, including rebar reinforcement, professional pouring, and precision finishing."
   },
   {
     id: 2,
-    title: "Kitchen Remodel",
-    category: "Residential",
-    images: [kitchenRemodel1, kitchenRemodel2, kitchenRemodel3, laundryRoom],
-    description: "Modern kitchen renovations featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and custom island."
+    title: "Metal Building Construction",
+    category: "Commercial",
+    images: [steelFrame, steelBuilding, metalInterior],
+    description: "Full metal building construction from steel frame erection to exterior paneling and interior insulation installation."
   },
   {
     id: 3,
-    title: "Bathroom Remodel",
-    category: "Residential",
-    images: [bathroomShower],
-    description: "Luxury bathroom with marble tile, frameless glass shower enclosure, built-in niche, and matte black fixtures."
+    title: "Commercial Foundation Work",
+    category: "Commercial",
+    images: [foundationPrep, foundationRebar, concretePourCrew],
+    description: "Large-scale foundation preparation including vapor barrier installation, rebar grid layout, and crew pouring for commercial buildings."
   },
   {
     id: 4,
-    title: "Residential Driveway",
-    category: "Residential",
-    images: [drivewayFinished, drivewayPrep],
-    description: "Curved concrete driveway with smooth finish, reinforced rebar grid, and professional forming."
+    title: "Wood Framing & Trusses",
+    category: "Commercial",
+    images: [woodTruss, woodFraming],
+    description: "Professional wood framing and truss installation for commercial and multi-family construction projects."
   },
   {
     id: 5,
@@ -57,6 +75,41 @@ const projects = [
   },
   {
     id: 6,
+    title: "Commercial Interior Build-Out",
+    category: "Commercial",
+    images: [interiorLounge, interiorBar],
+    description: "Custom commercial interior construction featuring lounge areas, bar installations, and modern finishes."
+  },
+  {
+    id: 7,
+    title: "Custom Kitchen Builds",
+    category: "Residential",
+    images: [newKitchenIsland, newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
+    description: "Beautiful custom kitchens featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and large islands."
+  },
+  {
+    id: 8,
+    title: "Custom Outdoor Kitchen",
+    category: "Residential",
+    images: [outdoorKitchen1, outdoorKitchen2, outdoorKitchen3, outdoorKitchen4, outdoorKitchenConstruction],
+    description: "Complete outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, Lynx power burner, TV mount, bar seating, and LED lighting."
+  },
+  {
+    id: 9,
+    title: "Bathroom Remodel",
+    category: "Residential",
+    images: [bathroomShower, laundryRoom],
+    description: "Luxury bathroom with marble tile, frameless glass shower enclosure, built-in niche, and matte black fixtures."
+  },
+  {
+    id: 10,
+    title: "Residential Driveway",
+    category: "Residential",
+    images: [drivewayFinished, drivewayPrep],
+    description: "Curved concrete driveway with smooth finish, reinforced rebar grid, and professional forming."
+  },
+  {
+    id: 11,
     title: "Commercial Foundation Slab",
     category: "Commercial",
     images: [commercialSlab],
