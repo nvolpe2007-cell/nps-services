@@ -98,11 +98,13 @@ export async function sendContactNotificationSMS(
 
     const messageBody = `New Lead from N&P Services Website!\n\nName: ${formData.name}\nPhone: ${formData.phone}\nEmail: ${formData.email}\nService: ${formData.service}\n\nMessage: ${formData.message.substring(0, 150)}${formData.message.length > 150 ? '...' : ''}`;
 
-    await client.messages.create({
+    console.log(`Sending SMS from ${fromNumber} to ${toPhoneNumber}`);
+    const message = await client.messages.create({
       body: messageBody,
       from: fromNumber,
       to: toPhoneNumber
     });
+    console.log(`SMS Message SID: ${message.sid}, Status: ${message.status}`);
 
     return { success: true };
   } catch (error) {
