@@ -36,9 +36,9 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center cursor-pointer group">
             <img 
-              src="/logo.jpg" 
+              src="/logo.png" 
               alt="N&P Services" 
-              className="h-16 w-16 object-cover border-2 border-gray-600"
+              className="h-14 w-14 object-cover"
             />
           </Link>
 
