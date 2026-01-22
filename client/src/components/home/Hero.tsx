@@ -179,25 +179,6 @@ export function Hero() {
         ))}
       </div>
 
-      {/* Side Stats - Hidden on mobile */}
-      <div className="absolute right-8 md:right-12 bottom-24 z-20 hidden lg:flex flex-col gap-8">
-        {[
-          { value: "17+", label: "Years" },
-          { value: "500+", label: "Projects" },
-          { value: "A+", label: "BBB Rating" },
-        ].map((stat, i) => (
-          <motion.div
-            key={i}
-            className="text-right"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 + i * 0.1, duration: 0.4 }}
-          >
-            <div className="text-3xl font-bold text-white">{stat.value}</div>
-            <div className="text-xs text-white/50 uppercase tracking-wider">{stat.label}</div>
-          </motion.div>
-        ))}
-      </div>
-    </section>
+          </section>
   );
 }
