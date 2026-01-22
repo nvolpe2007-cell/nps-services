@@ -62,7 +62,7 @@ export function Navbar() {
 
            {/* Right CTA */}
           <div className="hidden md:flex items-center">
-             <a href="tel:832-704-5525" className="flex items-center bg-white text-black px-7 py-3 text-base font-bold tracking-wider uppercase hover:bg-white/90 transition-colors">
+             <a href="tel:832-704-5525" className="flex items-center bg-red-600 text-white px-7 py-3 text-base font-bold tracking-wider uppercase hover:bg-red-700 transition-colors">
                 <Phone className="w-5 h-5 mr-2" />
                 (832) 704-5525
              </a>
@@ -96,7 +96,7 @@ export function Navbar() {
             </Link>
           ))}
           <div className="pt-4">
-             <a href="tel:832-704-5525" className="flex items-center justify-center w-full bg-white text-black px-6 py-4 text-sm font-bold tracking-widest uppercase">
+             <a href="tel:832-704-5525" className="flex items-center justify-center w-full bg-red-600 text-white px-6 py-4 text-sm font-bold tracking-widest uppercase">
                 <Phone className="w-4 h-4 mr-2" />
                 Call Now
              </a>

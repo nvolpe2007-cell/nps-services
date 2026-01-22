@@ -89,7 +89,7 @@ export function Hero() {
               transition={{ duration: 0.4 }}
               className="mb-4 md:mb-6"
             >
-              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-2 border-l-4 border-white">
+              <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-sm px-3 md:px-4 py-2 border-l-4 border-red-500">
                 <span className="text-[10px] md:text-xs font-bold tracking-[0.15em] md:tracking-[0.2em] uppercase text-white">
                   Houston's Trusted Builder
                 </span>
@@ -108,7 +108,7 @@ export function Hero() {
                 <h1 className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl font-bold text-white mb-3 md:mb-4 leading-[0.95] tracking-tight">
                   {slides[current].title}
                 </h1>
-                <div className="h-1 bg-white mb-4 md:mb-6 w-20 md:w-[120px]" />
+                <div className="h-1 bg-red-500 mb-4 md:mb-6 w-20 md:w-[120px]" />
                 <p className="text-lg md:text-2xl text-white/60 font-light mb-1 md:mb-2">
                   {slides[current].subtitle}
                 </p>
@@ -128,7 +128,7 @@ export function Hero() {
               <Link href="/contact">
                 <Button
                   size="lg"
-                  className="w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-xs md:text-sm font-bold tracking-wider uppercase bg-white text-black hover:bg-white/90 rounded-none"
+                  className="w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-xs md:text-sm font-bold tracking-wider uppercase bg-red-600 text-white hover:bg-red-700 rounded-none"
                 >
                   Get Free Estimate
                   <ChevronRight className="ml-2 h-4 w-4" />

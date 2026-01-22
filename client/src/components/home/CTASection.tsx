@@ -48,7 +48,7 @@ export function CTASection() {
             transition={{ delay: 0.1, duration: 0.4 }}
           >
             Let's Build<br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-purple-400">
+            <span className="text-red-500">
               Something Great
             </span>
           </motion.h2>
@@ -71,7 +71,7 @@ export function CTASection() {
             <Link href="/contact">
               <Button
                 size="lg"
-                className="w-full sm:w-auto h-14 md:h-16 px-8 md:px-12 text-sm md:text-base font-bold tracking-wider uppercase bg-white text-black active:bg-white/80 md:hover:bg-white/90 rounded-none"
+                className="w-full sm:w-auto h-14 md:h-16 px-8 md:px-12 text-sm md:text-base font-bold tracking-wider uppercase bg-red-600 text-white active:bg-red-700 md:hover:bg-red-700 rounded-none"
               >
                 Get Your Free Quote
                 <ArrowRight className="ml-2 md:ml-3 h-4 w-4 md:h-5 md:w-5" />

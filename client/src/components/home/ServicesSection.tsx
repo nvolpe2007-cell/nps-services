@@ -104,8 +104,8 @@ export function ServicesSection() {
 
                 {/* Icon & Title */}
                 <div className="flex items-center gap-4 md:gap-6 md:w-80 flex-shrink-0">
-                  <div className="w-12 h-12 md:w-14 md:h-14 bg-black/5 md:group-hover:bg-black flex items-center justify-center transition-colors duration-300">
-                    <service.icon className="h-5 w-5 md:h-6 md:w-6 text-black/60 md:group-hover:text-white transition-colors" />
+                  <div className="w-12 h-12 md:w-14 md:h-14 bg-black/5 md:group-hover:bg-red-600 flex items-center justify-center transition-colors duration-300">
+                    <service.icon className="h-5 w-5 md:h-6 md:w-6 text-red-600 md:group-hover:text-white transition-colors" />
                   </div>
                   <div className="flex-1">
                     <h3 className="text-lg md:text-xl font-bold text-black">
@@ -131,7 +131,7 @@ export function ServicesSection() {
 
                 {/* Arrow - Desktop only */}
                 <div className="hidden md:block ml-auto">
-                  <div className="w-12 h-12 border border-black/10 group-hover:border-black group-hover:bg-black flex items-center justify-center transition-all">
+                  <div className="w-12 h-12 border border-black/10 group-hover:border-red-600 group-hover:bg-red-600 flex items-center justify-center transition-all">
                     <ArrowRight className="h-5 w-5 text-black/30 group-hover:text-white transition-colors" />
                   </div>
                 </div>
@@ -170,7 +170,7 @@ export function ServicesSection() {
           transition={{ duration: 0.4, delay: 0.3 }}
         >
           <Link href="/services">
-            <button className="inline-flex items-center gap-3 bg-black text-white px-8 md:px-10 py-4 md:py-5 text-xs md:text-sm font-bold tracking-wider uppercase active:bg-black/80 md:hover:bg-black/90 transition-colors">
+            <button className="inline-flex items-center gap-3 bg-red-600 text-white px-8 md:px-10 py-4 md:py-5 text-xs md:text-sm font-bold tracking-wider uppercase active:bg-red-700 md:hover:bg-red-700 transition-colors">
               Explore All Services
               <ArrowRight className="h-4 w-4" />
             </button>
