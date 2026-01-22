@@ -49,7 +49,7 @@ export function Navbar() {
                 key={link.name} 
                 href={link.href}
                 className={cn(
-                  "text-sm font-semibold uppercase tracking-[0.12em] transition-colors hover:text-white/70",
+                  "text-base font-semibold uppercase tracking-[0.1em] transition-colors hover:text-white/70",
                   location === link.href ? "text-white" : "text-white/80"
                 )}
               >
@@ -60,8 +60,8 @@ export function Navbar() {
 
            {/* Right CTA */}
           <div className="hidden md:flex items-center">
-             <a href="tel:832-704-5525" className="flex items-center bg-white text-black px-6 py-3 text-sm font-bold tracking-wider uppercase hover:bg-white/90 transition-colors">
-                <Phone className="w-4 h-4 mr-2" />
+             <a href="tel:832-704-5525" className="flex items-center bg-white text-black px-7 py-3 text-base font-bold tracking-wider uppercase hover:bg-white/90 transition-colors">
+                <Phone className="w-5 h-5 mr-2" />
                 (832) 704-5525
              </a>
           </div>
