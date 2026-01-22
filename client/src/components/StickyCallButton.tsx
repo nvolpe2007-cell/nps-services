@@ -10,7 +10,7 @@ export function StickyCallButton() {
         <>
           <a
             href="tel:832-704-5525"
-            className="flex items-center gap-2 bg-green-600 text-white px-5 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all hover:scale-105 font-bold text-sm tracking-wide animate-in slide-in-from-bottom-2 fade-in duration-200"
+            className="flex items-center gap-2 text-white px-5 py-3 rounded-full shadow-lg hover:bg-green-700 transition-all hover:scale-105 font-bold text-sm tracking-wide animate-in slide-in-from-bottom-2 fade-in duration-200 bg-[#000000]"
             data-testid="call-button"
           >
             <Phone className="h-5 w-5" />
