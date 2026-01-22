@@ -38,7 +38,7 @@ export function Navbar() {
             <img 
               src="/logo.jpg" 
               alt="N&P Services" 
-              className="h-12 w-auto rounded-full"
+              className="h-16 w-16 object-cover border-2 border-gray-600"
             />
           </Link>
 
