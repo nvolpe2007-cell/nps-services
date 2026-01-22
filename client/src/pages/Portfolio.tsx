@@ -75,10 +75,10 @@ const projects = [
   },
   {
     id: 6,
-    title: "Commercial Interior Build-Out",
-    category: "Commercial",
+    title: "Custom Interior Build-Out",
+    category: "Residential",
     images: [interiorBar, interiorLounge],
-    description: "Custom commercial interior construction featuring lounge areas, bar installations, and modern finishes."
+    description: "Custom interior construction featuring lounge areas, bar installations, and modern finishes."
   },
   {
     id: 7,
