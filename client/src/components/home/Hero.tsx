@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import steelBuilding from "@assets/project_photos/steel_building.jpeg";
+import metalInterior from "@assets/project_photos/metal_building_interior.jpeg";
 import concretePourCrew from "@assets/project_photos/concrete_pour_crew.jpeg";
 import steelFrame from "@assets/project_photos/steel_frame.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
@@ -10,10 +10,10 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
-    image: steelBuilding,
-    title: "Steel Buildings",
+    image: metalInterior,
+    title: "Metal Building Interiors",
     subtitle: "Commercial & Industrial",
-    description: "Complete Metal Building Construction & Erection",
+    description: "Complete Insulation & Panel Installation",
   },
   {
     image: concretePourCrew,
