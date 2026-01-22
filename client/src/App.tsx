@@ -8,6 +8,7 @@ import NotFound from "@/pages/not-found";
 import { Navbar } from "@/components/layout/Navbar";
 import { Footer } from "@/components/layout/Footer";
 import { StickyCallButton } from "@/components/StickyCallButton";
+import { BackToTop } from "@/components/BackToTop";
 import Home from "@/pages/Home";
 import About from "@/pages/About";
 import Services from "@/pages/Services";
@@ -51,6 +52,7 @@ function App() {
           </main>
           <Footer />
           <StickyCallButton />
+          <BackToTop />
         </div>
         <Toaster />
       </TooltipProvider>
