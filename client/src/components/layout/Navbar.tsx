@@ -3,6 +3,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
+import logo from "@/assets/logo.jpeg";
 
 export function Navbar() {
   const [location] = useLocation();
@@ -37,9 +38,9 @@ export function Navbar() {
         <div className="flex items-center justify-between">
           <Link href="/" className="flex items-center cursor-pointer group">
             <img 
-              src="/logo.png" 
-              alt="N&P Services" 
-              className="h-20 w-20 object-cover"
+              src={logo} 
+              alt="N&P Services LLC" 
+              className="h-16 w-auto object-contain"
             />
           </Link>
 
