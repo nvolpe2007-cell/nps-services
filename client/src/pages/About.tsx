@@ -19,7 +19,7 @@ export default function About() {
           <div>
             <h2 className="text-3xl font-bold font-heading text-primary mb-6">Our History & Mission</h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
-              Founded in 2008 by Margarito Garcia, N&P Services began with a simple mission: to deliver construction services that homeowners and businesses could truly rely on. Operating as a dedicated sole proprietorship, we treat every client like our only client. With over 17 years of experience, we have grown into a leading construction firm in League City, serving the entire Greater Houston region.
+              Founded in 2008 by Nino Farias, N&P Services began with a simple mission: to deliver construction services that homeowners and businesses could truly rely on. Operating as a dedicated sole proprietorship, we treat every client like our only client. With over 17 years of experience, we have grown into a leading construction firm in League City, serving the entire Greater Houston region.
             </p>
             <p className="text-muted-foreground text-lg mb-8 leading-relaxed">
               We are widely recognized as <strong>Houston's parking lot and asphalt experts</strong>, while also delivering top-tier residential and commercial construction solutions. Our A+ rating from the BBB is a testament to our commitment to precision, integrity, and customer satisfaction.
@@ -43,13 +43,12 @@ export default function About() {
             {/* Owner Profile */}
             <div className="bg-white p-8 rounded-xl shadow-lg border border-slate-100 text-center">
               <div className="w-32 h-32 bg-slate-200 rounded-full mx-auto mb-6 flex items-center justify-center text-4xl overflow-hidden">
-                {/* Placeholder for owner image if specific one not available */}
-                <span className="text-slate-400 font-bold">MG</span> 
+                <span className="text-slate-400 font-bold">NF</span> 
               </div>
-              <h3 className="text-2xl font-bold font-heading mb-2">Margarito Garcia</h3>
+              <h3 className="text-2xl font-bold font-heading mb-2">Nino Farias</h3>
               <p className="text-primary font-medium mb-4">Founder & Owner</p>
               <p className="text-muted-foreground">
-                A dedicated professional with extensive expertise in all facets of construction. Margarito leads with a vision of precision and integrity, ensuring every project meets the highest standards.
+                Nino believes in producing only the best work possible on every project. His dedication to quality and client satisfaction has earned him a loyal following - clients love working with him and consistently return for future projects.
               </p>
             </div>
 

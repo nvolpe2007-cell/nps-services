@@ -38,7 +38,7 @@ If you'd like the contact form to send email notifications, you have two options
 ## Business Information
 - **Company:** N&P Services
 - **Founded:** 2008
-- **Owner:** Margarito Garcia
+- **Owner:** Nino Farias
 - **Type:** Sole Proprietorship
 - **Location:** 207 West Wilkins Street, League City, TX 77573
 - **Service Area:** Greater Houston area and surrounding regions

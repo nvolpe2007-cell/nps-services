@@ -9,7 +9,7 @@ export default function Blog() {
       title: "Top Trends in Home Remodeling for 2026",
       excerpt: "From sustainable materials to smart home integration, discover what's shaping residential construction this year.",
       date: "Oct 15, 2025",
-      author: "Margarito Garcia",
+      author: "Nino Farias",
       category: "Remodeling"
     },
     {
@@ -25,7 +25,7 @@ export default function Blog() {
       title: "How to Choose a Reliable Construction Contractor",
       excerpt: "5 red flags to watch out for and the key questions you should ask before signing a contract.",
       date: "Aug 10, 2025",
-      author: "Margarito Garcia",
+      author: "Nino Farias",
       category: "Tips"
     }
   ];
