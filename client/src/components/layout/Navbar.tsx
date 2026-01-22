@@ -34,13 +34,12 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center space-x-3 cursor-pointer group">
-            <div className="border border-white/30 p-1.5 group-hover:border-white transition-colors">
-              <div className="w-4 h-4 bg-white" />
-            </div>
-            <span className="text-sm font-bold tracking-[0.2em] uppercase">
-              N&P Services
-            </span>
+          <Link href="/" className="flex items-center cursor-pointer group">
+            <img 
+              src="/logo.jpg" 
+              alt="N&P Services" 
+              className="h-12 w-auto rounded-full"
+            />
           </Link>
 
           {/* Desktop Navigation */}
