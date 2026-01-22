@@ -1,4 +1,5 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useLocation } from "wouter";
 import { Button } from "@/components/ui/button";
 import { ChevronLeft, ChevronRight, ZoomIn, X } from "lucide-react";
 import outdoorKitchen1 from "@assets/portfolio/outdoor_kitchen_1.jpeg";
@@ -258,8 +259,17 @@ function ProjectCard({ project, onOpenLightbox }: { project: typeof projects[0];
 }
 
 export default function Portfolio() {
+  const [location] = useLocation();
   const [filter, setFilter] = useState("All");
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number; title: string } | null>(null);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const urlFilter = params.get("filter");
+    if (urlFilter === "Residential" || urlFilter === "Commercial") {
+      setFilter(urlFilter);
+    }
+  }, [location]);
 
   const filteredProjects = filter === "All" 
     ? projects 

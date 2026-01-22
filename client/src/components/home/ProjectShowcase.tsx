@@ -68,13 +68,14 @@ export function ProjectShowcase() {
         {/* Projects Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6">
           {/* Large Featured Project */}
-          <motion.div
-            className="md:row-span-2 relative group cursor-pointer overflow-hidden"
-            initial={{ opacity: 0, y: 30 }}
-            animate={isInView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.4, delay: simpleMode ? 0 : 0.1 }}
-          >
-            <div className="relative aspect-[4/3] md:h-full overflow-hidden bg-black">
+          <Link href="/portfolio?filter=Commercial">
+            <motion.div
+              className="md:row-span-2 relative group cursor-pointer overflow-hidden"
+              initial={{ opacity: 0, y: 30 }}
+              animate={isInView ? { opacity: 1, y: 0 } : {}}
+              transition={{ duration: 0.4, delay: simpleMode ? 0 : 0.1 }}
+            >
+              <div className="relative aspect-[4/3] md:h-full overflow-hidden bg-black">
               <img
                 src={projects[0].image}
                 alt={projects[0].title}
@@ -102,41 +103,43 @@ export function ProjectShowcase() {
               </div>
             </div>
           </motion.div>
+          </Link>
 
           {/* Smaller Projects */}
           {projects.slice(1).map((project, i) => (
-            <motion.div
-              key={project.id}
-              className="relative group cursor-pointer overflow-hidden"
-              initial={{ opacity: 0, y: 30 }}
-              animate={isInView ? { opacity: 1, y: 0 } : {}}
-              transition={{ duration: 0.4, delay: simpleMode ? 0 : 0.2 + i * 0.1 }}
-            >
-              <div className="relative aspect-[16/10] overflow-hidden bg-black">
-                <img
-                  src={project.image}
-                  alt={project.title}
-                  className="w-full h-full object-cover opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition-all duration-500"
-                  loading="lazy"
-                />
-                <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                
-                {/* Content */}
-                <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
-                  <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-white/60 mb-1 md:mb-2 block">
-                    {project.category}
-                  </span>
-                  <h3 className="text-lg md:text-xl font-bold text-white">
-                    {project.title}
-                  </h3>
-                </div>
+            <Link key={project.id} href={`/portfolio?filter=${project.category}`}>
+              <motion.div
+                className="relative group cursor-pointer overflow-hidden"
+                initial={{ opacity: 0, y: 30 }}
+                animate={isInView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: simpleMode ? 0 : 0.2 + i * 0.1 }}
+              >
+                <div className="relative aspect-[16/10] overflow-hidden bg-black">
+                  <img
+                    src={project.image}
+                    alt={project.title}
+                    className="w-full h-full object-cover opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition-all duration-500"
+                    loading="lazy"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
+                  
+                  {/* Content */}
+                  <div className="absolute bottom-0 left-0 right-0 p-4 md:p-6">
+                    <span className="text-[10px] md:text-xs font-bold tracking-wider uppercase text-white/60 mb-1 md:mb-2 block">
+                      {project.category}
+                    </span>
+                    <h3 className="text-lg md:text-xl font-bold text-white">
+                      {project.title}
+                    </h3>
+                  </div>
 
-                {/* Arrow */}
-                <div className="absolute top-3 right-3 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 bg-white flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
-                  <ArrowUpRight className="h-3 w-3 md:h-4 md:w-4 text-black" />
+                  {/* Arrow */}
+                  <div className="absolute top-3 right-3 md:top-4 md:right-4 w-8 h-8 md:w-10 md:h-10 bg-white flex items-center justify-center opacity-100 md:opacity-0 md:group-hover:opacity-100 transition-opacity">
+                    <ArrowUpRight className="h-3 w-3 md:h-4 md:w-4 text-black" />
+                  </div>
                 </div>
-              </div>
-            </motion.div>
+              </motion.div>
+            </Link>
           ))}
         </div>
       </div>
