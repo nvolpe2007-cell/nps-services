@@ -98,7 +98,7 @@ const projects = [
     id: 9,
     title: "Bathroom Remodel",
     category: "Residential",
-    images: [bathroomShower, laundryRoom],
+    images: [bathroomShower],
     description: "Luxury bathroom with marble tile, frameless glass shower enclosure, built-in niche, and matte black fixtures."
   },
   {
