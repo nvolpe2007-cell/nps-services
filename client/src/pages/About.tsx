@@ -1,5 +1,3 @@
-import { motion } from "framer-motion";
-import teamImage from "@assets/generated_images/professional_construction_team.png";
 import { CheckCircle2 } from "lucide-react";
 
 export default function About() {
@@ -17,18 +15,8 @@ export default function About() {
 
       <div className="container mx-auto px-4 py-20">
         {/* Story Section */}
-        <div className="flex flex-col lg:flex-row items-center gap-16 mb-24">
-          <div className="lg:w-1/2">
-            <div className="relative">
-              <div className="absolute -inset-4 bg-primary/10 rounded-xl transform -rotate-2"></div>
-              <img 
-                src={teamImage} 
-                alt="Our Team" 
-                className="relative rounded-lg shadow-xl w-full"
-              />
-            </div>
-          </div>
-          <div className="lg:w-1/2">
+        <div className="mb-24 max-w-4xl mx-auto">
+          <div>
             <h2 className="text-3xl font-bold font-heading text-primary mb-6">Our History & Mission</h2>
             <p className="text-muted-foreground text-lg mb-6 leading-relaxed">
               Founded in 2008 by Margarito Garcia, N&P Services began with a simple mission: to deliver construction services that homeowners and businesses could truly rely on. Operating as a dedicated sole proprietorship, we treat every client like our only client. With over 17 years of experience, we have grown into a leading construction firm in League City, serving the entire Greater Houston region.
