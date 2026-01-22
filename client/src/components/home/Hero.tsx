@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import parkingLot1 from "@assets/stock_images/commercial_parking_l_8b2c140a.jpg";
-import commercialBldg from "@assets/stock_images/commercial_building__ea4170df.jpg";
-import concrete from "@assets/stock_images/concrete_driveway_si_0e9ad17c.jpg";
+import concreteFinished from "@assets/project_photos/concrete_finished.jpeg";
+import industrialConcrete from "@assets/project_photos/industrial_concrete.jpeg";
+import concretePour from "@assets/project_photos/concrete_pour.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";
@@ -10,22 +10,22 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
-    image: parkingLot1,
-    title: "Parking Lot Experts",
-    subtitle: "Houston's #1 Choice",
-    description: "Professional Asphalt Paving, Striping & Maintenance",
+    image: concreteFinished,
+    title: "20,000 Sq Ft Projects",
+    subtitle: "Commercial Concrete",
+    description: "Complete Demolition & Rebuild Specialists",
   },
   {
-    image: commercialBldg,
-    title: "Commercial Construction",
-    subtitle: "Built to Last",
-    description: "Office Buildings, Retail & Industrial Projects",
+    image: industrialConcrete,
+    title: "Industrial Solutions",
+    subtitle: "Houston's Experts",
+    description: "Heavy-Duty Commercial Concrete & Site Work",
   },
   {
-    image: concrete,
-    title: "Concrete & Site Work",
+    image: concretePour,
+    title: "Quality Craftsmanship",
     subtitle: "A+ BBB Rated",
-    description: "Driveways, Sidewalks & Foundation Specialists",
+    description: "Professional Pours & Precision Finishing",
   },
 ];
 

@@ -2,32 +2,32 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
-import parkingImage from "@assets/stock_images/commercial_parking_l_61187a9b.jpg";
-import comImage from "@assets/stock_images/commercial_building__f1df6d36.jpg";
-import concreteImage from "@assets/stock_images/concrete_driveway_si_0e9ad17c.jpg";
+import concreteDemo from "@assets/project_photos/concrete_demo.jpeg";
+import industrialConcrete from "@assets/project_photos/industrial_concrete.jpeg";
+import interiorLounge from "@assets/project_photos/interior_lounge.jpeg";
 import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const projects = [
   {
     id: 1,
-    title: "Shopping Center Parking",
-    category: "Asphalt & Paving",
-    location: "Houston, TX",
-    image: parkingImage,
+    title: "20,000 Sq Ft Concrete Slab",
+    category: "Demolition & Rebuild",
+    location: "Greater Houston, TX",
+    image: concreteDemo,
   },
   {
     id: 2,
-    title: "Office Building Project",
-    category: "Commercial",
-    location: "Clear Lake, TX",
-    image: comImage,
+    title: "Industrial Facility Concrete",
+    category: "Commercial Concrete",
+    location: "Houston, TX",
+    image: industrialConcrete,
   },
   {
     id: 3,
-    title: "Commercial Concrete Work",
-    category: "Concrete & Site Work",
+    title: "Commercial Interior Build-Out",
+    category: "Residential",
     location: "League City, TX",
-    image: concreteImage,
+    image: interiorLounge,
   },
 ];
 
