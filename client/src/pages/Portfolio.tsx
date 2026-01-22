@@ -12,7 +12,7 @@ import commercialSlab from "@assets/portfolio/commercial_slab.jpeg";
 import bathroomShower from "@assets/portfolio/bathroom_shower.jpeg";
 import kitchenRemodel1 from "@assets/portfolio/kitchen_remodel_1.jpeg";
 import kitchenRemodel2 from "@assets/portfolio/kitchen_remodel_2.jpeg";
-import kitchenRemodel3 from "@assets/portfolio/kitchen_remodel_3.jpeg";
+
 import laundryRoom from "@assets/portfolio/laundry_room.jpeg";
 import rvParkExcavator from "@assets/portfolio/rv_park_excavator.jpeg";
 import rvParkUtilities from "@assets/portfolio/rv_park_utilities.jpeg";
@@ -84,7 +84,7 @@ const projects = [
     id: 7,
     title: "Custom Kitchen Builds",
     category: "Residential",
-    images: [newKitchenIsland, newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
+    images: [newKitchenIsland, newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2],
     description: "Beautiful custom kitchens featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and large islands."
   },
   {
