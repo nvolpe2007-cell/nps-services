@@ -43,13 +43,13 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-12">
+          <div className="hidden md:flex items-center space-x-10">
             {navLinks.map((link) => (
               <Link 
                 key={link.name} 
                 href={link.href}
                 className={cn(
-                  "text-xs font-semibold uppercase tracking-[0.15em] transition-colors hover:text-white/70",
+                  "text-sm font-semibold uppercase tracking-[0.12em] transition-colors hover:text-white/70",
                   location === link.href ? "text-white" : "text-white/80"
                 )}
               >
@@ -60,8 +60,8 @@ export function Navbar() {
 
            {/* Right CTA */}
           <div className="hidden md:flex items-center">
-             <a href="tel:832-704-5525" className="flex items-center bg-white text-black px-6 py-2 text-xs font-bold tracking-widest uppercase hover:bg-white/90 transition-colors">
-                <Phone className="w-3 h-3 mr-2" />
+             <a href="tel:832-704-5525" className="flex items-center bg-white text-black px-6 py-3 text-sm font-bold tracking-wider uppercase hover:bg-white/90 transition-colors">
+                <Phone className="w-4 h-4 mr-2" />
                 (832) 704-5525
              </a>
           </div>
