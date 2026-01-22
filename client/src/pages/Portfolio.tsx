@@ -12,7 +12,7 @@ import commercialSlab from "@assets/portfolio/commercial_slab.jpeg";
 import bathroomShower from "@assets/portfolio/bathroom_shower.jpeg";
 import kitchenRemodel1 from "@assets/portfolio/kitchen_remodel_1.jpeg";
 import kitchenRemodel2 from "@assets/portfolio/kitchen_remodel_2.jpeg";
-
+import kitchenRemodel3 from "@assets/portfolio/kitchen_remodel_3.jpeg";
 import laundryRoom from "@assets/portfolio/laundry_room.jpeg";
 import rvParkExcavator from "@assets/portfolio/rv_park_excavator.jpeg";
 import rvParkUtilities from "@assets/portfolio/rv_park_utilities.jpeg";
@@ -42,28 +42,28 @@ const projects = [
     id: 1,
     title: "20,000 Sq Ft Concrete Slab",
     category: "Commercial",
-    images: [concreteDemo, concreteRebar, concretePour, concreteFinished, industrialConcrete],
+    images: [industrialConcrete, concreteDemo, concreteRebar, concretePour, concreteFinished],
     description: "Complete demolition and rebuild of a 20,000 sq ft commercial concrete slab, including rebar reinforcement, professional pouring, and precision finishing."
   },
   {
     id: 2,
     title: "Metal Building Construction",
     category: "Commercial",
-    images: [steelFrame, steelBuilding, metalInterior],
+    images: [steelBuilding, steelFrame, metalInterior],
     description: "Full metal building construction from steel frame erection to exterior paneling and interior insulation installation."
   },
   {
     id: 3,
     title: "Commercial Foundation Work",
     category: "Commercial",
-    images: [foundationPrep, foundationRebar, concretePourCrew],
+    images: [concretePourCrew, foundationPrep, foundationRebar],
     description: "Large-scale foundation preparation including vapor barrier installation, rebar grid layout, and crew pouring for commercial buildings."
   },
   {
     id: 4,
     title: "Wood Framing & Trusses",
     category: "Commercial",
-    images: [woodTruss, woodFraming],
+    images: [woodFraming, woodTruss],
     description: "Professional wood framing and truss installation for commercial and multi-family construction projects."
   },
   {
@@ -77,43 +77,43 @@ const projects = [
     id: 6,
     title: "Commercial Interior Build-Out",
     category: "Commercial",
-    images: [interiorLounge, interiorBar],
+    images: [interiorBar, interiorLounge],
     description: "Custom commercial interior construction featuring lounge areas, bar installations, and modern finishes."
   },
   {
     id: 7,
     title: "Custom Kitchen Builds",
     category: "Residential",
-    images: [newKitchenIsland, newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2],
+    images: [newKitchenIsland, newKitchenCounter, newKitchenModern],
     description: "Beautiful custom kitchens featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and large islands."
   },
   {
     id: 8,
+    title: "Kitchen Remodels",
+    category: "Residential",
+    images: [kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
+    description: "Complete kitchen renovations with modern fixtures, custom cabinetry, and quality finishes."
+  },
+  {
+    id: 9,
     title: "Custom Outdoor Kitchen",
     category: "Residential",
     images: [outdoorKitchen1, outdoorKitchen2, outdoorKitchen3, outdoorKitchen4, outdoorKitchenConstruction],
     description: "Complete outdoor kitchen with stone veneer, granite countertops, Primo ceramic grill, Lynx power burner, TV mount, bar seating, and LED lighting."
   },
   {
-    id: 9,
+    id: 10,
     title: "Bathroom Remodel",
     category: "Residential",
     images: [bathroomShower, laundryRoom],
     description: "Luxury bathroom with marble tile, frameless glass shower enclosure, built-in niche, and matte black fixtures."
   },
   {
-    id: 10,
+    id: 11,
     title: "Residential Driveway",
     category: "Residential",
-    images: [drivewayFinished, drivewayPrep],
+    images: [drivewayFinished, drivewayPrep, commercialSlab],
     description: "Curved concrete driveway with smooth finish, reinforced rebar grid, and professional forming."
-  },
-  {
-    id: 11,
-    title: "Commercial Foundation Slab",
-    category: "Commercial",
-    images: [commercialSlab],
-    description: "Large commercial concrete slab with plumbing stubs for new building construction."
   }
 ];
 
