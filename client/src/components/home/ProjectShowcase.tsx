@@ -52,7 +52,7 @@ export function ProjectShowcase() {
             </span>
             <h2 className="text-3xl md:text-5xl lg:text-6xl font-bold text-black leading-tight">
               Our Latest<br />
-              <span className="text-neutral-400">Work</span>
+              <span className="text-[#000000]">Work</span>
             </h2>
           </div>
           <Link href="/portfolio">
