@@ -38,7 +38,14 @@ const slides = [
 
 export function Hero() {
   const [current, setCurrent] = useState(0);
+  const [isFirstLoad, setIsFirstLoad] = useState(true);
   const simpleMode = useSimpleAnimations();
+
+  useEffect(() => {
+    if (isFirstLoad) {
+      setIsFirstLoad(false);
+    }
+  }, []);
 
   useEffect(() => {
     const interval = simpleMode ? 8000 : 6000;
@@ -58,10 +65,10 @@ export function Hero() {
       <AnimatePresence mode="wait">
         <motion.div
           key={current}
-          initial={{ opacity: 0 }}
+          initial={{ opacity: isFirstLoad ? 1 : 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: simpleMode ? 0.5 : 0.8 }}
+          transition={{ duration: isFirstLoad ? 0 : (simpleMode ? 0.5 : 0.8) }}
           className="absolute inset-0"
         >
           <img
@@ -71,6 +78,8 @@ export function Hero() {
             loading="eager"
             width="1920"
             height="1080"
+            fetchPriority={current === 0 ? "high" : "auto"}
+            decoding={current === 0 ? "sync" : "async"}
           />
           <div className="absolute inset-0 bg-gradient-to-r from-black/80 via-black/50 to-transparent" />
           <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-black/30" />
