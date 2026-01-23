@@ -41,6 +41,8 @@ export function Navbar() {
               src={logo} 
               alt="N&P Services LLC" 
               className="h-14 md:h-20 w-auto object-contain bg-white p-2 md:p-3 rounded-md shadow-sm transition-transform active:scale-95"
+              width="80"
+              height="80"
             />
           </Link>
 

@@ -81,6 +81,8 @@ export function ProjectShowcase() {
                 alt={projects[0].title}
                 className="w-full h-full object-cover opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition-all duration-500"
                 loading="lazy"
+                width="665"
+                height="499"
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
               
@@ -120,6 +122,8 @@ export function ProjectShowcase() {
                     alt={project.title}
                     className="w-full h-full object-cover opacity-90 md:group-hover:opacity-100 md:group-hover:scale-105 transition-all duration-500"
                     loading="lazy"
+                    width="665"
+                    height="416"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
                   
