@@ -58,7 +58,9 @@ export function ReviewsDisplay() {
     fetch("/api/reviews")
       .then((res) => res.json())
       .then((data) => {
-        setReviews(data);
+        if (Array.isArray(data)) {
+          setReviews(data);
+        }
         setLoading(false);
       })
       .catch(() => {

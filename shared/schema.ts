@@ -27,7 +27,11 @@ export const reviews = pgTable("reviews", {
   createdAt: timestamp("created_at").defaultNow(),
 });
 
-export const insertReviewSchema = createInsertSchema(reviews).omit({
+export const insertReviewSchema = createInsertSchema(reviews, {
+  name: (schema) => schema.min(2, "Name must be at least 2 characters"),
+  rating: (schema) => schema.min(1, "Rating must be 1-5").max(5, "Rating must be 1-5"),
+  reviewText: (schema) => schema.min(10, "Review must be at least 10 characters"),
+}).omit({
   id: true,
   approved: true,
   createdAt: true,
