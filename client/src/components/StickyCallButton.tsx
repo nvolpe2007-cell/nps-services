@@ -5,7 +5,7 @@ export function StickyCallButton() {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="fixed bottom-20 right-6 z-50 flex flex-col items-end gap-3">
+    <div className="fixed bottom-4 md:bottom-6 right-4 md:right-6 z-50 flex flex-col items-end gap-3">
       {isOpen && (
         <>
           <a
