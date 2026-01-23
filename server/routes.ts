@@ -125,5 +125,17 @@ export async function registerRoutes(
     }
   });
 
+  // Serve sitemap.xml with correct content-type
+  app.get("/sitemap.xml", (req, res) => {
+    res.type("application/xml");
+    res.sendFile("sitemap.xml", { root: "./dist/public" });
+  });
+
+  // Serve robots.txt with correct content-type
+  app.get("/robots.txt", (req, res) => {
+    res.type("text/plain");
+    res.sendFile("robots.txt", { root: "./dist/public" });
+  });
+
   return httpServer;
 }
