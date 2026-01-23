@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { sendContactNotificationSMS, isTwilioConfigured, getTwilioPhoneNumber } from "./sms";
+import { insertReviewSchema } from "@shared/schema";
 
 // Contact form schema
 const contactFormSchema = z.object({
@@ -92,6 +93,35 @@ export async function registerRoutes(
       }
       console.error("Contact form error:", error);
       return res.status(500).json({ message: "An error occurred. Please try again." });
+    }
+  });
+
+  // Submit a new review
+  app.post("/api/reviews", async (req, res) => {
+    try {
+      const data = insertReviewSchema.parse(req.body);
+      const review = await storage.createReview(data);
+      return res.status(201).json({ 
+        message: "Thank you for your review! It will appear on our site after approval.",
+        review 
+      });
+    } catch (error) {
+      if (error instanceof z.ZodError) {
+        return res.status(400).json({ message: "Invalid review data", errors: error.errors });
+      }
+      console.error("Review submission error:", error);
+      return res.status(500).json({ message: "An error occurred. Please try again." });
+    }
+  });
+
+  // Get approved reviews (public)
+  app.get("/api/reviews", async (req, res) => {
+    try {
+      const reviews = await storage.getApprovedReviews();
+      return res.status(200).json(reviews);
+    } catch (error) {
+      console.error("Error fetching reviews:", error);
+      return res.status(500).json({ message: "An error occurred." });
     }
   });
 
