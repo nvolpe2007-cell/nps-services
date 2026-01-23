@@ -1,9 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import outdoorKitchen from "@/assets/hero/outdoor_kitchen.jpeg";
-import steelFrame from "@/assets/hero/steel_frame.jpeg";
-import woodFraming from "@/assets/hero/wood_framing.jpeg";
-import driveway from "@/assets/hero/driveway.jpeg";
+import outdoorKitchen from "@/assets/hero/outdoor_kitchen.webp";
+import steelFrame from "@/assets/hero/steel_frame.webp";
+import woodFraming from "@/assets/hero/wood_framing.webp";
+import driveway from "@/assets/hero/driveway.webp";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";

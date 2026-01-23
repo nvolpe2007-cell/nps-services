@@ -3,7 +3,7 @@ import { cn } from "@/lib/utils";
 import { Menu, X, Phone } from "lucide-react";
 import { useState, useEffect } from "react";
 import { Button } from "@/components/ui/button";
-import logo from "@/assets/logo.jpg";
+import logo from "@/assets/logo.webp";
 
 export function Navbar() {
   const [location] = useLocation();

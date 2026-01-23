@@ -2,9 +2,9 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
-import foundationRebar from "@assets/project_photos/foundation_rebar.jpeg";
-import metalBuildingInterior from "@/assets/portfolio/metal_building_interior_new.jpeg";
-import kitchenIsland from "@assets/project_photos/kitchen_island.jpeg";
+import foundationRebar from "@assets/project_photos/foundation_rebar.webp";
+import metalBuildingInterior from "@/assets/portfolio/metal_building_interior_new.webp";
+import kitchenIsland from "@assets/project_photos/kitchen_island.webp";
 import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const projects = [
