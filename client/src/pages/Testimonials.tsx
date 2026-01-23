@@ -1,6 +1,8 @@
 import { useState } from "react";
 import { Star, Quote, ChevronLeft, ChevronRight, Award, Users, ThumbsUp, Clock } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { ReviewForm } from "@/components/reviews/ReviewForm";
+import { ReviewsDisplay } from "@/components/reviews/ReviewsDisplay";
 
 const testimonials = [
   {
@@ -219,6 +221,32 @@ export default function Testimonials() {
               </div>
             ))}
           </div>
+        </div>
+      </div>
+
+      {/* Customer Reviews Section */}
+      <div className="py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold font-heading text-center mb-4">
+            Customer Reviews
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            See what our customers are saying about their experience with N&P Services.
+          </p>
+          <ReviewsDisplay />
+        </div>
+      </div>
+
+      {/* Submit Review Form */}
+      <div className="bg-slate-100 py-20">
+        <div className="container mx-auto px-4">
+          <h2 className="text-3xl font-bold font-heading text-center mb-4">
+            Share Your Experience
+          </h2>
+          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+            We'd love to hear about your project! Leave a review to help others learn about our work.
+          </p>
+          <ReviewForm />
         </div>
       </div>
 
