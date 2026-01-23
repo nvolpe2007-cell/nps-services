@@ -1,8 +1,8 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import metalInterior from "@assets/project_photos/metal_building_interior.jpeg";
-import concretePourCrew from "@assets/project_photos/concrete_pour_crew.jpeg";
-import steelFrame from "@assets/project_photos/steel_frame.jpeg";
+import steelBuilding from "@assets/portfolio/steel_building.jpeg";
+import outdoorKitchen from "@assets/portfolio/outdoor_kitchen_1.jpeg";
+import concretePour from "@assets/portfolio/concrete_pour_crew.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";
@@ -10,22 +10,22 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
-    image: metalInterior,
-    title: "Metal Building Interiors",
-    subtitle: "Commercial & Industrial",
-    description: "Complete Insulation & Panel Installation",
+    image: steelBuilding,
+    title: "Building Excellence",
+    subtitle: "17+ Years of Quality",
+    description: "Commercial & Residential Construction in Greater Houston",
   },
   {
-    image: concretePourCrew,
-    title: "Large-Scale Concrete",
-    subtitle: "Houston's Experts",
-    description: "20,000+ Sq Ft Slabs, Foundations & Site Work",
+    image: outdoorKitchen,
+    title: "Custom Outdoor Living",
+    subtitle: "Residential Experts",
+    description: "Beautiful Outdoor Kitchens, Patios & Entertainment Spaces",
   },
   {
-    image: steelFrame,
-    title: "Ground-Up Builds",
-    subtitle: "A+ BBB Rated",
-    description: "From Foundation to Finish - 17+ Years Experience",
+    image: concretePour,
+    title: "Concrete & Site Work",
+    subtitle: "Houston's Parking Lot Experts",
+    description: "Foundations, Driveways, Slabs & Commercial Paving",
   },
 ];
 
