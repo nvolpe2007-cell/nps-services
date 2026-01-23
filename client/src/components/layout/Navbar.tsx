@@ -36,12 +36,13 @@ export function Navbar() {
     >
       <div className="container mx-auto px-4 md:px-8">
         <div className="flex items-center justify-between">
-          <Link href="/" className="flex items-center cursor-pointer group">
+          <Link href="/" className="flex items-center gap-3 cursor-pointer group">
             <img 
               src={logo} 
               alt="N&P Services LLC" 
               className="h-14 md:h-20 w-auto object-contain bg-white p-2 md:p-3 rounded-md shadow-sm transition-transform active:scale-95"
             />
+            <span className="text-lg md:text-xl font-bold tracking-wide text-white">N&P SERVICES</span>
           </Link>
 
           {/* Desktop Navigation */}
