@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import steelBuilding from "@assets/portfolio/steel_building.jpeg";
+import steelBuilding from "@/assets/hero/commercial_building.jpg";
 import outdoorKitchen from "@assets/portfolio/outdoor_kitchen_1.jpeg";
 import concretePour from "@assets/portfolio/concrete_pour_crew.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
