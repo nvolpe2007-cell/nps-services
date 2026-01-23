@@ -1,8 +1,9 @@
 import { Button } from "@/components/ui/button";
 import { Link } from "wouter";
-import steelBuilding from "@/assets/hero/commercial_building.jpg";
-import outdoorKitchen from "@assets/portfolio/outdoor_kitchen_1.jpeg";
-import concretePour from "@assets/portfolio/concrete_pour_crew.jpeg";
+import outdoorKitchen from "@/assets/hero/outdoor_kitchen.jpeg";
+import steelFrame from "@/assets/hero/steel_frame.jpeg";
+import woodFraming from "@/assets/hero/wood_framing.jpeg";
+import driveway from "@/assets/hero/driveway.jpeg";
 import { motion, AnimatePresence } from "framer-motion";
 import { useEffect, useState } from "react";
 import { ChevronRight, Play, ChevronLeft } from "lucide-react";
@@ -10,22 +11,28 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const slides = [
   {
-    image: steelBuilding,
-    title: "Building Excellence",
-    subtitle: "17+ Years of Quality",
-    description: "Commercial & Residential Construction in Greater Houston",
-  },
-  {
     image: outdoorKitchen,
     title: "Custom Outdoor Living",
-    subtitle: "Residential Experts",
-    description: "Beautiful Outdoor Kitchens, Patios & Entertainment Spaces",
+    subtitle: "Residential Excellence",
+    description: "Beautiful Outdoor Kitchens & Entertainment Spaces",
   },
   {
-    image: concretePour,
-    title: "Concrete & Site Work",
-    subtitle: "Houston's Parking Lot Experts",
-    description: "Foundations, Driveways, Slabs & Commercial Paving",
+    image: steelFrame,
+    title: "Commercial Construction",
+    subtitle: "Steel Building Experts",
+    description: "Ground-Up Metal Building Construction",
+  },
+  {
+    image: woodFraming,
+    title: "New Home Builds",
+    subtitle: "Quality Craftsmanship",
+    description: "Custom Framing & Residential Construction",
+  },
+  {
+    image: driveway,
+    title: "Concrete & Paving",
+    subtitle: "Houston's Experts",
+    description: "Driveways, Sidewalks & Commercial Slabs",
   },
 ];
 
