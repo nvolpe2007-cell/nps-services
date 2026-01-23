@@ -26,7 +26,7 @@ function ReviewCard({ review }: { review: Review }) {
     : "";
 
   return (
-    <div className="bg-white p-6 rounded-lg shadow-sm border border-gray-100 relative">
+    <div className="bg-white p-5 md:p-6 rounded-lg shadow-sm border border-gray-100 relative transition-shadow hover:shadow-md">
       <Quote className="absolute top-4 right-4 h-8 w-8 text-gray-100" />
       <div className="flex items-center gap-3 mb-4">
         <div className="w-10 h-10 bg-accent/10 rounded-full flex items-center justify-center">
@@ -85,7 +85,7 @@ export function ReviewsDisplay() {
   }
 
   return (
-    <div className="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+    <div className="grid gap-4 md:gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 px-4 md:px-0">
       {reviews.map((review) => (
         <ReviewCard key={review.id} review={review} />
       ))}

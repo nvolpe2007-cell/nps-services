@@ -40,7 +40,7 @@ export function Navbar() {
             <img 
               src={logo} 
               alt="N&P Services LLC" 
-              className="h-20 w-auto object-contain bg-white p-3 rounded-md shadow-sm"
+              className="h-14 md:h-20 w-auto object-contain bg-white p-2 md:p-3 rounded-md shadow-sm transition-transform active:scale-95"
             />
           </Link>
 
@@ -80,14 +80,19 @@ export function Navbar() {
       </div>
 
       {/* Mobile Navigation */}
-      {isOpen && (
-        <div className="md:hidden absolute top-full left-0 right-0 bg-[#1a1a1a] border-t border-white/10 p-6 flex flex-col space-y-6 animate-in slide-in-from-top-5 shadow-2xl">
+      <div 
+        className={cn(
+          "md:hidden absolute top-full left-0 right-0 bg-[#1a1a1a] border-t border-white/10 shadow-2xl overflow-hidden transition-all duration-300 ease-out",
+          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+        )}
+      >
+        <div className="p-6 flex flex-col space-y-4">
           {navLinks.map((link) => (
             <Link 
               key={link.name} 
               href={link.href}
               className={cn(
-                "block text-sm font-bold uppercase tracking-widest py-2 border-b border-white/5",
+                "block text-base font-bold uppercase tracking-widest py-3 border-b border-white/5 active:bg-white/10 -mx-2 px-2 transition-colors",
                 location === link.href ? "text-white" : "text-white/70"
               )}
               onClick={() => setIsOpen(false)}
@@ -95,14 +100,14 @@ export function Navbar() {
               {link.name}
             </Link>
           ))}
-          <div className="pt-4">
-             <a href="tel:832-704-5525" className="flex items-center justify-center w-full bg-red-600 text-white px-6 py-4 text-sm font-bold tracking-widest uppercase">
-                <Phone className="w-4 h-4 mr-2" />
+          <div className="pt-2">
+             <a href="tel:832-704-5525" className="flex items-center justify-center w-full bg-red-600 text-white px-6 py-4 text-base font-bold tracking-widest uppercase active:bg-red-700 transition-colors">
+                <Phone className="w-5 h-5 mr-2" />
                 Call Now
              </a>
           </div>
         </div>
-      )}
+      </div>
     </nav>
   );
 }

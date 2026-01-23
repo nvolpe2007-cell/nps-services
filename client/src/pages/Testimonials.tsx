@@ -80,19 +80,19 @@ function StarRating({ rating }: { rating: number }) {
 function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testimonials[0]; isActive: boolean }) {
   return (
     <div
-      className={`bg-white rounded-2xl shadow-xl p-8 transition-all duration-500 ${
+      className={`bg-white rounded-xl md:rounded-2xl shadow-xl p-5 md:p-8 transition-all duration-300 ${
         isActive ? "scale-100 opacity-100" : "scale-95 opacity-50"
       }`}
     >
-      <Quote className="w-12 h-12 text-primary/20 mb-4" />
+      <Quote className="w-10 h-10 md:w-12 md:h-12 text-primary/20 mb-3 md:mb-4" />
       <StarRating rating={testimonial.rating} />
-      <p className="text-lg text-slate-700 mt-4 mb-6 leading-relaxed italic">
+      <p className="text-base md:text-lg text-slate-700 mt-3 md:mt-4 mb-4 md:mb-6 leading-relaxed italic">
         "{testimonial.text}"
       </p>
-      <div className="border-t pt-4">
+      <div className="border-t pt-3 md:pt-4">
         <p className="font-bold text-slate-900">{testimonial.name}</p>
-        <p className="text-sm text-muted-foreground">{testimonial.role} • {testimonial.company}</p>
-        <div className="flex items-center gap-2 mt-2">
+        <p className="text-xs md:text-sm text-muted-foreground">{testimonial.role} • {testimonial.company}</p>
+        <div className="flex flex-wrap items-center gap-2 mt-2">
           <span className="text-xs bg-primary/10 text-primary px-2 py-1 rounded-full font-medium">
             {testimonial.project}
           </span>
@@ -117,33 +117,33 @@ export default function Testimonials() {
   return (
     <div className="pt-24 min-h-screen bg-gradient-to-b from-slate-50 to-white">
       {/* Header */}
-      <div className="bg-slate-900 text-white py-20">
+      <div className="bg-slate-900 text-white py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
-          <h1 className="text-4xl md:text-5xl font-bold font-heading mb-4">
+          <h1 className="text-3xl md:text-5xl font-bold font-heading mb-3 md:mb-4">
             Client Reviews
           </h1>
-          <p className="text-xl text-slate-300 max-w-2xl mx-auto">
+          <p className="text-base md:text-xl text-slate-300 max-w-2xl mx-auto">
             Don't just take our word for it. Here's what our clients have to say about working with N&P Services.
           </p>
         </div>
       </div>
 
       {/* Stats Section */}
-      <div className="container mx-auto px-4 -mt-10">
-        <div className="bg-white rounded-2xl shadow-xl p-8 grid grid-cols-2 md:grid-cols-4 gap-8">
+      <div className="container mx-auto px-4 -mt-8 md:-mt-10">
+        <div className="bg-white rounded-xl md:rounded-2xl shadow-xl p-5 md:p-8 grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-8">
           {stats.map((stat) => (
             <div key={stat.label} className="text-center">
-              <stat.icon className="w-10 h-10 text-primary mx-auto mb-3" />
-              <p className="text-3xl font-bold text-slate-900">{stat.value}</p>
-              <p className="text-sm text-muted-foreground">{stat.label}</p>
+              <stat.icon className="w-8 h-8 md:w-10 md:h-10 text-primary mx-auto mb-2 md:mb-3" />
+              <p className="text-2xl md:text-3xl font-bold text-slate-900">{stat.value}</p>
+              <p className="text-xs md:text-sm text-muted-foreground">{stat.label}</p>
             </div>
           ))}
         </div>
       </div>
 
       {/* Featured Testimonial Carousel */}
-      <div className="container mx-auto px-4 py-20">
-        <h2 className="text-3xl font-bold font-heading text-center mb-12">
+      <div className="container mx-auto px-4 py-12 md:py-20">
+        <h2 className="text-2xl md:text-3xl font-bold font-heading text-center mb-8 md:mb-12">
           What Our Clients Say
         </h2>
 
@@ -194,24 +194,24 @@ export default function Testimonials() {
       </div>
 
       {/* All Reviews Grid */}
-      <div className="bg-slate-50 py-20">
+      <div className="bg-slate-50 py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold font-heading text-center mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold font-heading text-center mb-3 md:mb-4">
             More Reviews
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base">
             Browse through all our client testimonials and see why we maintain an A+ BBB rating.
           </p>
 
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-6">
             {testimonials.map((testimonial) => (
               <div
                 key={testimonial.id}
-                className="bg-white rounded-xl shadow-md p-6 hover:shadow-lg transition-shadow"
+                className="bg-white rounded-xl shadow-md p-5 md:p-6 active:shadow-lg md:hover:shadow-lg transition-shadow"
                 data-testid={`card-review-${testimonial.id}`}
               >
                 <StarRating rating={testimonial.rating} />
-                <p className="text-slate-700 mt-3 mb-4 line-clamp-4">
+                <p className="text-slate-700 mt-3 mb-4 line-clamp-4 text-sm md:text-base">
                   "{testimonial.text}"
                 </p>
                 <div className="border-t pt-3">
@@ -225,12 +225,12 @@ export default function Testimonials() {
       </div>
 
       {/* Customer Reviews Section */}
-      <div className="py-20">
+      <div className="py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold font-heading text-center mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold font-heading text-center mb-3 md:mb-4">
             Customer Reviews
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base">
             See what our customers are saying about their experience with N&P Services.
           </p>
           <ReviewsDisplay />
@@ -238,12 +238,12 @@ export default function Testimonials() {
       </div>
 
       {/* Submit Review Form */}
-      <div className="bg-slate-100 py-20">
+      <div className="bg-slate-100 py-12 md:py-20">
         <div className="container mx-auto px-4">
-          <h2 className="text-3xl font-bold font-heading text-center mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold font-heading text-center mb-3 md:mb-4">
             Share Your Experience
           </h2>
-          <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+          <p className="text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base">
             We'd love to hear about your project! Leave a review to help others learn about our work.
           </p>
           <ReviewForm />
@@ -251,21 +251,21 @@ export default function Testimonials() {
       </div>
 
       {/* BBB Section */}
-      <div className="py-20">
+      <div className="py-12 md:py-20">
         <div className="container mx-auto px-4 text-center">
           <div className="max-w-2xl mx-auto">
-            <Award className="w-20 h-20 text-primary mx-auto mb-6" />
-            <h2 className="text-3xl font-bold font-heading mb-4">
+            <Award className="w-16 h-16 md:w-20 md:h-20 text-primary mx-auto mb-4 md:mb-6" />
+            <h2 className="text-2xl md:text-3xl font-bold font-heading mb-3 md:mb-4">
               A+ BBB Rated Business
             </h2>
-            <p className="text-lg text-muted-foreground mb-8">
+            <p className="text-base md:text-lg text-muted-foreground mb-6 md:mb-8">
               N&P Services maintains an A+ rating with the Better Business Bureau, reflecting our commitment to quality workmanship and customer satisfaction.
             </p>
             <a
               href="https://www.bbb.org/us/tx/league-city/profile/construction-services/n-p-services-0915-90009898"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center bg-primary text-white px-8 py-4 rounded-lg font-semibold hover:bg-primary/90 transition-colors"
+              className="inline-flex items-center bg-primary text-white px-6 md:px-8 py-3 md:py-4 rounded-lg font-semibold active:bg-primary/80 md:hover:bg-primary/90 transition-colors text-sm md:text-base"
               data-testid="link-bbb-profile"
             >
               View Our BBB Profile
@@ -275,17 +275,17 @@ export default function Testimonials() {
       </div>
 
       {/* CTA */}
-      <div className="bg-slate-900 text-white py-16">
+      <div className="bg-slate-900 text-white py-12 md:py-16">
         <div className="container mx-auto px-4 text-center">
-          <h2 className="text-3xl font-bold font-heading mb-4">
+          <h2 className="text-2xl md:text-3xl font-bold font-heading mb-3 md:mb-4">
             Ready to Start Your Project?
           </h2>
-          <p className="text-slate-300 mb-8 max-w-xl mx-auto">
+          <p className="text-slate-300 mb-6 md:mb-8 max-w-xl mx-auto text-sm md:text-base">
             Join our growing list of satisfied clients. Contact us today for a free consultation.
           </p>
           <a
             href="/contact"
-            className="inline-block bg-white text-slate-900 px-8 py-4 font-bold uppercase tracking-wider hover:bg-slate-100 transition-colors"
+            className="inline-block bg-white text-slate-900 px-6 md:px-8 py-3 md:py-4 font-bold uppercase tracking-wider active:bg-slate-200 md:hover:bg-slate-100 transition-colors text-sm md:text-base"
             data-testid="link-contact-cta"
           >
             Get Your Free Quote

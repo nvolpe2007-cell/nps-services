@@ -14,7 +14,7 @@ function StarRating({ rating, onRatingChange }: StarRatingProps) {
   const [hovered, setHovered] = useState(0);
 
   return (
-    <div className="flex gap-1">
+    <div className="flex gap-2">
       {[1, 2, 3, 4, 5].map((star) => (
         <button
           key={star}
@@ -22,11 +22,11 @@ function StarRating({ rating, onRatingChange }: StarRatingProps) {
           onClick={() => onRatingChange(star)}
           onMouseEnter={() => setHovered(star)}
           onMouseLeave={() => setHovered(0)}
-          className="focus:outline-none transition-transform hover:scale-110"
+          className="focus:outline-none transition-transform active:scale-90 hover:scale-110 p-1"
           data-testid={`star-${star}`}
         >
           <Star
-            className={`h-8 w-8 transition-colors ${
+            className={`h-9 w-9 md:h-8 md:w-8 transition-colors ${
               star <= (hovered || rating)
                 ? "fill-accent text-accent"
                 : "fill-none text-gray-300"
@@ -97,7 +97,7 @@ export function ReviewForm() {
   };
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-lg mx-auto">
+    <form onSubmit={handleSubmit} className="space-y-5 max-w-lg mx-auto px-4 md:px-0">
       <div className="space-y-2">
         <label className="block text-sm font-semibold text-gray-700">Your Name *</label>
         <Input

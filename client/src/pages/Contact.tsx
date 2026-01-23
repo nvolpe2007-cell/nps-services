@@ -69,18 +69,18 @@ export default function Contact() {
   }
 
   return (
-    <div className="pt-24 min-h-screen bg-background">
-      <div className="container mx-auto px-4 py-16">
-        <h1 className="text-4xl font-bold font-heading text-center mb-6">Contact Us</h1>
-        <p className="text-center text-muted-foreground mb-12 max-w-2xl mx-auto">
+    <div className="pt-20 md:pt-24 min-h-screen bg-background">
+      <div className="container mx-auto px-4 py-10 md:py-16">
+        <h1 className="text-3xl md:text-4xl font-bold font-heading text-center mb-4 md:mb-6">Contact Us</h1>
+        <p className="text-center text-muted-foreground mb-8 md:mb-12 max-w-2xl mx-auto text-sm md:text-base">
           Ready to start your project? Get in touch for a free quote or consultation.
         </p>
 
-        <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
+        <div className="grid lg:grid-cols-2 gap-8 md:gap-12 max-w-6xl mx-auto">
           {/* Contact Info */}
           <div className="space-y-8">
-            <Card className="p-8 shadow-lg border-none bg-slate-900 text-white">
-              <h2 className="text-2xl font-bold font-heading mb-6">Get In Touch</h2>
+            <Card className="p-6 md:p-8 shadow-lg border-none bg-slate-900 text-white">
+              <h2 className="text-xl md:text-2xl font-bold font-heading mb-5 md:mb-6">Get In Touch</h2>
               <div className="space-y-6">
                 <button 
                   onClick={() => {
@@ -133,8 +133,8 @@ export default function Contact() {
           </div>
 
           {/* Contact Form */}
-          <div id="contact-form" className="bg-white p-8 rounded-xl shadow-lg border border-slate-100">
-            <h2 className="text-2xl font-bold font-heading mb-6 text-slate-900">Request a Free Quote</h2>
+          <div id="contact-form" className="bg-white p-6 md:p-8 rounded-xl shadow-lg border border-slate-100">
+            <h2 className="text-xl md:text-2xl font-bold font-heading mb-5 md:mb-6 text-slate-900">Request a Free Quote</h2>
             <Form {...form}>
               <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-6">
                 <FormField
