@@ -89,7 +89,7 @@ export function Footer() {
             <ul className="space-y-4 text-sm text-slate-300">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                <span>207 West Wilkins Street,<br />League City, TX 77573</span>
+                <span>PO Box 654<br />League City, TX 77573</span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
