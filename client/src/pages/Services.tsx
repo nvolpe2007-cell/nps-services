@@ -2,7 +2,7 @@ import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
 import { Hammer, Building, Truck } from "lucide-react";
 import resImage from "@assets/portfolio/kitchen_remodel_1.webp";
-import comImage from "@assets/project_photos/steel_building.webp";
+import comImage from "@assets/portfolio/commercial_slab_new.webp";
 import specImage from "@assets/portfolio/industrial_concrete.webp";
 
 export default function Services() {
