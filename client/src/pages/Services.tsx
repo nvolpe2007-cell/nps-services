@@ -1,9 +1,8 @@
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card";
-import { Hammer, Building, Truck } from "lucide-react";
+import { Hammer, Building } from "lucide-react";
 import resImage from "@assets/portfolio/kitchen_remodel_1.webp";
 import comImage from "@assets/portfolio/commercial_slab_new.webp";
-import specImage from "@assets/portfolio/industrial_concrete.webp";
 
 export default function Services() {
   return (
@@ -20,10 +19,9 @@ export default function Services() {
       <div className="container mx-auto px-4 py-16">
         <Tabs defaultValue="residential" className="w-full">
           <div className="flex justify-center mb-12">
-             <TabsList className="grid w-full max-w-2xl grid-cols-3 h-auto p-1 bg-slate-100">
+             <TabsList className="grid w-full max-w-md grid-cols-2 h-auto p-1 bg-slate-100">
               <TabsTrigger value="residential" className="py-3 text-lg font-heading data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm">Residential</TabsTrigger>
               <TabsTrigger value="commercial" className="py-3 text-lg font-heading data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm">Commercial</TabsTrigger>
-              <TabsTrigger value="specialized" className="py-3 text-lg font-heading data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm">Specialized</TabsTrigger>
             </TabsList>
           </div>
 
@@ -83,34 +81,7 @@ export default function Services() {
             </div>
           </TabsContent>
 
-          <TabsContent value="specialized" className="animate-in fade-in slide-in-from-bottom-4 duration-500">
-             <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div className="order-2 md:order-1">
-                <h2 className="text-3xl font-bold font-heading text-primary mb-6 flex items-center">
-                  <Truck className="mr-3 h-8 w-8" /> Specialized Services
-                </h2>
-                <p className="text-lg text-muted-foreground mb-8">
-                  Beyond standard construction, N&P Services offers specialized infrastructure and site development capabilities. We handle the heavy lifting for complex site needs.
-                </p>
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {[
-                    "RV Park Construction", "Detention/Retention Ponds", "Land Clearing", 
-                    "Asphalt Striping", "Concrete Repair", "Seal Coating", 
-                    "Parking Lot Services", "Drainage Systems"
-                  ].map((item) => (
-                    <div key={item} className="flex items-center p-3 bg-white rounded-lg border shadow-sm">
-                      <div className="h-2 w-2 bg-primary rounded-full mr-3"></div>
-                      <span className="font-medium">{item}</span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-              <div className="order-1 md:order-2 h-96 rounded-xl overflow-hidden shadow-2xl">
-                <img src={specImage} alt="Specialized Services" className="w-full h-full object-cover" />
-              </div>
-            </div>
-          </TabsContent>
-        </Tabs>
+                  </Tabs>
       </div>
     </div>
   );
