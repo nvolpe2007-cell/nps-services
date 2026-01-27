@@ -3,7 +3,7 @@ import { useRef } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 import foundationRebar from "@assets/project_photos/foundation_rebar.webp";
-import metalBuildingInterior from "@/assets/portfolio/metal_building_interior_new.webp";
+import livingRoomRemodel from "@/assets/portfolio/living_room_remodel.webp";
 import kitchenIsland from "@assets/project_photos/kitchen_island.webp";
 import { useSimpleAnimations } from "@/hooks/useMobile";
 
@@ -17,10 +17,10 @@ const projects = [
   },
   {
     id: 2,
-    title: "Metal Building Interior",
-    category: "Commercial",
+    title: "Living Room Remodel",
+    category: "Residential",
     location: "League City, TX",
-    image: metalBuildingInterior,
+    image: livingRoomRemodel,
   },
   {
     id: 3,
