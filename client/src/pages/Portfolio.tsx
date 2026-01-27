@@ -36,6 +36,8 @@ import newKitchenCounter from "@assets/portfolio/new_kitchen_counter.webp";
 import newKitchenModern from "@assets/portfolio/new_kitchen_modern.webp";
 import interiorLounge from "@assets/portfolio/interior_lounge.webp";
 import interiorBar from "@assets/portfolio/interior_bar.webp";
+import commercialFraming from "@/assets/portfolio/commercial_framing.webp";
+import residentialDriveway from "@/assets/portfolio/residential_driveway.webp";
 
 const projects = [
   {
@@ -63,7 +65,7 @@ const projects = [
     id: 4,
     title: "Wood Framing & Trusses",
     category: "Commercial",
-    images: [woodTruss, woodFraming],
+    images: [commercialFraming, woodTruss, woodFraming],
     description: "Professional wood framing and truss installation for commercial and multi-family construction projects."
   },
   {
@@ -107,6 +109,13 @@ const projects = [
     category: "Residential",
     images: [drivewayPrep, drivewayFinished, commercialSlab],
     description: "Curved concrete driveway with smooth finish, reinforced rebar grid, and professional forming."
+  },
+  {
+    id: 11,
+    title: "Concrete Driveway Installation",
+    category: "Residential",
+    images: [residentialDriveway],
+    description: "Beautiful curved concrete driveway installation with smooth finish, perfect for residential properties."
   }
 ];
 
