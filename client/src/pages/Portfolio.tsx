@@ -32,7 +32,6 @@ import woodFraming from "@assets/portfolio/wood_framing.webp";
 import foundationPrep from "@assets/portfolio/foundation_prep.webp";
 import foundationRebar from "@assets/portfolio/foundation_rebar.webp";
 import concretePourCrew from "@assets/portfolio/concrete_pour_crew.webp";
-import newKitchenIsland from "@assets/portfolio/new_kitchen_island.webp";
 import newKitchenCounter from "@assets/portfolio/new_kitchen_counter.webp";
 import newKitchenModern from "@assets/portfolio/new_kitchen_modern.webp";
 import interiorLounge from "@assets/portfolio/interior_lounge.webp";
@@ -85,7 +84,7 @@ const projects = [
     id: 7,
     title: "Custom Kitchen Builds",
     category: "Residential",
-    images: [newKitchenIsland, newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
+    images: [newKitchenCounter, newKitchenModern, kitchenRemodel1, kitchenRemodel2, kitchenRemodel3],
     description: "Beautiful custom kitchens and remodels featuring white shaker cabinets, granite and marble countertops, subway tile backsplash, pendant lighting, and modern finishes."
   },
   {

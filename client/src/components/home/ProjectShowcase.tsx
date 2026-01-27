@@ -4,7 +4,7 @@ import { ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 import foundationRebar from "@assets/project_photos/foundation_rebar.webp";
 import livingRoomRemodel from "@/assets/portfolio/living_room_remodel.webp";
-import kitchenIsland from "@assets/project_photos/kitchen_island.webp";
+import outdoorKitchen from "@assets/portfolio/outdoor_kitchen_1.webp";
 import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const projects = [
@@ -24,10 +24,10 @@ const projects = [
   },
   {
     id: 3,
-    title: "Custom Kitchen Build",
+    title: "Custom Outdoor Kitchen",
     category: "Residential",
     location: "League City, TX",
-    image: kitchenIsland,
+    image: outdoorKitchen,
   },
 ];
 
