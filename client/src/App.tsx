@@ -1,5 +1,5 @@
 import { Switch, Route, useLocation } from "wouter";
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { queryClient } from "./lib/queryClient";
 import { QueryClientProvider } from "@tanstack/react-query";
 import { Toaster } from "@/components/ui/toaster";
@@ -16,14 +16,30 @@ import Portfolio from "@/pages/Portfolio";
 import Contact from "@/pages/Contact";
 import Testimonials from "@/pages/Testimonials";
 
-function ScrollToTop() {
+function PageTransition({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
-  
+  const [isVisible, setIsVisible] = useState(true);
+  const [displayLocation, setDisplayLocation] = useState(location);
+
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [location]);
-  
-  return null;
+    if (location !== displayLocation) {
+      setIsVisible(false);
+      window.scrollTo({ top: 0, behavior: 'instant' });
+      const timer = setTimeout(() => {
+        setDisplayLocation(location);
+        setIsVisible(true);
+      }, 150);
+      return () => clearTimeout(timer);
+    }
+  }, [location, displayLocation]);
+
+  return (
+    <div 
+      className={`transition-opacity duration-200 ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+    >
+      {children}
+    </div>
+  );
 }
 
 function Router() {
@@ -45,10 +61,11 @@ function App() {
     <QueryClientProvider client={queryClient}>
       <TooltipProvider>
         <div className="flex flex-col min-h-screen">
-          <ScrollToTop />
           <Navbar />
           <main className="flex-grow">
-            <Router />
+            <PageTransition>
+              <Router />
+            </PageTransition>
           </main>
           <Footer />
           <StickyCallButton />
