@@ -15,6 +15,7 @@ import Services from "@/pages/Services";
 import Portfolio from "@/pages/Portfolio";
 import Contact from "@/pages/Contact";
 import Testimonials from "@/pages/Testimonials";
+import ThankYou from "@/pages/ThankYou";
 
 function PageTransition({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -51,6 +52,7 @@ function Router() {
       <Route path="/portfolio" component={Portfolio} />
             <Route path="/reviews" component={Testimonials} />
       <Route path="/contact" component={Contact} />
+      <Route path="/thank-you" component={ThankYou} />
       <Route component={NotFound} />
     </Switch>
   );

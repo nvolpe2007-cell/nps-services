@@ -10,7 +10,7 @@ import { MapPin, Phone, Mail, Clock } from "lucide-react";
 import { useToast } from "@/hooks/use-toast";
 import { Card } from "@/components/ui/card";
 import { useMutation } from "@tanstack/react-query";
-import { useState } from "react";
+import { useLocation } from "wouter";
 
 const formSchema = z.object({
   name: z.string().min(2, "Name is required"),
@@ -22,6 +22,7 @@ const formSchema = z.object({
 
 export default function Contact() {
   const { toast } = useToast();
+  const [, setLocation] = useLocation();
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
     defaultValues: {
@@ -48,12 +49,9 @@ export default function Contact() {
 
       return response.json();
     },
-    onSuccess: (data) => {
-      toast({
-        title: "Request Sent!",
-        description: data.message,
-      });
+    onSuccess: () => {
       form.reset();
+      setLocation("/thank-you");
     },
     onError: (error: Error) => {
       toast({
