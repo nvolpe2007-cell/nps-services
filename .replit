@@ -46,4 +46,4 @@ integrations = ["twilio:1.0.0", "resend:1.0.0"]
 [userenv]
 
 [userenv.shared]
-NOTIFICATION_PHONE_NUMBER = "+18327045525"
+NOTIFICATION_PHONE_NUMBER = "+13106069426"
