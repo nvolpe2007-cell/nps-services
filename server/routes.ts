@@ -3,6 +3,7 @@ import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { sendContactNotificationSMS, isTwilioConfigured, getTwilioPhoneNumber } from "./sms";
+import { sendContactEmail, isResendConfigured } from "./email";
 import { insertReviewSchema } from "@shared/schema";
 
 // Contact form schema
@@ -44,36 +45,15 @@ export async function registerRoutes(
         }
       }
 
-      // Send email using Resend (if configured)
-      const resendApiKey = process.env.RESEND_API_KEY;
-      if (resendApiKey) {
-        const response = await fetch("https://api.resend.com/emails", {
-          method: "POST",
-          headers: {
-            "Authorization": `Bearer ${resendApiKey}`,
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify({
-            from: "N&P Services Website <onboarding@resend.dev>",
-            to: ["ninofarias@nandpservices.com"],
-            subject: `New Contact Form Submission - ${data.service}`,
-            html: `
-              <h2>New Contact Form Submission</h2>
-              <p><strong>Name:</strong> ${data.name}</p>
-              <p><strong>Email:</strong> ${data.email}</p>
-              <p><strong>Phone:</strong> ${data.phone}</p>
-              <p><strong>Service:</strong> ${data.service}</p>
-              <p><strong>Message:</strong></p>
-              <p>${data.message.replace(/\n/g, '<br>')}</p>
-            `,
-          }),
-        });
-
-        if (response.ok) {
+      // Send email using Resend integration
+      const resendConfigured = await isResendConfigured();
+      if (resendConfigured) {
+        const emailResult = await sendContactEmail(data);
+        if (emailResult.success) {
           emailSent = true;
+          console.log("Email notification sent successfully to NinoFarias@nandpservices.com");
         } else {
-          const error = await response.json();
-          console.error("Resend API error:", error);
+          console.error("Email notification failed:", emailResult.error);
         }
       }
 
