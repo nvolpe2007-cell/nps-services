@@ -5,49 +5,49 @@ const blogPosts = [
   {
     id: "concrete-driveway-cost-houston",
     title: "How Much Does a Concrete Driveway Cost in Houston?",
-    excerpt: "Planning a new driveway? Learn about pricing factors, material options, and what to expect when getting quotes for concrete driveway installation in the Greater Houston area.",
+    excerpt: "Current 2026 pricing: $9.50-$10/sq ft for standard concrete. Learn about permits, Houston's clay soil challenges, and why thickness matters for your driveway.",
     date: "January 2026",
-    readTime: "5 min read",
+    readTime: "6 min read",
     category: "Concrete"
   },
   {
     id: "best-time-asphalt-work-texas",
-    title: "Best Time of Year for Asphalt Work in Texas",
-    excerpt: "Texas heat can make or break your asphalt project. Discover the optimal seasons for parking lot paving, seal coating, and asphalt repairs in our Houston climate.",
+    title: "Why Does My Houston Parking Lot Keep Cracking?",
+    excerpt: "Repairs that keep failing? Houston's clay soil and drainage issues cause cracks from below. Learn why cheap fixes don't work and what actually solves the problem.",
     date: "January 2026",
-    readTime: "4 min read",
+    readTime: "5 min read",
     category: "Asphalt"
   },
   {
     id: "commercial-construction-permits-houston",
-    title: "Understanding Commercial Construction Permits in Houston",
-    excerpt: "Navigating the permit process can be confusing. Here's what business owners need to know about commercial construction permits in Houston and surrounding areas.",
+    title: "Do I Need a Permit for My Houston Commercial Project?",
+    excerpt: "Houston requires permits for most commercial work. Here's what happens if you skip them, current building codes, and how long the permit process takes.",
     date: "December 2025",
     readTime: "6 min read",
     category: "Commercial"
   },
   {
     id: "kitchen-remodel-roi-2026",
-    title: "Kitchen Remodel ROI: Is It Worth the Investment in 2026?",
-    excerpt: "Thinking about updating your kitchen? We break down the return on investment for kitchen remodels and which upgrades add the most value to Houston homes.",
+    title: "What Will My Houston Kitchen Remodel Really Cost?",
+    excerpt: "Kitchen costs are up 15% in Houston. Get real pricing from $15K-$150K+, learn why humidity affects material choices, and what to budget for hidden surprises.",
     date: "December 2025",
-    readTime: "5 min read",
+    readTime: "6 min read",
     category: "Residential"
   },
   {
     id: "parking-lot-maintenance-tips",
-    title: "5 Parking Lot Maintenance Tips That Save Money",
-    excerpt: "Regular maintenance extends the life of your parking lot and prevents costly repairs. Learn the essential upkeep tasks every Houston business owner should know.",
+    title: "Is My Houston Parking Lot ADA Compliant?",
+    excerpt: "ADA violations can cost $75,000+ in fines. Learn the required number of accessible spaces, proper signage, and common violations we see across Houston.",
     date: "November 2025",
-    readTime: "4 min read",
+    readTime: "5 min read",
     category: "Commercial"
   },
   {
     id: "choosing-contractor-houston",
-    title: "How to Choose a Reliable Contractor in Houston",
-    excerpt: "Not all contractors are created equal. Here's what to look for when hiring a construction company, including red flags to avoid and questions to ask.",
+    title: "What Should I Ask Before Hiring a Houston Contractor?",
+    excerpt: "The questions experienced Houston homeowners ask before signing: licensing, insurance, payment schedules, and red flags that should make you walk away.",
     date: "November 2025",
-    readTime: "7 min read",
+    readTime: "6 min read",
     category: "Tips"
   }
 ];
