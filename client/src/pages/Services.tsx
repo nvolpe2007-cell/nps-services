@@ -19,9 +19,19 @@ export default function Services() {
       <div className="container mx-auto px-4 py-16">
         <Tabs defaultValue="residential" className="w-full">
           <div className="flex justify-center mb-12">
-             <TabsList className="grid w-full max-w-md grid-cols-2 h-auto p-1 bg-slate-100">
-              <TabsTrigger value="residential" className="py-3 text-lg font-heading data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm">Residential</TabsTrigger>
-              <TabsTrigger value="commercial" className="py-3 text-lg font-heading data-[state=active]:bg-white data-[state=active]:text-primary data-[state=active]:shadow-sm">Commercial</TabsTrigger>
+             <TabsList className="flex gap-4 h-auto p-0 bg-transparent">
+              <TabsTrigger 
+                value="residential" 
+                className="px-8 py-4 text-base font-bold uppercase tracking-wider border-2 border-slate-300 bg-white text-slate-700 hover:border-red-500 hover:text-red-600 transition-all data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:border-red-600 data-[state=active]:shadow-lg"
+              >
+                Residential
+              </TabsTrigger>
+              <TabsTrigger 
+                value="commercial" 
+                className="px-8 py-4 text-base font-bold uppercase tracking-wider border-2 border-slate-300 bg-white text-slate-700 hover:border-red-500 hover:text-red-600 transition-all data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:border-red-600 data-[state=active]:shadow-lg"
+              >
+                Commercial
+              </TabsTrigger>
             </TabsList>
           </div>
 
