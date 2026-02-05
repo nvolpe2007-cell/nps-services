@@ -12,6 +12,30 @@
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'AW-17916018158');
+      
+      // Track phone calls
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href^="tel:"]');
+        if (link) {
+          gtag('event', 'conversion', {'send_to': 'AW-17916018158/phone_call'});
+        }
+      });
+      
+      // Track SMS clicks
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href^="sms:"]');
+        if (link) {
+          gtag('event', 'conversion', {'send_to': 'AW-17916018158/sms_click'});
+        }
+      });
+      
+      // Track email clicks
+      document.addEventListener('click', function(e) {
+        var link = e.target.closest('a[href^="mailto:"]');
+        if (link) {
+          gtag('event', 'conversion', {'send_to': 'AW-17916018158/email_click'});
+        }
+      });
     </script>
     
     <title>N&P SERVICES | Commercial & Residential Construction Houston | Concrete, Plumbing & More</title>
