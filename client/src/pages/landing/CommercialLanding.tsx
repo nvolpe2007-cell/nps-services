@@ -129,8 +129,25 @@ export default function CommercialLanding() {
         </div>
       </div>
 
-      {/* Why Choose Us */}
+      {/* Social Proof */}
       <div className="py-16 md:py-20 bg-white">
+        <div className="container mx-auto px-4">
+          <div className="max-w-3xl mx-auto text-center">
+            <div className="flex justify-center gap-1 mb-4">
+              {[1, 2, 3, 4, 5].map((star) => (
+                <Star key={star} className="w-6 h-6 fill-yellow-400 text-yellow-400" />
+              ))}
+            </div>
+            <p className="text-xl md:text-2xl text-slate-700 italic mb-6">
+              "N&P Services completed our warehouse build on time and under budget. Their attention to detail and professionalism made all the difference."
+            </p>
+            <p className="text-slate-500 font-medium">— Houston Business Owner</p>
+          </div>
+        </div>
+      </div>
+
+      {/* Why Choose Us */}
+      <div className="py-16 md:py-20 bg-slate-50">
         <div className="container mx-auto px-4">
           <div className="max-w-4xl mx-auto">
             <h2 className="text-2xl md:text-3xl font-bold text-slate-900 text-center mb-12">
