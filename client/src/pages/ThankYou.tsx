@@ -57,11 +57,6 @@ export default function ThankYou() {
               we treat your home or business like it's our own.
             </p>
 
-            <div className="flex items-center justify-center gap-2 text-red-600 mb-6">
-              <Heart className="w-4 h-4 fill-red-600" />
-              <span className="text-sm font-bold uppercase tracking-wider">Family-owned & operated since 2008</span>
-            </div>
-
             <p className="text-base text-slate-600 text-center max-w-xl mx-auto">
               <strong>Nino Farias</strong>, our owner, will personally review your request and get back to you 
               <strong> within 24 hours</strong> — often much sooner. We're excited to learn more about your project 
