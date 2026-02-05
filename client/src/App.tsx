@@ -19,6 +19,8 @@ import ThankYou from "@/pages/ThankYou";
 import ConcreteLanding from "@/pages/landing/ConcreteLanding";
 import CommercialLanding from "@/pages/landing/CommercialLanding";
 import ResidentialLanding from "@/pages/landing/ResidentialLanding";
+import Blog from "@/pages/Blog";
+import BlogPost from "@/pages/BlogPost";
 
 function PageTransition({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -59,6 +61,8 @@ function Router() {
       <Route path="/lp/concrete" component={ConcreteLanding} />
       <Route path="/lp/commercial" component={CommercialLanding} />
       <Route path="/lp/residential" component={ResidentialLanding} />
+      <Route path="/blog" component={Blog} />
+      <Route path="/blog/:slug" component={BlogPost} />
       <Route component={NotFound} />
     </Switch>
   );
