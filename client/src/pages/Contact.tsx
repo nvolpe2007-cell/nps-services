@@ -37,7 +37,8 @@ export default function Contact() {
           
           <button
             onClick={handleTextClick}
-            className="inline-flex items-center gap-4 bg-red-600 hover:bg-red-700 text-white px-12 py-6 md:px-16 md:py-7 font-bold text-base md:text-lg tracking-wider uppercase transition-all hover:scale-105 shadow-2xl shadow-red-900/50"
+            className="inline-flex items-center gap-4 bg-red-600 hover:bg-red-700 text-white px-12 py-6 md:px-16 md:py-7 font-bold text-base md:text-lg tracking-wider uppercase transition-all hover:scale-105 animate-pulse"
+            style={{ boxShadow: '0 0 40px rgba(220, 38, 38, 0.7), 0 0 80px rgba(220, 38, 38, 0.4), 0 0 120px rgba(220, 38, 38, 0.2)' }}
             data-testid="contact-text-button"
           >
             <MessageCircle className="w-6 h-6" />
