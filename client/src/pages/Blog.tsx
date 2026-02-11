@@ -49,6 +49,54 @@ const blogPosts = [
     date: "November 2025",
     readTime: "6 min read",
     category: "Tips"
+  },
+  {
+    id: "best-fence-options-houston",
+    title: "Best Fencing Options for Houston Backyards",
+    excerpt: "Cedar vs. vinyl vs. iron — which fence survives Houston's humidity and hurricanes? Real pricing from $15-$70 per linear foot and what lasts longest.",
+    date: "February 2026",
+    readTime: "5 min read",
+    category: "Residential"
+  },
+  {
+    id: "seal-coating-cost-houston",
+    title: "How Much Does Seal Coating Cost in Houston?",
+    excerpt: "Seal coating costs $0.15-$0.25/sq ft and extends your parking lot's life by years. Real pricing examples for small, medium, and large Houston lots.",
+    date: "February 2026",
+    readTime: "4 min read",
+    category: "Asphalt"
+  },
+  {
+    id: "league-city-pearland-renovation-costs",
+    title: "League City vs. Pearland: Home Renovation Costs Compared",
+    excerpt: "Planning a remodel in League City or Pearland? Real project costs, HOA considerations, permit differences, and what to watch for in both areas.",
+    date: "February 2026",
+    readTime: "5 min read",
+    category: "Residential"
+  },
+  {
+    id: "foundation-cracks-houston",
+    title: "Does My Houston Home Need Foundation Repair or Just Cosmetic Cracks?",
+    excerpt: "Not every crack means foundation failure. Learn which cracks are normal settling vs. warning signs, plus repair costs from $4,000-$12,000.",
+    date: "January 2026",
+    readTime: "5 min read",
+    category: "Residential"
+  },
+  {
+    id: "rv-park-construction-texas",
+    title: "RV Park Construction in Texas: What You Need to Know",
+    excerpt: "Building an RV park? Total costs from $700K-$2M for a 50-site park. Permits, site design, utility costs, and common mistakes to avoid.",
+    date: "January 2026",
+    readTime: "6 min read",
+    category: "Commercial"
+  },
+  {
+    id: "bathroom-remodel-cost-clear-lake-league-city",
+    title: "Bathroom Remodel Cost in Clear Lake & League City (2026)",
+    excerpt: "Local pricing from $8K-$75K depending on scope. Why Houston's humidity matters for material choices and what waterproofing system to insist on.",
+    date: "January 2026",
+    readTime: "5 min read",
+    category: "Residential"
   }
 ];
 
