@@ -1,6 +1,7 @@
 import { useRoute, Link } from "wouter";
 import { Calendar, Clock, ArrowLeft, Phone, MessageCircle } from "lucide-react";
 import { blogContent } from "@/data/blogContent";
+import { trackCall, trackText } from "@/lib/tracking";
 
 export default function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
@@ -115,6 +116,7 @@ export default function BlogPost() {
             <div className="flex flex-wrap gap-4">
               <a
                 href={`sms:832-704-5525?body=${preWrittenMessage}`}
+                onClick={() => trackText("blog")}
                 className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-bold text-sm uppercase tracking-wider transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
@@ -122,6 +124,7 @@ export default function BlogPost() {
               </a>
               <a
                 href="tel:832-704-5525"
+                onClick={() => trackCall("blog")}
                 className="inline-flex items-center gap-2 border-2 border-slate-300 hover:border-slate-900 text-slate-700 px-6 py-3 font-bold text-sm uppercase tracking-wider transition-all"
               >
                 <Phone className="w-4 h-4" />

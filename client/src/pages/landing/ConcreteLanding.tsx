@@ -1,12 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle, Phone, MessageCircle, ChevronRight, Star, Shield, Clock } from "lucide-react";
-
-declare global {
-  interface Window {
-    gtag?: (...args: any[]) => void;
-  }
-}
+import { trackLandingCall, trackLandingText } from "@/lib/tracking";
 
 export default function ConcreteLanding() {
   const [, setLocation] = useLocation();
@@ -22,11 +17,7 @@ export default function ConcreteLanding() {
   }, []);
 
   const handleTextClick = () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17916018158/concrete_lead'
-      });
-    }
+    trackLandingText("concrete_lead");
     window.location.href = `sms:832-704-5525?body=${preWrittenMessage}`;
     setTimeout(() => {
       setLocation("/thank-you");
@@ -34,11 +25,7 @@ export default function ConcreteLanding() {
   };
 
   const handleCallClick = () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17916018158/concrete_call'
-      });
-    }
+    trackLandingCall("concrete_call");
   };
 
   return (

@@ -1,16 +1,13 @@
 import { MapPin, Phone, Mail, Clock, MessageCircle, ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
+import { trackCall, trackText } from "@/lib/tracking";
 
 export default function Contact() {
   const [, setLocation] = useLocation();
   const preWrittenMessage = encodeURIComponent("I have a job for you!");
 
   const handleTextClick = () => {
-    if (typeof window.gtag === 'function') {
-      window.gtag('event', 'conversion', {
-        'send_to': 'AW-17916018158/contact_click'
-      });
-    }
+    trackText("contact");
     window.location.href = `sms:832-704-5525?body=${preWrittenMessage}`;
     setTimeout(() => {
       setLocation("/thank-you");
@@ -68,6 +65,7 @@ export default function Contact() {
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-4 md:gap-6 mb-12">
             <a 
               href="tel:832-704-5525"
+              onClick={() => trackCall("contact")}
               className="group block bg-slate-900 p-6 md:p-8 hover:bg-red-600 transition-colors"
               data-testid="contact-call-link"
             >

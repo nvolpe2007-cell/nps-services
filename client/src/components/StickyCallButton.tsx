@@ -1,5 +1,6 @@
 import { Phone, MessageCircle, X } from "lucide-react";
 import { useState } from "react";
+import { trackCall, trackText } from "@/lib/tracking";
 
 export function StickyCallButton() {
   const [isOpen, setIsOpen] = useState(false);
@@ -11,6 +12,7 @@ export function StickyCallButton() {
         <>
           <a
             href="tel:832-704-5525"
+            onClick={() => trackCall("sticky")}
             className="flex items-center gap-2 text-white px-5 py-3 rounded-full shadow-lg hover:bg-red-700 transition-all hover:scale-105 font-bold text-sm tracking-wide animate-in slide-in-from-bottom-2 fade-in duration-200 bg-red-600"
             data-testid="call-button"
           >
@@ -19,6 +21,7 @@ export function StickyCallButton() {
           </a>
           <a
             href={`sms:832-704-5525?body=${preWrittenMessage}`}
+            onClick={() => trackText("sticky")}
             className="flex items-center gap-2 bg-blue-600 text-white px-5 py-3 rounded-full shadow-lg hover:bg-blue-700 transition-all hover:scale-105 font-bold text-sm tracking-wide animate-in slide-in-from-bottom-2 fade-in duration-200"
             data-testid="text-button"
           >

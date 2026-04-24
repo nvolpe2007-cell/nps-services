@@ -13,54 +13,10 @@
       gtag('js', new Date());
       gtag('config', 'AW-17916018158');
       
-      function getPageCallEvent() {
-        var p = window.location.pathname;
-        if (p.startsWith('/blog/')) return 'blog_call';
-        if (p === '/blog') return 'blog_call';
-        if (p === '/contact') return 'contact_call';
-        if (p === '/services') return 'services_call';
-        if (p === '/about') return 'about_call';
-        if (p === '/portfolio') return 'portfolio_call';
-        if (p === '/thank-you') return 'thankyou_call';
-        if (p === '/' || p === '') return 'homepage_call';
-        return null;
-      }
-
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href^="tel:"]');
-        if (link) {
-          gtag('event', 'conversion', {'send_to': 'AW-17916018158/phone_call'});
-          var pageEvent = getPageCallEvent();
-          if (pageEvent) {
-            gtag('event', 'conversion', {'send_to': 'AW-17916018158/' + pageEvent});
-          }
-          if (link.closest('[data-track="sticky-call"]')) {
-            gtag('event', 'conversion', {'send_to': 'AW-17916018158/sticky_call'});
-          }
-          if (link.closest('[data-track="navbar-call"]')) {
-            gtag('event', 'conversion', {'send_to': 'AW-17916018158/navbar_call'});
-          }
-        }
-      });
-
-      document.addEventListener('click', function(e) {
-        var link = e.target.closest('a[href^="sms:"]');
-        if (link) {
-          gtag('event', 'conversion', {'send_to': 'AW-17916018158/sms_click'});
-          var pageEvent = getPageCallEvent();
-          if (pageEvent) {
-            gtag('event', 'conversion', {'send_to': 'AW-17916018158/' + pageEvent.replace('_call', '_sms')});
-          }
-          if (link.closest('[data-track="sticky-call"]')) {
-            gtag('event', 'conversion', {'send_to': 'AW-17916018158/sticky_sms'});
-          }
-        }
-      });
-
       document.addEventListener('click', function(e) {
         var link = e.target.closest('a[href^="mailto:"]');
         if (link) {
-          gtag('event', 'conversion', {'send_to': 'AW-17916018158/email_click'});
+          gtag('event', 'email_click');
         }
       });
     </script>
