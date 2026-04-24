@@ -50,3 +50,7 @@ integrations = ["twilio:1.0.0", "resend:1.0.0"]
 
 [userenv.shared]
 NOTIFICATION_PHONE_NUMBER = "+13106069426"
+
+[postMerge]
+path = "scripts/post-merge.sh"
+timeoutMs = 60000
