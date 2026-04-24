@@ -1,7 +1,7 @@
 import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle, Phone, MessageCircle, ChevronRight, Star, Shield, Clock, Home } from "lucide-react";
-import { trackLandingCall, trackLandingText } from "@/lib/tracking";
+import { trackCall, trackText } from "@/lib/tracking";
 
 export default function ResidentialLanding() {
   const [, setLocation] = useLocation();
@@ -17,7 +17,10 @@ export default function ResidentialLanding() {
   }, []);
 
   const handleTextClick = () => {
-    trackLandingText("residential_lead");
+    trackText("residential_text");
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', { send_to: 'AW-17916018158/residential_lead' });
+    }
     window.location.href = `sms:832-704-5525?body=${preWrittenMessage}`;
     setTimeout(() => {
       setLocation("/thank-you");
@@ -25,7 +28,10 @@ export default function ResidentialLanding() {
   };
 
   const handleCallClick = () => {
-    trackLandingCall("residential_call");
+    trackCall("residential");
+    if (typeof window.gtag === 'function') {
+      window.gtag('event', 'conversion', { send_to: 'AW-17916018158/residential_call' });
+    }
   };
 
   return (

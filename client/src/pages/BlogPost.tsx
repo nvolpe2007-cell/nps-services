@@ -116,7 +116,7 @@ export default function BlogPost() {
             <div className="flex flex-wrap gap-4">
               <a
                 href={`sms:832-704-5525?body=${preWrittenMessage}`}
-                onClick={() => trackText("blog")}
+                onClick={() => trackText("blog_text")}
                 className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-bold text-sm uppercase tracking-wider transition-all"
               >
                 <MessageCircle className="w-4 h-4" />
