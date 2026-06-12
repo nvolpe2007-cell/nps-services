@@ -6,14 +6,9 @@ declare global {
 
 const GA_ADS_ID = "AW-17916018158";
 
-// ─────────────────────────────────────────────────────────────────────────────
-// REPLACE THESE with your real Google Ads conversion labels.
-// To find your labels: Google Ads → Goals → Conversions → click a conversion →
-// the "Tag setup" section shows the label (e.g. "AbCdEfGhI").
-// ─────────────────────────────────────────────────────────────────────────────
-const CALL_CONVERSION_LABEL = "REPLACE_WITH_CALL_LABEL";  // e.g. AbCdEfGhI
-const TEXT_CONVERSION_LABEL = "REPLACE_WITH_TEXT_LABEL";  // e.g. XyZaBcDeF
-// ─────────────────────────────────────────────────────────────────────────────
+// Google Ads conversion labels — found in Google Ads → Goals → Conversions → Tag setup
+const CALL_CONVERSION_LABEL = "vEOUCL2n0_8bEO77gt9C";
+const TEXT_CONVERSION_LABEL = "vEOUCL2n0_8bEO77gt9C";
 
 /**
  * Fire when any phone call link is clicked.
@@ -23,9 +18,11 @@ export function trackCall(source: string) {
   if (typeof window.gtag !== "function") return;
   // GA4 event — shows in Google Analytics with source breakdown
   window.gtag("event", "phone_call_click", { source });
-  // Google Ads conversion — counts once you replace CALL_CONVERSION_LABEL above
+  // Google Ads conversion
   window.gtag("event", "conversion", {
     send_to: `${GA_ADS_ID}/${CALL_CONVERSION_LABEL}`,
+    value: 7.0,
+    currency: "USD",
   });
 }
 
@@ -37,8 +34,10 @@ export function trackText(source: string) {
   if (typeof window.gtag !== "function") return;
   // GA4 event — shows in Google Analytics with source breakdown
   window.gtag("event", "text_message_click", { source });
-  // Google Ads conversion — counts once you replace TEXT_CONVERSION_LABEL above
+  // Google Ads conversion
   window.gtag("event", "conversion", {
     send_to: `${GA_ADS_ID}/${TEXT_CONVERSION_LABEL}`,
+    value: 7.0,
+    currency: "USD",
   });
 }
