@@ -8,7 +8,7 @@ export default function Contact() {
 
   const handleTextClick = () => {
     trackText("contact");
-    window.location.href = `sms:832-704-5525?body=${preWrittenMessage}`;
+    window.location.href = `sms:832-226-4018?body=${preWrittenMessage}`;
     setTimeout(() => {
       setLocation("/thank-you");
     }, 500);
@@ -64,7 +64,7 @@ export default function Contact() {
 
           <div className="max-w-4xl mx-auto grid md:grid-cols-2 gap-4 md:gap-6 mb-12">
             <a 
-              href="tel:832-704-5525"
+              href="tel:832-226-4018"
               onClick={() => trackCall("contact")}
               className="group block bg-slate-900 p-6 md:p-8 hover:bg-red-600 transition-colors"
               data-testid="contact-call-link"
@@ -75,13 +75,13 @@ export default function Contact() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-bold text-xs uppercase tracking-wider text-slate-400 group-hover:text-white/80 mb-1">Call Us</h3>
-                  <p className="text-white text-xl font-bold">(832) 704-5525</p>
+                  <p className="text-white text-xl font-bold">(832) 226-4018</p>
                 </div>
               </div>
             </a>
 
             <a 
-              href="mailto:ninofarias@nandpservices.com"
+              href="mailto:Brandon@lancaster-ent.net"
               className="group block bg-slate-900 p-6 md:p-8 hover:bg-red-600 transition-colors"
               data-testid="contact-email-link"
             >
@@ -91,7 +91,7 @@ export default function Contact() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-bold text-xs uppercase tracking-wider text-slate-400 group-hover:text-white/80 mb-1">Email Us</h3>
-                  <p className="text-white text-sm md:text-base font-medium">ninofarias@nandpservices.com</p>
+                  <p className="text-white text-sm md:text-base font-medium">Brandon@lancaster-ent.net</p>
                 </div>
               </div>
             </a>

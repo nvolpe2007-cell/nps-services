@@ -45,7 +45,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## How Long Will It Last?",
       "A properly installed concrete driveway in Houston lasts 20-30 years with basic maintenance. Sealing every few years helps protect against Houston's heat and occasional freeze.",
       "## Get Your Free Estimate",
-      "N&P Services has poured driveways across League City, Clear Lake, Pearland, and Greater Houston since 2008. We handle permits, prepare the site properly for our clay soil, and stand behind our work. Text or call (832) 704-5525 for a free quote."
+      "N&P Services has poured driveways across League City, Clear Lake, Pearland, and Greater Houston since 2008. We handle permits, prepare the site properly for our clay soil, and stand behind our work. Text or call (832) 226-4018 for a free quote."
     ]
   },
   "best-time-asphalt-work-texas": {
@@ -84,7 +84,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## How Long Should a Parking Lot Last?",
       "A properly installed and maintained asphalt parking lot lasts 20-30 years. If yours is failing at 10-15 years, something went wrong with the original installation or maintenance was neglected.",
       "## Get an Honest Assessment",
-      "N&P Services has been Houston's parking lot and asphalt experts since 2008. We'll tell you honestly whether you need patching, resurfacing, or full replacement. Call or text (832) 704-5525 for a free evaluation."
+      "N&P Services has been Houston's parking lot and asphalt experts since 2008. We'll tell you honestly whether you need patching, resurfacing, or full replacement. Call or text (832) 226-4018 for a free evaluation."
     ]
   },
   "commercial-construction-permits-houston": {
@@ -120,7 +120,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "N&P Services handles the permit process for our commercial clients. We prepare the applications, coordinate with city reviewers, schedule inspections, and keep your project on track. You focus on your business while we handle the paperwork.",
       "## Contact for Permit Questions",
       "Houston Permitting Center: 832-394-8899",
-      "Or let us handle it. Call N&P Services at (832) 704-5525."
+      "Or let us handle it. Call N&P Services at (832) 226-4018."
     ]
   },
   "kitchen-remodel-roi-2026": {
@@ -162,7 +162,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## Can I Stay in My House During Remodel?",
       "Usually yes, but expect dust, noise, and limited kitchen access. We work with homeowners to minimize disruption and can set up temporary cooking areas.",
       "## Get an Accurate Estimate",
-      "Every kitchen is different. N&P Services provides detailed estimates after seeing your space—not vague ranges. Call or text (832) 704-5525 to schedule a consultation."
+      "Every kitchen is different. N&P Services provides detailed estimates after seeing your space—not vague ranges. Call or text (832) 226-4018 to schedule a consultation."
     ]
   },
   "parking-lot-maintenance-tips": {
@@ -202,7 +202,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "**Worth it:** Compare these costs to a $75,000 fine. Proactive compliance is always cheaper than a lawsuit.",
       "## How N&P Services Helps",
       "We assess your parking lot for ADA compliance, handle striping and signage, repair surfaces, and install proper curb ramps. We've helped dozens of Houston businesses get compliant.",
-      "Concerned about your lot? Call (832) 704-5525 for a compliance evaluation."
+      "Concerned about your lot? Call (832) 226-4018 for a compliance evaluation."
     ]
   },
   "choosing-contractor-houston": {
@@ -244,7 +244,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "**Verify insurance** — call the insurance company directly to confirm coverage",
       "## About N&P Services",
       "We've been serving Greater Houston since 2008. A+ BBB rated. Licensed and insured. Owner Nino Farias personally oversees every project. We're happy to answer any of these questions.",
-      "Call (832) 704-5525 or text us to discuss your project."
+      "Call (832) 226-4018 or text us to discuss your project."
     ]
   },
   "best-fence-options-houston": {
@@ -281,7 +281,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## Do I Need a Permit?",
       "Houston doesn't require permits for most residential fences. However, HOAs often have strict rules about height, style, and materials. Check your HOA guidelines before choosing.",
       "## Get Your Free Estimate",
-      "N&P Services builds custom fences across League City, Clear Lake, Friendswood, and Greater Houston. Call or text (832) 704-5525."
+      "N&P Services builds custom fences across League City, Clear Lake, Friendswood, and Greater Houston. Call or text (832) 226-4018."
     ]
   },
   "seal-coating-cost-houston": {
@@ -318,7 +318,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## What's a Good Price?",
       "**Fair range:** $0.15-$0.30 per square foot. If someone quotes under $0.10, they're using watered-down sealer or only doing one coat. If they quote over $0.35, get more bids.",
       "## Get Your Free Quote",
-      "N&P Services is Houston's parking lot experts. We use commercial-grade sealer and always apply two coats. Call or text (832) 704-5525."
+      "N&P Services is Houston's parking lot experts. We use commercial-grade sealer and always apply two coats. Call or text (832) 226-4018."
     ]
   },
   "league-city-pearland-renovation-costs": {
@@ -358,7 +358,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## What's a Good Price?",
       "For either area, get 3 quotes and compare. A fair contractor should be within 15% of the average. If someone is 30%+ cheaper, ask why.",
       "## Local Experience Matters",
-      "N&P Services is based right here in League City. We've completed hundreds of projects across both cities and know the local permitting process, HOA requirements, and soil conditions. Call or text (832) 704-5525."
+      "N&P Services is based right here in League City. We've completed hundreds of projects across both cities and know the local permitting process, HOA requirements, and soil conditions. Call or text (832) 226-4018."
     ]
   },
   "foundation-cracks-houston": {
@@ -398,7 +398,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "- **Fix plumbing leaks quickly** (underground leaks erode soil under the slab)",
       "## Before You Renovate",
       "If you're planning a remodel or addition, get the foundation checked first. Adding weight to a compromised foundation makes everything worse. We always inspect foundations before starting major renovation work.",
-      "Questions about your foundation? N&P Services can evaluate your home and recommend next steps. Call or text (832) 704-5525."
+      "Questions about your foundation? N&P Services can evaluate your home and recommend next steps. Call or text (832) 226-4018."
     ]
   },
   "rv-park-construction-texas": {
@@ -445,7 +445,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "- **Not planning for expansion** \u2014 Build infrastructure capacity for future growth",
       "## Why Choose N&P Services",
       "We've built RV park facilities across Southeast Texas. Our experience with site work, utility installation, concrete pads, and drainage systems means your park is built right the first time.",
-      "Planning an RV park? Call (832) 704-5525 to discuss your project."
+      "Planning an RV park? Call (832) 226-4018 to discuss your project."
     ]
   },
   "bathroom-remodel-cost-clear-lake-league-city": {
@@ -484,7 +484,7 @@ export const blogContent: Record<string, BlogPostData> = {
       "## What's a Good Price?",
       "For the Clear Lake/League City area, $150-$300 per square foot for a full remodel is competitive. Below $100/sq ft usually means cheap materials or skipping waterproofing. Above $400/sq ft is high-end territory.",
       "## Get Your Free Estimate",
-      "N&P Services is based in League City and has remodeled bathrooms across Clear Lake, Friendswood, Dickinson, and Webster. We know these homes\u2014many were built in the '70s-'90s and have specific challenges. Call or text (832) 704-5525."
+      "N&P Services is based in League City and has remodeled bathrooms across Clear Lake, Friendswood, Dickinson, and Webster. We know these homes\u2014many were built in the '70s-'90s and have specific challenges. Call or text (832) 226-4018."
     ]
   }
 };

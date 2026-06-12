@@ -21,7 +21,7 @@ export default function CommercialLanding() {
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', { send_to: 'AW-17916018158/commercial_lead' });
     }
-    window.location.href = `sms:832-704-5525?body=${preWrittenMessage}`;
+    window.location.href = `sms:832-226-4018?body=${preWrittenMessage}`;
     setTimeout(() => {
       setLocation("/thank-you");
     }, 500);
@@ -69,13 +69,13 @@ export default function CommercialLanding() {
               </button>
               
               <a
-                href="tel:832-704-5525"
+                href="tel:832-226-4018"
                 onClick={handleCallClick}
                 className="inline-flex items-center justify-center gap-3 border-2 border-white/30 hover:border-white text-white px-10 py-5 font-bold text-base tracking-wider uppercase transition-all hover:bg-white/10"
                 data-testid="lp-call-button"
               >
                 <Phone className="w-5 h-5" />
-                Call (832) 704-5525
+                Call (832) 226-4018
               </a>
             </div>
 

@@ -115,7 +115,7 @@ export default function BlogPost() {
             </p>
             <div className="flex flex-wrap gap-4">
               <a
-                href={`sms:832-704-5525?body=${preWrittenMessage}`}
+                href={`sms:832-226-4018?body=${preWrittenMessage}`}
                 onClick={() => trackText("blog_text")}
                 className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-6 py-3 font-bold text-sm uppercase tracking-wider transition-all"
               >
@@ -123,12 +123,12 @@ export default function BlogPost() {
                 Text Us
               </a>
               <a
-                href="tel:832-704-5525"
+                href="tel:832-226-4018"
                 onClick={() => trackCall("blog")}
                 className="inline-flex items-center gap-2 border-2 border-slate-300 hover:border-slate-900 text-slate-700 px-6 py-3 font-bold text-sm uppercase tracking-wider transition-all"
               >
                 <Phone className="w-4 h-4" />
-                (832) 704-5525
+                (832) 226-4018
               </a>
             </div>
           </div>

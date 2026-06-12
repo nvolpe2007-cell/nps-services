@@ -78,9 +78,9 @@ export function CTASection() {
                 <ArrowRight className="ml-2 md:ml-3 h-4 w-4 md:h-5 md:w-5" />
               </Button>
             </Link>
-            <a href="tel:832-704-5525" onClick={() => trackCall("cta")} className="flex items-center gap-2 md:gap-3 text-white/70 active:text-white md:hover:text-white transition-colors py-3">
+            <a href="tel:832-226-4018" onClick={() => trackCall("cta")} className="flex items-center gap-2 md:gap-3 text-white/70 active:text-white md:hover:text-white transition-colors py-3">
               <Phone className="h-4 w-4 md:h-5 md:w-5" />
-              <span className="text-base md:text-lg font-semibold">832-704-5525</span>
+              <span className="text-base md:text-lg font-semibold">832-226-4018</span>
             </a>
           </motion.div>
 
@@ -97,8 +97,8 @@ export function CTASection() {
             </div>
             <div>
               <div className="text-xs md:text-sm text-white/40 uppercase tracking-wider mb-1 md:mb-2">Email</div>
-              <a href="mailto:ninofarias@nandpservices.com" className="text-sm md:text-base text-white/80 active:text-white md:hover:text-white transition-colors break-all">
-                ninofarias@nandpservices.com
+              <a href="mailto:Brandon@lancaster-ent.net" className="text-sm md:text-base text-white/80 active:text-white md:hover:text-white transition-colors break-all">
+                Brandon@lancaster-ent.net
               </a>
             </div>
             <div>

@@ -60,7 +60,7 @@ export async function registerRoutes(
       // Check if at least one notification method succeeded
       if (!emailSent && !smsSent) {
         return res.status(503).json({ 
-          message: "Unable to send your message. Please contact us directly at ninofarias@nandpservices.com or call (832) 704-5525." 
+          message: "Unable to send your message. Please contact us directly at Brandon@lancaster-ent.net or call (832) 226-4018." 
         });
       }
 

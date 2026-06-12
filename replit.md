@@ -21,8 +21,8 @@ The contact form at `/contact` submits to `/api/contact` endpoint.
 - The Resend email integration was dismissed during setup
 - Contact form will gracefully handle missing email configuration by showing a fallback message
 - Users are directed to contact the business directly via:
-  - Email: ninofarias@nandpservices.com
-  - Phone: (832) 704-5525
+  - Email: Brandon@lancaster-ent.net
+  - Phone: (832) 226-4018
 
 **To Enable Email Notifications:**
 If you'd like the contact form to send email notifications, you have two options:

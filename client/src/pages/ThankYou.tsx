@@ -70,13 +70,13 @@ export default function ThankYou() {
             <h2 className="text-xl md:text-2xl font-bold text-white mb-3 tracking-tight">Need to reach us right away?</h2>
             <p className="text-slate-400 mb-6 text-sm uppercase tracking-wider">Monday - Friday, 8 AM - 5 PM</p>
             <a 
-              href="tel:832-704-5525"
+              href="tel:832-226-4018"
               onClick={() => trackCall("thank_you")}
               className="inline-flex items-center gap-3 bg-red-600 hover:bg-red-700 text-white px-10 py-5 font-bold text-sm tracking-wider uppercase transition-all hover:scale-105"
               data-testid="thank-you-call-button"
             >
               <Phone className="w-5 h-5" />
-              Call (832) 704-5525
+              Call (832) 226-4018
             </a>
           </div>
 

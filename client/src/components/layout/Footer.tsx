@@ -95,11 +95,11 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                <a href="tel:832-704-5525" onClick={() => trackCall("footer")} className="hover:text-white">832-704-5525</a>
+                <a href="tel:832-226-4018" onClick={() => trackCall("footer")} className="hover:text-white">832-226-4018</a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                <a href="mailto:ninofarias@nandpservices.com" className="hover:text-white break-all">ninofarias@nandpservices.com</a>
+                <a href="mailto:Brandon@lancaster-ent.net" className="hover:text-white break-all">Brandon@lancaster-ent.net</a>
               </li>
             </ul>
           </div>
