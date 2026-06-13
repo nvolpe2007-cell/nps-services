@@ -22,16 +22,16 @@ const categories = [
         name: "Machine Oil",
         description:
           "Premium mineral-base oil for gears, compressors, pumps, and industrial machinery. ISO-grade formulations available from light spindle oils to heavy gear oils.",
-        image: "https://cdn.mscdirect.com/global/images/ProductImages/0547343AA-21.jpg",
-        imageAlt: "Industrial machine oil 55 gallon drum",
+        image: "https://m.media-amazon.com/images/I/71OTRUoCeuL.jpg",
+        imageAlt: "Industrial lubricant pail",
       },
       {
         id: "chain-cable-lubricant",
         name: "Chain & Cable Lubricant",
         description:
           "Deep-penetrating lubricant for roller chains, wire ropes, cables, and open gear drives. Stays put under heavy loads and high-speed operation.",
-        image: "https://m.media-amazon.com/images/I/71HMDae5BKL.jpg",
-        imageAlt: "White lithium chain and cable lubricant",
+        image: "https://images.thdstatic.com/productImages/1cb64f06-d7b5-4842-a0d1-5317d655d6e0/svn/blaster-lubricants-8-gs-64_600.jpg",
+        imageAlt: "Industrial dry lubricant spray can",
       },
     ],
   },
@@ -54,8 +54,8 @@ const categories = [
         name: "Rust Inhibitor",
         description:
           "Long-lasting corrosion protection coating for ferrous metal surfaces, structural steel, and machined components. Displaces moisture and forms a durable protective film.",
-        image: "https://www.baronblakeslee.net/wp-content/uploads/2024/12/stock-photo-barrels-of-different-colors.png",
-        imageAlt: "Industrial chemical barrels",
+        image: "https://m.media-amazon.com/images/I/91YBH0Iq1qL.jpg",
+        imageAlt: "Fluid Film rust and corrosion protection spray",
       },
       {
         id: "parts-cleaner",
@@ -78,24 +78,24 @@ const categories = [
         name: "Hydraulic Fluid",
         description:
           "Anti-wear hydraulic oil for pumps, cylinders, valves, and hydraulic systems. Premium zinc-based and zinc-free formulations with excellent oxidation stability.",
-        image: "https://buysinopec.com/cdn/shop/articles/hydraulic_oil_mmachinery.png?v=1720210406&width=851",
-        imageAlt: "Hydraulic machinery and equipment",
+        image: "https://acoilsupply.com/cdn/shop/files/FF0010_01.jpg?v=1760546138&width=533",
+        imageAlt: "OilSafe industrial fluid transfer containers",
       },
       {
         id: "cutting-fluid",
         name: "Cutting Fluid",
         description:
           "Water-soluble metalworking fluid for machining, drilling, milling, and turning operations. Reduces heat and friction while extending tool life.",
-        image: "https://www.gtmidatlantic.com/wp-content/uploads/2024/07/01-how-hydraulic-repairs-work-for-heavy-construction-equipment-800x400.jpg",
-        imageAlt: "Heavy construction equipment hydraulic systems",
+        image: "https://images.squarespace-cdn.com/content/v1/620f5b266bb31f126888ded2/b03d2ec7-f5c3-49d7-ac8d-2ef84f91fe8f/Smartlathe-CNC-lathe-Emulsified-Cutting-Fluid.jpg",
+        imageAlt: "CNC lathe emulsified cutting fluid metalworking",
       },
       {
         id: "coolant-antifreeze",
         name: "Coolant / Antifreeze",
         description:
           "Extended-life engine coolant for industrial equipment, fleet vehicles, and heavy-duty engines. OAT and HOAT formulations for modern cooling systems.",
-        image: "https://www.fluidall.com/wp-content/uploads/oil-safe-dispenser.jpg",
-        imageAlt: "Industrial fluid dispensing containers",
+        image: "https://m.media-amazon.com/images/I/71M6bnKOSBL.jpg",
+        imageAlt: "Fleet Charge heavy duty antifreeze coolant jug",
       },
     ],
   },
@@ -180,7 +180,6 @@ export default function Products() {
                       src={product.image}
                       alt={product.imageAlt}
                       className="w-full h-full object-cover object-center"
-                      loading="lazy"
                     />
                   </div>
 
