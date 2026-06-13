@@ -27,6 +27,16 @@ export function trackCall(source: string) {
 }
 
 /**
+ * Fire when a "Contact for Pricing" button is clicked on the Products page.
+ * @param productId - The product id slug (e.g. 'industrial-grease') or 'hero_cta' / 'bottom_cta' for section-level buttons.
+ */
+export function trackProductInquiry(productId: string) {
+  if (typeof window.gtag !== "function") return;
+  // GA4 event — shows in Google Analytics with product breakdown
+  window.gtag("event", "product_inquiry", { product_id: productId });
+}
+
+/**
  * Fire when any SMS text link is clicked.
  * @param source - Identifies which button was clicked (e.g. 'sticky_text', 'blog_text', 'contact', 'concrete_text', 'commercial_text', 'residential_text')
  */

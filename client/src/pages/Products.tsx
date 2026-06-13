@@ -1,5 +1,6 @@
 import { Link } from "wouter";
 import { Phone, ChevronRight } from "lucide-react";
+import { trackProductInquiry } from "@/lib/tracking";
 
 const categories = [
   {
@@ -120,6 +121,11 @@ export default function Products() {
             <Link
               href="/contact"
               data-testid="link-contact-pricing-hero"
+              onClick={() => {
+                if (typeof window.gtag === "function") {
+                  window.gtag("event", "products_hero_cta");
+                }
+              }}
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 font-bold uppercase tracking-widest transition-colors"
             >
               Contact for Pricing
@@ -189,6 +195,7 @@ export default function Products() {
                     <Link
                       href="/contact"
                       data-testid={`button-contact-pricing-${product.id}`}
+                      onClick={() => trackProductInquiry(product.id)}
                       className="flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-5 py-3 text-sm font-bold uppercase tracking-widest transition-colors w-full"
                     >
                       Contact for Pricing
@@ -217,6 +224,7 @@ export default function Products() {
             <Link
               href="/contact"
               data-testid="link-contact-pricing-bottom"
+              onClick={() => trackProductInquiry("bottom_cta")}
               className="inline-flex items-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-4 font-bold uppercase tracking-widest transition-colors"
             >
               Get a Quote
