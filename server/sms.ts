@@ -17,6 +17,22 @@ async function getCredentials(): Promise<TwilioCredentials> {
     return cachedCredentials;
   }
 
+  // Plain env vars first, so this works on any host (Vercel, Fly, a VPS...).
+  // Supports either an API key/secret pair or a plain auth token.
+  const envAccountSid = process.env.TWILIO_ACCOUNT_SID;
+  const envKey = process.env.TWILIO_API_KEY || envAccountSid;
+  const envSecret = process.env.TWILIO_API_KEY_SECRET || process.env.TWILIO_AUTH_TOKEN;
+  if (envAccountSid && envKey && envSecret) {
+    cachedCredentials = {
+      accountSid: envAccountSid,
+      apiKey: envKey,
+      apiKeySecret: envSecret,
+      phoneNumber: process.env.TWILIO_PHONE_NUMBER || null,
+    };
+    credentialsCacheTime = Date.now();
+    return cachedCredentials;
+  }
+
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   if (!hostname) {
     throw new Error('Replit connectors not available - REPLIT_CONNECTORS_HOSTNAME not set');
