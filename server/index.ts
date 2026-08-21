@@ -6,6 +6,12 @@ import { createServer } from "http";
 const app = express();
 const httpServer = createServer(app);
 
+// The app runs behind Vercel's proxy, so trust the first hop to get the
+// real client IP (req.ip) instead of the proxy's address. Without this,
+// express-rate-limit either can't key by IP or ends up rate-limiting all
+// users together as one.
+app.set("trust proxy", 1);
+
 declare module "http" {
   interface IncomingMessage {
     rawBody: unknown;
