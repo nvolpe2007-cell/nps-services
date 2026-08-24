@@ -4,6 +4,16 @@ import { Resend } from 'resend';
 let connectionSettings: any;
 
 async function getCredentials() {
+  // Plain env vars first, so this works on any host (Vercel, Fly, a VPS...).
+  // The Replit connector path below only functions inside Replit, where
+  // REPLIT_CONNECTORS_HOSTNAME and REPL_IDENTITY/WEB_REPL_RENEWAL are injected.
+  if (process.env.RESEND_API_KEY) {
+    return {
+      apiKey: process.env.RESEND_API_KEY,
+      fromEmail: process.env.RESEND_FROM_EMAIL,
+    };
+  }
+
   const hostname = process.env.REPLIT_CONNECTORS_HOSTNAME;
   const xReplitToken = process.env.REPL_IDENTITY 
     ? 'repl ' + process.env.REPL_IDENTITY 
@@ -53,7 +63,7 @@ export async function sendContactEmail(data: ContactFormData): Promise<{ success
     
     const result = await client.emails.send({
       from: fromEmail || 'N&P Services <onboarding@resend.dev>',
-      to: ['NinoFarias@nandpservices.com'],
+      to: [process.env.CONTACT_NOTIFICATION_EMAIL || 'NinoFarias@nandpservices.com'],
       subject: `New Contact Form Submission - ${data.service}`,
       html: `
         <h2>New Contact Form Submission</h2>

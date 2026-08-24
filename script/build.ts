@@ -59,6 +59,39 @@ async function buildAll() {
     external: externals,
     logLevel: "info",
   });
+
+  // server/app.ts is bundled separately, to ESM, for the Vercel serverless
+  // function (api/[...path].mjs) to import as a self-contained dist/app.mjs.
+  // Vercel's Node.js functions only auto-detect .js/.mjs/.ts files under
+  // api/ (a .cjs file there is silently never wired up, 404ing on every
+  // request), and this project's package.json has "type": "module", so a
+  // plain .js file there would be parsed as ESM and choke on require(). ESM
+  // output plus a .mjs extension satisfies both constraints. Handing Vercel's
+  // function compiler the raw TypeScript/ESM source directly doesn't work
+  // either: it doesn't resolve this project's "@shared/*" path alias or
+  // extensionless relative imports, and previously crashed every request
+  // with ERR_MODULE_NOT_FOUND.
+  await esbuild({
+    entryPoints: ["server/app.ts"],
+    platform: "node",
+    bundle: true,
+    format: "esm",
+    outfile: "dist/app.mjs",
+    define: {
+      "process.env.NODE_ENV": '"production"',
+    },
+    minify: true,
+    external: externals,
+    logLevel: "info",
+    // Bundled CJS deps (express-session, memorystore, etc.) call require()
+    // for Node builtins like "node:events". esbuild's ESM output doesn't
+    // define a global require for that, so every request crashed with
+    // "Dynamic require of 'node:events' is not supported". This banner
+    // restores it.
+    banner: {
+      js: `import { createRequire as __bannerCrReq } from "node:module";\nglobalThis.require = __bannerCrReq(import.meta.url);`,
+    },
+  });
 }
 
 buildAll().catch((err) => {

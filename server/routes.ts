@@ -1,5 +1,4 @@
 import type { Express } from "express";
-import { createServer, type Server } from "http";
 import { storage } from "./storage";
 import { z } from "zod";
 import { sendContactNotificationSMS, isTwilioConfigured, getTwilioPhoneNumber } from "./sms";
@@ -15,10 +14,7 @@ const contactFormSchema = z.object({
   message: z.string().min(10),
 });
 
-export async function registerRoutes(
-  httpServer: Server,
-  app: Express
-): Promise<Server> {
+export function registerRoutes(app: Express): void {
   // Contact form submission endpoint
   app.post("/api/contact", async (req, res) => {
     try {
@@ -117,5 +113,4 @@ export async function registerRoutes(
     res.sendFile("robots.txt", { root: "./dist/public" });
   });
 
-  return httpServer;
 }
