@@ -99,7 +99,7 @@ export function Footer() {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-primary mr-3 flex-shrink-0" />
-                <a href="mailto:Brandon@lancaster-ent.net" className="hover:text-white break-all">Brandon@lancaster-ent.net</a>
+                <a href="mailto:NinoFarias@nandpservices.com" className="hover:text-white break-all">NinoFarias@nandpservices.com</a>
               </li>
             </ul>
           </div>

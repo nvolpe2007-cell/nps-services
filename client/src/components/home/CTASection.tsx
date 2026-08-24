@@ -97,8 +97,8 @@ export function CTASection() {
             </div>
             <div>
               <div className="text-xs md:text-sm text-white/40 uppercase tracking-wider mb-1 md:mb-2">Email</div>
-              <a href="mailto:Brandon@lancaster-ent.net" className="text-sm md:text-base text-white/80 active:text-white md:hover:text-white transition-colors break-all">
-                Brandon@lancaster-ent.net
+              <a href="mailto:NinoFarias@nandpservices.com" className="text-sm md:text-base text-white/80 active:text-white md:hover:text-white transition-colors break-all">
+                NinoFarias@nandpservices.com
               </a>
             </div>
             <div>
