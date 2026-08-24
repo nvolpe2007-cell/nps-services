@@ -1,4 +1,5 @@
 import type { Express } from "express";
+import rateLimit from "express-rate-limit";
 import { storage } from "./storage";
 import { z } from "zod";
 import { sendContactNotificationSMS, isTwilioConfigured, getTwilioPhoneNumber } from "./sms";
@@ -14,9 +15,38 @@ const contactFormSchema = z.object({
   message: z.string().min(10),
 });
 
+// Contact form triggers a billable SMS (Twilio) and email (Resend) per
+// submission. Without a limit, a burst of requests translates directly
+// into billable messages and can exhaust provider quota, causing real
+// customer leads to start failing. Keep this tight.
+const contactRateLimiter = rateLimit({
+  windowMs: 15 * 60 * 1000,
+  limit: 5,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    message:
+      "Too many requests. Please try again later, or call us directly at (832) 226-4018.",
+  },
+});
+
+// Reviews don't cost money to submit, but an unbounded flood fills the
+// moderation queue with junk that a human has to sift through before any
+// legitimate review can be approved.
+const reviewsRateLimiter = rateLimit({
+  windowMs: 60 * 60 * 1000,
+  limit: 10,
+  standardHeaders: true,
+  legacyHeaders: false,
+  message: {
+    message:
+      "Too many requests. Please try again later, or call us directly at (832) 226-4018.",
+  },
+});
+
 export function registerRoutes(app: Express): void {
   // Contact form submission endpoint
-  app.post("/api/contact", async (req, res) => {
+  app.post("/api/contact", contactRateLimiter, async (req, res) => {
     try {
       const data = contactFormSchema.parse(req.body);
       
@@ -73,7 +103,7 @@ export function registerRoutes(app: Express): void {
   });
 
   // Submit a new review
-  app.post("/api/reviews", async (req, res) => {
+  app.post("/api/reviews", reviewsRateLimiter, async (req, res) => {
     try {
       const data = insertReviewSchema.parse(req.body);
       const review = await storage.createReview(data);
