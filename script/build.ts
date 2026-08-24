@@ -47,11 +47,19 @@ async function buildAll() {
   const externals = allDeps.filter((dep) => !allowlist.includes(dep));
 
   await esbuild({
-    entryPoints: ["server/index.ts"],
+    // server/app.ts is bundled alongside server/index.ts so the Vercel
+    // serverless function (api/[...path].cjs) can require a self-contained
+    // dist/app.cjs without handing Vercel's function compiler a raw
+    // TypeScript/ESM source file (it doesn't resolve this project's path
+    // aliases or "moduleResolution": "bundler" and fails at build or,
+    // if it does build, at runtime with ERR_MODULE_NOT_FOUND on the
+    // extensionless relative imports).
+    entryPoints: ["server/index.ts", "server/app.ts"],
     platform: "node",
     bundle: true,
     format: "cjs",
-    outfile: "dist/index.cjs",
+    outdir: "dist",
+    outExtension: { ".js": ".cjs" },
     define: {
       "process.env.NODE_ENV": '"production"',
     },
