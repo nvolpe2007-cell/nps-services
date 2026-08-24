@@ -81,7 +81,7 @@ export default function Contact() {
             </a>
 
             <a 
-              href="mailto:Brandon@lancaster-ent.net"
+              href="mailto:NinoFarias@nandpservices.com"
               className="group block bg-slate-900 p-6 md:p-8 hover:bg-red-600 transition-colors"
               data-testid="contact-email-link"
             >
@@ -91,7 +91,7 @@ export default function Contact() {
                 </div>
                 <div className="text-left">
                   <h3 className="font-bold text-xs uppercase tracking-wider text-slate-400 group-hover:text-white/80 mb-1">Email Us</h3>
-                  <p className="text-white text-sm md:text-base font-medium">Brandon@lancaster-ent.net</p>
+                  <p className="text-white text-sm md:text-base font-medium">NinoFarias@nandpservices.com</p>
                 </div>
               </div>
             </a>
