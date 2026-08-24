@@ -83,6 +83,14 @@ async function buildAll() {
     minify: true,
     external: externals,
     logLevel: "info",
+    // Bundled CJS deps (express-session, memorystore, etc.) call require()
+    // for Node builtins like "node:events". esbuild's ESM output doesn't
+    // define a global require for that, so every request crashed with
+    // "Dynamic require of 'node:events' is not supported". This banner
+    // restores it.
+    banner: {
+      js: `import { createRequire as __bannerCrReq } from "node:module";\nglobalThis.require = __bannerCrReq(import.meta.url);`,
+    },
   });
 }
 
