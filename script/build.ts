@@ -47,19 +47,36 @@ async function buildAll() {
   const externals = allDeps.filter((dep) => !allowlist.includes(dep));
 
   await esbuild({
-    // server/app.ts is bundled alongside server/index.ts so the Vercel
-    // serverless function (api/[...path].cjs) can require a self-contained
-    // dist/app.cjs without handing Vercel's function compiler a raw
-    // TypeScript/ESM source file (it doesn't resolve this project's path
-    // aliases or "moduleResolution": "bundler" and fails at build or,
-    // if it does build, at runtime with ERR_MODULE_NOT_FOUND on the
-    // extensionless relative imports).
-    entryPoints: ["server/index.ts", "server/app.ts"],
+    entryPoints: ["server/index.ts"],
     platform: "node",
     bundle: true,
     format: "cjs",
-    outdir: "dist",
-    outExtension: { ".js": ".cjs" },
+    outfile: "dist/index.cjs",
+    define: {
+      "process.env.NODE_ENV": '"production"',
+    },
+    minify: true,
+    external: externals,
+    logLevel: "info",
+  });
+
+  // server/app.ts is bundled separately, to ESM, for the Vercel serverless
+  // function (api/[...path].mjs) to import as a self-contained dist/app.mjs.
+  // Vercel's Node.js functions only auto-detect .js/.mjs/.ts files under
+  // api/ (a .cjs file there is silently never wired up, 404ing on every
+  // request), and this project's package.json has "type": "module", so a
+  // plain .js file there would be parsed as ESM and choke on require(). ESM
+  // output plus a .mjs extension satisfies both constraints. Handing Vercel's
+  // function compiler the raw TypeScript/ESM source directly doesn't work
+  // either: it doesn't resolve this project's "@shared/*" path alias or
+  // extensionless relative imports, and previously crashed every request
+  // with ERR_MODULE_NOT_FOUND.
+  await esbuild({
+    entryPoints: ["server/app.ts"],
+    platform: "node",
+    bundle: true,
+    format: "esm",
+    outfile: "dist/app.mjs",
     define: {
       "process.env.NODE_ENV": '"production"',
     },
