@@ -1,10 +1,27 @@
-import type { Express } from "express";
+import type { Express, Request, Response, NextFunction } from "express";
+import { timingSafeEqual } from "crypto";
 import rateLimit from "express-rate-limit";
 import { storage } from "./storage";
 import { z } from "zod";
 import { sendContactNotificationSMS, isTwilioConfigured, getTwilioPhoneNumber } from "./sms";
 import { sendContactEmail, isResendConfigured } from "./email";
 import { insertReviewSchema } from "@shared/schema";
+
+// Gates the review-moderation endpoints below. Compared with timingSafeEqual
+// so response timing can't be used to brute-force the token byte-by-byte.
+function requireAdmin(req: Request, res: Response, next: NextFunction) {
+  const configured = process.env.REVIEWS_ADMIN_TOKEN;
+  if (!configured) {
+    return res.status(503).json({ message: "Admin not configured. Set REVIEWS_ADMIN_TOKEN." });
+  }
+  const provided = req.header("authorization")?.replace(/^Bearer\s+/i, "") ?? "";
+  const a = Buffer.from(provided);
+  const b = Buffer.from(configured);
+  if (a.length !== b.length || !timingSafeEqual(a, b)) {
+    return res.status(401).json({ message: "Unauthorized" });
+  }
+  next();
+}
 
 // Contact form schema
 const contactFormSchema = z.object({
@@ -127,6 +144,45 @@ export function registerRoutes(app: Express): void {
       return res.status(200).json(reviews);
     } catch (error) {
       console.error("Error fetching reviews:", error);
+      return res.status(500).json({ message: "An error occurred." });
+    }
+  });
+
+  // List all reviews, including pending ones awaiting moderation
+  app.get("/api/admin/reviews", requireAdmin, async (req, res) => {
+    try {
+      const reviews = await storage.getAllReviews();
+      return res.status(200).json(reviews);
+    } catch (error) {
+      console.error("Error fetching all reviews:", error);
+      return res.status(500).json({ message: "An error occurred." });
+    }
+  });
+
+  // Approve a pending review so it appears in GET /api/reviews
+  app.post("/api/admin/reviews/:id/approve", requireAdmin, async (req, res) => {
+    try {
+      const review = await storage.approveReview(req.params.id);
+      if (!review) {
+        return res.status(404).json({ message: "Review not found." });
+      }
+      return res.status(200).json({ message: "Review approved.", review });
+    } catch (error) {
+      console.error("Error approving review:", error);
+      return res.status(500).json({ message: "An error occurred." });
+    }
+  });
+
+  // Reject/remove a pending or previously-approved review
+  app.delete("/api/admin/reviews/:id", requireAdmin, async (req, res) => {
+    try {
+      const deleted = await storage.deleteReview(req.params.id);
+      if (!deleted) {
+        return res.status(404).json({ message: "Review not found." });
+      }
+      return res.status(200).json({ message: "Review deleted." });
+    } catch (error) {
+      console.error("Error deleting review:", error);
       return res.status(500).json({ message: "An error occurred." });
     }
   });

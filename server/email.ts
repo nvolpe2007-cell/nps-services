@@ -57,22 +57,34 @@ interface ContactFormData {
   message: string;
 }
 
+// Contact-form fields are submitter-controlled and go straight into an HTML
+// email body -- without escaping, a submitter could inject markup (fake
+// links, spoofed content) that renders in the recipient's email client.
+function escapeHtml(value: string): string {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
 export async function sendContactEmail(data: ContactFormData): Promise<{ success: boolean; error?: string }> {
   try {
     const { client, fromEmail } = await getResendClient();
-    
+
     const result = await client.emails.send({
       from: fromEmail || 'N&P Services <onboarding@resend.dev>',
       to: [process.env.CONTACT_NOTIFICATION_EMAIL || 'NinoFarias@nandpservices.com'],
-      subject: `New Contact Form Submission - ${data.service}`,
+      subject: `New Contact Form Submission - ${escapeHtml(data.service)}`,
       html: `
         <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${data.name}</p>
-        <p><strong>Email:</strong> ${data.email}</p>
-        <p><strong>Phone:</strong> ${data.phone}</p>
-        <p><strong>Service:</strong> ${data.service}</p>
+        <p><strong>Name:</strong> ${escapeHtml(data.name)}</p>
+        <p><strong>Email:</strong> ${escapeHtml(data.email)}</p>
+        <p><strong>Phone:</strong> ${escapeHtml(data.phone)}</p>
+        <p><strong>Service:</strong> ${escapeHtml(data.service)}</p>
         <p><strong>Message:</strong></p>
-        <p>${data.message.replace(/\n/g, '<br>')}</p>
+        <p>${escapeHtml(data.message).replace(/\n/g, '<br>')}</p>
       `,
     });
 

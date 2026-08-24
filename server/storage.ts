@@ -9,6 +9,8 @@ export interface IStorage {
   createReview(review: InsertReview): Promise<Review>;
   getApprovedReviews(): Promise<Review[]>;
   getAllReviews(): Promise<Review[]>;
+  approveReview(id: string): Promise<Review | undefined>;
+  deleteReview(id: string): Promise<boolean>;
 }
 
 export class DatabaseStorage implements IStorage {
@@ -28,7 +30,11 @@ export class DatabaseStorage implements IStorage {
   }
 
   async createReview(review: InsertReview): Promise<Review> {
-    const result = await db.insert(reviews).values({ ...review, approved: true }).returning();
+    // Submitted reviews start unapproved (the schema default) and only
+    // reach the public site once an admin approves them via
+    // POST /api/admin/reviews/:id/approve -- this used to hardcode
+    // approved: true, silently publishing every submission unmoderated.
+    const result = await db.insert(reviews).values(review).returning();
     return result[0];
   }
 
@@ -38,6 +44,16 @@ export class DatabaseStorage implements IStorage {
 
   async getAllReviews(): Promise<Review[]> {
     return await db.select().from(reviews).orderBy(desc(reviews.createdAt));
+  }
+
+  async approveReview(id: string): Promise<Review | undefined> {
+    const result = await db.update(reviews).set({ approved: true }).where(eq(reviews.id, id)).returning();
+    return result[0];
+  }
+
+  async deleteReview(id: string): Promise<boolean> {
+    const result = await db.delete(reviews).where(eq(reviews.id, id)).returning();
+    return result.length > 0;
   }
 }
 
