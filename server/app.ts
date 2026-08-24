@@ -29,6 +29,12 @@ export function log(message: string, source = "express") {
 export function createApp(): Express {
   const app = express();
 
+  // The app runs behind Vercel's (and, for the long-running server, a
+  // reverse proxy's) proxy, so trust the first hop to get the real client
+  // IP (req.ip). Without this, express-rate-limit either can't key by IP
+  // or ends up rate-limiting all users together as one.
+  app.set("trust proxy", 1);
+
   app.use(
     express.json({
       verify: (req, _res, buf) => {
