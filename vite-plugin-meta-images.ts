@@ -55,20 +55,38 @@ export function metaImagesPlugin(): Plugin {
   };
 }
 
+// The production domain, used whenever we're not in an actual Replit dev
+// session. This app was migrated off Replit to Vercel; REPLIT_DEV_DOMAIN /
+// REPLIT_INTERNAL_APP_DOMAIN describe a Replit preview URL, not where the
+// site is actually deployed, and using them here baked a dead
+// *.replit.app URL into every production og:image/twitter:image tag.
+const PRODUCTION_SITE_URL = 'https://nandpservices.llc';
+
 function getDeploymentUrl(): string | null {
-  if (process.env.REPLIT_INTERNAL_APP_DOMAIN) {
-    const url = `https://${process.env.REPLIT_INTERNAL_APP_DOMAIN}`;
-    log('[meta-images] using internal app domain:', url);
+  if (process.env.PUBLIC_SITE_URL) {
+    const url = process.env.PUBLIC_SITE_URL.replace(/\/$/, '');
+    log('[meta-images] using PUBLIC_SITE_URL:', url);
     return url;
   }
 
-  if (process.env.REPLIT_DEV_DOMAIN) {
-    const url = `https://${process.env.REPLIT_DEV_DOMAIN}`;
-    log('[meta-images] using dev domain:', url);
-    return url;
+  // Only trust the Replit domain vars when actually running inside Replit
+  // (REPL_ID is set there and nowhere else) -- e.g. local dev preview.
+  if (process.env.REPL_ID) {
+    if (process.env.REPLIT_INTERNAL_APP_DOMAIN) {
+      const url = `https://${process.env.REPLIT_INTERNAL_APP_DOMAIN}`;
+      log('[meta-images] using internal app domain:', url);
+      return url;
+    }
+
+    if (process.env.REPLIT_DEV_DOMAIN) {
+      const url = `https://${process.env.REPLIT_DEV_DOMAIN}`;
+      log('[meta-images] using dev domain:', url);
+      return url;
+    }
   }
 
-  return null;
+  log('[meta-images] no PUBLIC_SITE_URL or Replit domain found, using production default:', PRODUCTION_SITE_URL);
+  return PRODUCTION_SITE_URL;
 }
 
 function log(...args: any[]): void {
