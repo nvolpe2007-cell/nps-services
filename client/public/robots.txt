@@ -2,7 +2,7 @@ User-agent: *
 Allow: /
 Disallow: /api/
 
-Sitemap: https://nandpservices.llc/sitemap.xml
+Sitemap: https://www.nandpservices.llc/sitemap.xml
 
 # Crawl-delay for polite crawling
 Crawl-delay: 1
