@@ -1,8 +1,16 @@
 import { MapPin, Phone, Mail, Clock, MessageCircle, ChevronRight } from "lucide-react";
 import { useLocation } from "wouter";
 import { trackCall, trackText } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function Contact() {
+  usePageSeo({
+    title: "Contact Us | N&P Services",
+    description:
+      "Contact N&P Services for a free construction estimate. Call (832) 226-4018 or text us. Serving League City and Greater Houston.",
+    path: "/contact",
+  });
+
   const [, setLocation] = useLocation();
   const preWrittenMessage = encodeURIComponent("I have a job for you!");
 

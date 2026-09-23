@@ -1,7 +1,8 @@
 import { Link } from "wouter";
 import { Calendar, ArrowRight, Clock } from "lucide-react";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
-const blogPosts = [
+export const blogPosts = [
   {
     id: "concrete-driveway-cost-houston",
     title: "How Much Does a Concrete Driveway Cost in Houston?",
@@ -101,6 +102,13 @@ const blogPosts = [
 ];
 
 export default function Blog() {
+  usePageSeo({
+    title: "Construction Blog | N&P Services",
+    description:
+      "Expert tips and guides on Houston construction, concrete, remodeling, and asphalt paving from N&P Services.",
+    path: "/blog",
+  });
+
   return (
     <div className="pt-24 min-h-screen bg-white">
       {/* Hero */}

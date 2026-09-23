@@ -2,8 +2,19 @@ import { useEffect } from "react";
 import { Link } from "wouter";
 import { CheckCircle, Phone, ArrowLeft, Heart, Star, Shield } from "lucide-react";
 import { trackCall } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function ThankYou() {
+  // Thin, post-submission confirmation page with no unique content -- keep
+  // it out of search results rather than indexing a duplicate of itself for
+  // every visitor who submits the contact form.
+  usePageSeo({
+    title: "Thank You | N&P Services",
+    description: "We truly appreciate you reaching out to N&P Services.",
+    path: "/thank-you",
+    noindex: true,
+  });
+
   useEffect(() => {
     if (typeof window.gtag === 'function') {
       window.gtag('event', 'conversion', {

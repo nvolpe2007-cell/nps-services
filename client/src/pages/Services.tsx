@@ -3,8 +3,16 @@ import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/com
 import { Hammer, Building } from "lucide-react";
 import resImage from "@assets/portfolio/kitchen_remodel_1.webp";
 import comImage from "@assets/portfolio/commercial_slab_new.webp";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function Services() {
+  usePageSeo({
+    title: "Our Services | N&P Services",
+    description:
+      "Comprehensive residential and commercial construction solutions delivered with precision by N&P Services in Houston.",
+    path: "/services",
+  });
+
   return (
     <div className="pt-24 min-h-screen bg-background">
       <div className="bg-slate-900 text-white py-20">

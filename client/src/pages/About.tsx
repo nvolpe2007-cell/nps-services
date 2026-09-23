@@ -1,6 +1,14 @@
 import { CheckCircle2 } from "lucide-react";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function About() {
+  usePageSeo({
+    title: "About Us | N&P Services",
+    description:
+      "N&P Services has served the Greater Houston area since 2008. A+ BBB rated, family-owned, with 17+ years of construction experience.",
+    path: "/about",
+  });
+
   return (
     <div className="pt-24 min-h-screen bg-background">
       {/* Header */}

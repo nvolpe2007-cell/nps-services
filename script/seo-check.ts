@@ -6,7 +6,11 @@
 //
 // Usage: tsx script/seo-check.ts [url]  (defaults to SITE_URL below)
 
-const SITE_URL = process.argv[2] ?? "https://nandpservices.llc";
+// The apex (nandpservices.llc) still resolves to a stale, unrelated
+// deployment (see the "canonical, schema, sitemap and robots point at www"
+// fix) -- default to the real host so this check reflects what Google and
+// visitors actually see at the canonical URL.
+const SITE_URL = process.argv[2] ?? "https://www.nandpservices.llc";
 
 type Check = { label: string; ok: boolean; detail?: string };
 

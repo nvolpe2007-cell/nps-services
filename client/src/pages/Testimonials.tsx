@@ -3,6 +3,7 @@ import { Star, Quote, ChevronLeft, ChevronRight, Award, Users, ThumbsUp, Clock }
 import { Button } from "@/components/ui/button";
 import { ReviewForm } from "@/components/reviews/ReviewForm";
 import { ReviewsDisplay } from "@/components/reviews/ReviewsDisplay";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 const testimonials = [
   {
@@ -104,6 +105,13 @@ function TestimonialCard({ testimonial, isActive }: { testimonial: typeof testim
 }
 
 export default function Testimonials() {
+  usePageSeo({
+    title: "Client Reviews | N&P Services",
+    description:
+      "Read client reviews for N&P Services, an A+ BBB rated construction company serving Greater Houston for over 17 years.",
+    path: "/reviews",
+  });
+
   const [activeIndex, setActiveIndex] = useState(0);
 
   const nextTestimonial = () => {
