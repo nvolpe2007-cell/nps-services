@@ -2,8 +2,16 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle, Phone, MessageCircle, ChevronRight, Star, Shield, Clock } from "lucide-react";
 import { trackCall, trackText } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function ConcreteLanding() {
+  usePageSeo({
+    title: "Concrete & Paving Services | N&P Services",
+    description:
+      "Driveways, sidewalks, parking lots, and commercial slabs in Houston. 17+ years of experience with an A+ BBB rating.",
+    path: "/lp/concrete",
+  });
+
   const [, setLocation] = useLocation();
   const preWrittenMessage = encodeURIComponent("I need a concrete/paving quote!");
 

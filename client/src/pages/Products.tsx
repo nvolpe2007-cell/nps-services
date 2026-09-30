@@ -1,6 +1,7 @@
 import { Link } from "wouter";
 import { Phone, ChevronRight } from "lucide-react";
 import { trackProductInquiry } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 const categories = [
   {
@@ -102,6 +103,13 @@ const categories = [
 ];
 
 export default function Products() {
+  usePageSeo({
+    title: "Industrial Products | N&P Services",
+    description:
+      "Lubricants, chemicals, and industrial fluids for heavy equipment, manufacturing, and fleet maintenance. Bulk and drum quantities available.",
+    path: "/products",
+  });
+
   return (
     <div className="pt-24 min-h-screen bg-background">
       {/* Hero */}

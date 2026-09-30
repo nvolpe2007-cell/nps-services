@@ -2,12 +2,24 @@ import { useRoute, Link } from "wouter";
 import { Calendar, Clock, ArrowLeft, Phone, MessageCircle } from "lucide-react";
 import { blogContent } from "@/data/blogContent";
 import { trackCall, trackText } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
+import { blogPosts } from "@/pages/Blog";
 
 export default function BlogPost() {
   const [, params] = useRoute("/blog/:slug");
   const slug = params?.slug || "";
   const post = blogContent[slug];
+  const listing = blogPosts.find((p) => p.id === slug);
   const preWrittenMessage = encodeURIComponent("I have a job for you!");
+
+  usePageSeo({
+    title: post ? post.title : "Article Not Found | N&P Services",
+    description: post
+      ? listing?.excerpt ?? post.title
+      : "The article you're looking for doesn't exist.",
+    path: `/blog/${slug}`,
+    noindex: !post,
+  });
 
   if (!post) {
     return (

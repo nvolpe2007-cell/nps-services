@@ -2,8 +2,16 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle, Phone, MessageCircle, ChevronRight, Star, Shield, Clock, Building2 } from "lucide-react";
 import { trackCall, trackText } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function CommercialLanding() {
+  usePageSeo({
+    title: "Commercial Construction | N&P Services",
+    description:
+      "From ground-up builds to tenant improvements. Steel buildings, site work, and multi-family projects across Greater Houston.",
+    path: "/lp/commercial",
+  });
+
   const [, setLocation] = useLocation();
   const preWrittenMessage = encodeURIComponent("I need a commercial construction quote!");
 

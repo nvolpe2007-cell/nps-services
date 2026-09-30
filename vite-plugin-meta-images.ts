@@ -60,7 +60,13 @@ export function metaImagesPlugin(): Plugin {
 // REPLIT_INTERNAL_APP_DOMAIN describe a Replit preview URL, not where the
 // site is actually deployed, and using them here baked a dead
 // *.replit.app URL into every production og:image/twitter:image tag.
-const PRODUCTION_SITE_URL = 'https://nandpservices.llc';
+//
+// This must stay in sync with the www domain used for canonical/schema/
+// sitemap/robots (see client/index.html, client/public/sitemap.xml and
+// client/public/robots.txt) -- the apex still resolves to a stale, unrelated
+// deployment, so pointing og:image/twitter:image at the apex would serve a
+// social-share image from the wrong host.
+const PRODUCTION_SITE_URL = 'https://www.nandpservices.llc';
 
 function getDeploymentUrl(): string | null {
   if (process.env.PUBLIC_SITE_URL) {

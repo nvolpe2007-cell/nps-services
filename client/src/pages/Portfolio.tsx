@@ -38,6 +38,7 @@ import interiorLounge from "@assets/portfolio/interior_lounge.webp";
 import interiorBar from "@assets/portfolio/interior_bar.webp";
 import commercialFraming from "@/assets/portfolio/commercial_framing.webp";
 import residentialDriveway from "@/assets/portfolio/residential_driveway.webp";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 const projects = [
   {
@@ -267,6 +268,13 @@ function ProjectCard({ project, onOpenLightbox }: { project: typeof projects[0];
 }
 
 export default function Portfolio() {
+  usePageSeo({
+    title: "Our Portfolio | N&P Services",
+    description:
+      "Browse N&P Services' portfolio of residential and commercial construction projects across the Greater Houston area.",
+    path: "/portfolio",
+  });
+
   const [location] = useLocation();
   const [filter, setFilter] = useState("All");
   const [lightbox, setLightbox] = useState<{ images: string[]; index: number; title: string } | null>(null);

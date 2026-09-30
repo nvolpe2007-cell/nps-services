@@ -2,8 +2,16 @@ import { useEffect } from "react";
 import { useLocation } from "wouter";
 import { CheckCircle, Phone, MessageCircle, ChevronRight, Star, Shield, Clock, Home } from "lucide-react";
 import { trackCall, trackText } from "@/lib/tracking";
+import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function ResidentialLanding() {
+  usePageSeo({
+    title: "Residential Construction | N&P Services",
+    description:
+      "From new custom homes to kitchen remodels. Family-owned builder serving Houston families for 17+ years.",
+    path: "/lp/residential",
+  });
+
   const [, setLocation] = useLocation();
   const preWrittenMessage = encodeURIComponent("I need a home construction/remodel quote!");
 
