@@ -225,7 +225,8 @@ export default function CommercialConcrete() {
         <div className="container mx-auto px-4 md:px-12">
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Where we work</h2>
           <p className="text-lg text-slate-600 mb-8 max-w-2xl">
-            Based in League City, working across Houston and the surrounding cities.
+            Based in League City, working across Harris, Galveston, Brazoria and Fort Bend
+            counties.
           </p>
           <ul className="flex flex-wrap gap-3">
             {serviceCities.map((city) => (
@@ -238,6 +239,36 @@ export default function CommercialConcrete() {
               </li>
             ))}
           </ul>
+        </div>
+      </section>
+
+      {/* Plans in, bid out: how GCs and public buyers actually send work */}
+      <section className="py-16 md:py-20 bg-slate-900 text-white">
+        <div className="container mx-auto px-4 md:px-12 grid md:grid-cols-2 gap-10 items-center">
+          <div>
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">Bidding a project?</h2>
+            <p className="text-lg text-slate-300 leading-relaxed">
+              Email your plans, specs or a few site photos with the address and your bid
+              date. We'll review the scope and send back a written, itemized bid.
+            </p>
+          </div>
+          <div className="flex flex-col gap-4">
+            <a
+              href="mailto:NinoFarias@nandpservices.com?subject=Bid%20request"
+              className="inline-flex items-center justify-center gap-2 bg-red-600 hover:bg-red-700 text-white px-8 py-5 font-bold tracking-wider uppercase transition-colors"
+            >
+              Email plans for a bid
+              <ChevronRight className="w-5 h-5" />
+            </a>
+            <a
+              href="tel:832-226-4018"
+              onClick={() => trackCall("commercial_concrete_bid")}
+              className="inline-flex items-center justify-center gap-2 border-2 border-white/30 hover:border-white text-white px-8 py-5 font-bold tracking-wider uppercase transition-colors"
+            >
+              <Phone className="w-5 h-5" />
+              Or call (832) 226-4018
+            </a>
+          </div>
         </div>
       </section>
 
