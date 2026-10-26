@@ -59,7 +59,7 @@ export function Hero() {
       </div>
 
       {/* Content */}
-      <div className="relative h-full flex items-center z-10">
+      <div className="relative h-full flex items-center z-10 pt-24 md:pt-28">
         <div className="container mx-auto px-4 md:px-12 lg:px-20">
           <div className="max-w-3xl">
             <motion.div
@@ -99,15 +99,16 @@ export function Hero() {
               animate={{ opacity: 1 }}
               transition={{ delay: 0.3, duration: 0.4 }}
             >
-              <Link href="/contact">
-                <Button
-                  size="lg"
-                  className="w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-xs md:text-sm font-bold tracking-wider uppercase bg-red-600 text-white hover:bg-red-700 rounded-none"
-                >
+              <Button
+                asChild
+                size="lg"
+                className="w-full sm:w-auto h-12 md:h-14 px-6 md:px-8 text-xs md:text-sm font-bold tracking-wider uppercase bg-red-600 text-white hover:bg-red-700 rounded-none"
+              >
+                <Link href="/contact">
                   Request a Bid
                   <ChevronRight className="ml-2 h-4 w-4" />
-                </Button>
-              </Link>
+                </Link>
+              </Button>
               <a
                 href="tel:832-226-4018"
                 onClick={() => trackCall("hero")}

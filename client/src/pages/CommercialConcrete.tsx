@@ -244,11 +244,11 @@ export default function CommercialConcrete() {
               </details>
             ))}
           </div>
-          <p className="mt-10 text-slate-600 flex items-center gap-2">
-            <HomeIcon className="w-4 h-4 text-red-500" />
+          <p className="mt-10 text-slate-600">
+            <HomeIcon className="inline w-4 h-4 text-red-500 mr-2 -mt-0.5" />
             Need work at home instead? We still do driveways, patios and remodels.{" "}
             <Link href="/services" className="text-red-600 font-semibold hover:underline">
-              See residential services
+              See all services (Residential tab)
             </Link>
           </p>
         </div>

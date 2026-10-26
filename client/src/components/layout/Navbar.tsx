@@ -87,7 +87,7 @@ export function Navbar() {
       <div 
         className={cn(
           "md:hidden absolute top-full left-0 right-0 bg-[#1a1a1a] border-t border-white/10 shadow-2xl overflow-hidden transition-all duration-300 ease-out",
-          isOpen ? "max-h-[500px] opacity-100" : "max-h-0 opacity-0"
+          isOpen ? "max-h-[calc(100vh-5rem)] overflow-y-auto opacity-100" : "max-h-0 opacity-0"
         )}
       >
         <div className="p-6 flex flex-col space-y-4">
