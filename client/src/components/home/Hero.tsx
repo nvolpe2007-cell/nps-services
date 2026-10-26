@@ -5,9 +5,10 @@ import { useEffect, useState } from "react";
 import { ChevronRight, Phone } from "lucide-react";
 import { trackCall } from "@/lib/tracking";
 
-// Rendered in Blender from blender/commercial_pour.py: rebar -> panel-by-panel
-// pour -> cure -> curbs and striping. The poster is the finished lot, so
-// visitors who never get the video (reduced motion, data saver) still see it.
+// Animated in Blender (blender/commercial_pour.py: rebar -> truck pours panel by
+// panel -> cure), then restyled into photoreal drone footage in Runway. The
+// poster is the finished slab, so visitors who never get the video (reduced
+// motion, data saver) still see it.
 const HERO_VIDEO_MP4 = "/video/hero-pour.mp4";
 const HERO_VIDEO_WEBM = "/video/hero-pour.webm";
 const HERO_POSTER = "/video/hero-pour.jpg";
@@ -47,7 +48,7 @@ export function Hero() {
         ) : (
           <img
             src={HERO_POSTER}
-            alt="Finished commercial concrete parking lot with fresh striping"
+            alt="Freshly finished concrete slab with a ready-mix truck parked beside the forms"
             className="w-full h-full object-cover"
             width="1600"
             height="900"
