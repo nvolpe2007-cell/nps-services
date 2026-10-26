@@ -9,7 +9,7 @@ export default function Services() {
   usePageSeo({
     title: "Our Services | N&P Services",
     description:
-      "Comprehensive residential and commercial construction solutions delivered with precision by N&P Services in Houston.",
+      "Commercial concrete, parking lots, striping and site work, plus residential projects, from N&P Services in League City and Greater Houston.",
     path: "/services",
   });
 
@@ -25,20 +25,20 @@ export default function Services() {
       </div>
 
       <div className="container mx-auto px-4 py-16">
-        <Tabs defaultValue="residential" className="w-full">
+        <Tabs defaultValue="commercial" className="w-full">
           <div className="flex justify-center mb-12">
              <TabsList className="flex gap-4 h-auto p-0 bg-transparent">
-              <TabsTrigger 
-                value="residential" 
-                className="px-8 py-4 text-base font-bold uppercase tracking-wider border-2 border-slate-300 bg-white text-slate-700 hover:border-red-500 hover:text-red-600 transition-all data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:border-red-600 data-[state=active]:shadow-lg"
-              >
-                Residential
-              </TabsTrigger>
-              <TabsTrigger 
-                value="commercial" 
+              <TabsTrigger
+                value="commercial"
                 className="px-8 py-4 text-base font-bold uppercase tracking-wider border-2 border-slate-300 bg-white text-slate-700 hover:border-red-500 hover:text-red-600 transition-all data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:border-red-600 data-[state=active]:shadow-lg"
               >
                 Commercial
+              </TabsTrigger>
+              <TabsTrigger
+                value="residential"
+                className="px-8 py-4 text-base font-bold uppercase tracking-wider border-2 border-slate-300 bg-white text-slate-700 hover:border-red-500 hover:text-red-600 transition-all data-[state=active]:bg-red-600 data-[state=active]:text-white data-[state=active]:border-red-600 data-[state=active]:shadow-lg"
+              >
+                Residential
               </TabsTrigger>
             </TabsList>
           </div>
@@ -75,16 +75,17 @@ export default function Services() {
              <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1">
                 <h2 className="text-3xl font-bold font-heading text-primary mb-6 flex items-center">
-                  <Building className="mr-3 h-8 w-8" /> Commercial Construction
+                  <Building className="mr-3 h-8 w-8" /> Commercial Concrete & Construction
                 </h2>
                 <p className="text-lg text-muted-foreground mb-8">
-                   We understand that time is money in commercial projects. We deliver efficient, durable, and code-compliant construction services for businesses of all sizes.
+                   Commercial concrete and parking lots are our focus: slabs, lots, sidewalks and repairs, plus the site work and striping around them.
                 </p>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[
-                    "General Construction", "Site Work", "Utilities Installation", 
-                    "Multi-Family Projects", "Retail Build-outs", "Office Renovations",
-                    "Warehouse Construction", "Project Management"
+                    "Commercial Concrete Slabs", "Parking Lots", "Sidewalks & Walkways",
+                    "Concrete Repair & Resurfacing", "Striping & Seal Coating", "Site Work & Grading",
+                    "Utilities Installation", "Multi-Family Projects", "Retail Build-outs",
+                    "Warehouse Construction"
                   ].map((item) => (
                     <div key={item} className="flex items-center p-3 bg-white rounded-lg border shadow-sm">
                       <div className="h-2 w-2 bg-primary rounded-full mr-3"></div>
