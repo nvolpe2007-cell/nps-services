@@ -4,6 +4,7 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { StatsSection } from "@/components/home/StatsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CTASection } from "@/components/home/CTASection";
+import { WhoWeServe } from "@/components/home/WhoWeServe";
 import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function Home() {
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="min-h-screen bg-background overflow-hidden">
       <Hero />
       <StatsSection />
+      <WhoWeServe />
       <ServicesSection />
       <ProjectShowcase />
       <TestimonialsSection />

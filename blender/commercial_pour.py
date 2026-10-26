@@ -110,7 +110,7 @@ def key_scale(obj, frame, scale):
 M_DIRT = material("Graded base", (0.33, 0.27, 0.20, 1), 0.95)
 M_GRASS = material("Grass", (0.13, 0.22, 0.08, 1), 0.9)
 M_WOOD = material("Form boards", (0.52, 0.36, 0.20, 1), 0.7)
-M_REBAR = material("Rebar", (0.30, 0.15, 0.08, 1), 0.5, 0.6)
+M_REBAR = material("Rebar", (0.42, 0.20, 0.08, 1), 0.6, 0.5)  # rusty orange-brown
 M_CONC = concrete_material()
 M_CURB = material("Curb", (0.72, 0.71, 0.68, 1), 0.8)
 M_PAINT = material("Stripe paint", (0.95, 0.95, 0.92, 1), 0.5)
@@ -221,41 +221,175 @@ for k, s in stripes:
     key_scale(s, t + 8, (1, 1, 1))
 
 # --- ready-mix truck with a turning drum -----------------------------------
-TX, TY = -LOT_W / 2 + 6, -LOT_D / 2 - 5.5
-box("Chassis", (8.5, 2.4, 0.5), (TX, TY, 1.0), M_TIRE)
-box("Cab", (2.4, 2.4, 2.4), (TX - 3.3, TY, 2.3), M_YELLOW)
-box("Windshield", (0.05, 2.0, 0.9), (TX - 4.52, TY, 2.9), M_GLASS)
-for wx in (-3.3, 0.8, 2.6):
-    for wy in (-1.15, 1.15):
-        bpy.ops.mesh.primitive_cylinder_add(radius=0.55, depth=0.4,
-                                            location=(TX + wx, TY + wy, 0.55),
-                                            rotation=(math.pi / 2, 0, 0))
-        bpy.context.active_object.data.materials.append(M_TIRE)
-bpy.ops.mesh.primitive_cone_add(vertices=32, radius1=1.4, radius2=0.7, depth=5.2,
-                                location=(TX + 1.4, TY, 2.75),
-                                rotation=(0, math.radians(-78), 0))
-drum = bpy.context.active_object
-drum.name = "Drum"
-drum.data.materials.append(M_DRUM)
-# a red stripe on the drum's skin, so the turning reads on camera
-bpy.ops.mesh.primitive_cube_add(size=1, location=(TX + 1.4, TY, 2.75),
-                                rotation=(0, math.radians(-78), 0))
-fin = bpy.context.active_object
-fin.scale = (0.6, 0.08, 3.6)
-bpy.ops.object.transform_apply(scale=True, rotation=True)
-for v in fin.data.vertices:
-    v.co.z += 0.95
-    v.co.x += 0.2
-fin.parent = drum
-fin.matrix_parent_inverse = drum.matrix_world.inverted()
-fin.data.materials.append(M_RED)
-drum.rotation_mode = "ZYX"  # Z applied first = spin about the drum's own axis
+# Proportions follow real US ready-mix trucks: conventional hood + upright cab,
+# a pear-shaped drum (fattest near the front, long taper to the rear) tilted up
+# toward the back, hopper funnel + chute + ladder at the rear, and one steer
+# axle plus tandem duals. Built along +x (cab at -x) around the origin, then
+# parented to an empty that places it beside the lot with the chute toward it.
+import bmesh
+
+M_CAB = material("Cab white", (0.88, 0.88, 0.86, 1), 0.35, 0.1)
+M_STEEL = material("Steel", (0.55, 0.56, 0.58, 1), 0.35, 0.9)
+M_DARK = material("Dark trim", (0.05, 0.05, 0.06, 1), 0.6)
+
+
+def drum_material():
+    """White drum with a red spiral stripe in object space, so it turns with
+    the drum and the spin reads on camera, like a real painted drum."""
+    mat = bpy.data.materials.new("Drum paint")
+    mat.use_nodes = True
+    nt = mat.node_tree
+    bsdf = nt.nodes["Principled BSDF"]
+    bsdf.inputs["Roughness"].default_value = 0.4
+    coord = nt.nodes.new("ShaderNodeTexCoord")
+    sep = nt.nodes.new("ShaderNodeSeparateXYZ")
+    nt.links.new(coord.outputs["Object"], sep.inputs["Vector"])
+    ang = nt.nodes.new("ShaderNodeMath")
+    ang.operation = "ARCTAN2"
+    nt.links.new(sep.outputs["Z"], ang.inputs[0])
+    nt.links.new(sep.outputs["Y"], ang.inputs[1])
+    twist = nt.nodes.new("ShaderNodeMath")
+    twist.operation = "MULTIPLY_ADD"
+    twist.inputs[1].default_value = 1.6           # turns of the spiral per metre
+    nt.links.new(sep.outputs["X"], twist.inputs[0])
+    nt.links.new(ang.outputs[0], twist.inputs[2])
+    wave = nt.nodes.new("ShaderNodeMath")
+    wave.operation = "SINE"
+    nt.links.new(twist.outputs[0], wave.inputs[0])
+    band = nt.nodes.new("ShaderNodeMath")
+    band.operation = "GREATER_THAN"
+    band.inputs[1].default_value = 0.8
+    nt.links.new(wave.outputs[0], band.inputs[0])
+    mix = nt.nodes.new("ShaderNodeMix")
+    mix.data_type = "RGBA"
+    mix.inputs[6].default_value = (0.90, 0.90, 0.88, 1)
+    mix.inputs[7].default_value = (0.70, 0.05, 0.05, 1)
+    nt.links.new(band.outputs[0], mix.inputs["Factor"])
+    nt.links.new(mix.outputs[2], bsdf.inputs["Base Color"])
+    return mat
+
+
+def lathe(name, profile, mat, segments=40):
+    """Revolve (x, radius) profile points around the x axis into a closed mesh."""
+    bm = bmesh.new()
+    rings = []
+    for x, r in profile:
+        rings.append([bm.verts.new((x, r * math.cos(2 * math.pi * k / segments),
+                                    r * math.sin(2 * math.pi * k / segments)))
+                      for k in range(segments)])
+    for a, b in zip(rings, rings[1:]):
+        for k in range(segments):
+            bm.faces.new((a[k], a[(k + 1) % segments], b[(k + 1) % segments], b[k]))
+    bm.faces.new(list(reversed(rings[0])))
+    bm.faces.new(rings[-1])
+    me = bpy.data.meshes.new(name)
+    bm.to_mesh(me)
+    bm.free()
+    for poly in me.polygons:
+        poly.use_smooth = True
+    obj = bpy.data.objects.new(name, me)
+    scene.collection.objects.link(obj)
+    obj.data.materials.append(mat)
+    return obj
+
+
+def cyl(name, r, depth, loc, rot, mat):
+    bpy.ops.mesh.primitive_cylinder_add(vertices=32, radius=r, depth=depth,
+                                        location=loc, rotation=rot)
+    obj = bpy.context.active_object
+    obj.name = name
+    obj.data.materials.append(mat)
+    return obj
+
+
+truck = []
+# chassis, bumper, hood with grille, cab with glass
+truck.append(box("Frame rails", (9.6, 1.0, 0.35), (-0.3, 0, 0.95), M_DARK))
+truck.append(box("Bumper", (0.3, 2.45, 0.35), (-5.15, 0, 0.75), M_STEEL))
+truck.append(box("Hood", (1.5, 2.2, 1.1), (-4.25, 0, 1.6), M_CAB))
+truck.append(box("Grille", (0.06, 1.3, 0.9), (-5.02, 0, 1.6), M_STEEL))
+for side in (-1, 1):
+    truck.append(box("Headlight", (0.06, 0.3, 0.18), (-5.02, side * 0.88, 1.45), M_PAINT))
+    truck.append(box("Mirror", (0.08, 0.06, 0.45), (-3.55, side * 1.38, 2.6), M_DARK))
+truck.append(box("Cab", (1.7, 2.45, 2.2), (-2.65, 0, 2.0), M_CAB))
+truck.append(box("Windshield", (0.06, 2.15, 0.85), (-3.51, 0, 2.55), M_GLASS))
+for side in (-1, 1):
+    truck.append(box("Side window", (1.0, 0.06, 0.75), (-2.85, side * 1.23, 2.55), M_GLASS))
+    truck.append(box("Step", (0.6, 0.25, 0.08), (-2.9, side * 1.3, 0.75), M_STEEL))
+    truck.append(box("Fuel tank", (1.1, 0.5, 0.5), (-1.3, side * 1.05, 1.0), M_STEEL))
+truck.append(cyl("Exhaust stack", 0.09, 2.4, (-1.7, 0.95, 2.6), (0, 0, 0), M_STEEL))
+truck.append(cyl("Water tank", 0.38, 1.1, (-1.35, -0.2, 2.35), (0, math.pi / 2, 0), M_CAB))
+# drum pedestals (front low, rear high) and the rear stand
+truck.append(box("Front pedestal", (0.4, 1.0, 1.0), (-1.05, 0, 1.55), M_DARK))
+truck.append(box("Rear stand", (0.35, 1.5, 2.6), (3.85, 0, 2.2), M_STEEL))
+# wheels: one steer axle, tandem duals at the rear
+for wx, width in ((-4.2, 0.35), (1.7, 0.65), (3.05, 0.65)):
+    for side in (-1, 1):
+        truck.append(cyl("Tire", 0.53, width, (wx, side * 1.0, 0.53),
+                         (math.pi / 2, 0, 0), M_TIRE))
+        truck.append(cyl("Hub", 0.27, width + 0.02, (wx, side * 1.0, 0.53),
+                         (math.pi / 2, 0, 0), M_STEEL))
+    truck.append(box("Fender", (1.2 if wx < 0 else 2.6, 2.5, 0.08),
+                     (wx if wx < 0 else 2.38, 0, 1.15), M_DARK))
+
+# pear-shaped drum: x from front cap (0) to rear mouth (5.4), radius in metres
+DRUM_PROFILE = [(0.0, 0.25), (0.15, 0.7), (0.5, 1.0), (1.3, 1.2), (2.2, 1.2),
+                (3.6, 0.95), (4.8, 0.62), (5.4, 0.42)]
+drum = lathe("Drum", DRUM_PROFILE, drum_material())
+DRUM_TILT = math.radians(-12)              # rear end up
+drum.location = (-1.25, 0, 2.15)
+drum.rotation_mode = "XYZ"                 # X (local axis) first = spin in place
+drum.rotation_euler = (0, DRUM_TILT, 0)
 edit_prefs = bpy.context.preferences.edit
 edit_prefs.keyframe_new_interpolation_type = "LINEAR"  # steady spin, no ease
 drum.keyframe_insert("rotation_euler", frame=1)
-drum.rotation_euler.z += math.radians(360 * 5)
+drum.rotation_euler.x += math.radians(360 * 4)
 drum.keyframe_insert("rotation_euler", frame=FRAMES)
 edit_prefs.keyframe_new_interpolation_type = "BEZIER"
+truck.append(drum)
+mouth_x = -1.25 + 5.4 * math.cos(DRUM_TILT)
+mouth_z = 2.15 - 5.4 * math.sin(DRUM_TILT)
+truck.append(cyl("Drum mouth", 0.36, 0.05, (mouth_x + 0.02, 0, mouth_z),
+                 (0, math.pi / 2 + DRUM_TILT, 0), M_DARK))
+
+# hopper funnel above the mouth, chute angled down and back, ladder
+bpy.ops.mesh.primitive_cone_add(vertices=24, radius1=0.18, radius2=0.6, depth=0.7,
+                                end_fill_type="NOTHING",
+                                location=(mouth_x + 0.2, 0, mouth_z + 0.55))
+hopper = bpy.context.active_object
+hopper.name = "Hopper"
+hopper.data.materials.append(M_STEEL)
+truck.append(hopper)
+chute = box("Chute", (1.8, 0.45, 0.08), (0, 0, 0), M_STEEL)
+chute.location = (mouth_x + 1.05, 0, mouth_z - 0.75)
+chute.rotation_euler = (0, math.radians(28), 0)
+truck.append(chute)
+for side in (-1, 1):
+    truck.append(box("Ladder rail", (0.05, 0.05, 2.8), (4.25, side * 0.3, 2.2), M_STEEL))
+for k in range(7):
+    truck.append(box("Ladder rung", (0.05, 0.6, 0.04), (4.25, 0, 1.1 + k * 0.38), M_STEEL))
+
+# concrete stream falling from the chute end while the slab is being poured
+chute_end_x = chute.location.x + 0.9 * math.cos(math.radians(28))
+chute_end_z = chute.location.z - 0.9 * math.sin(math.radians(28))
+stream = cyl("Concrete stream", 0.16, chute_end_z, (chute_end_x, 0, chute_end_z / 2),
+             (0, 0, 0), M_CONC)
+stream.color = WET
+key_scale(stream, 1, (0.001, 0.001, 0.001))
+key_scale(stream, POUR_START, (0.001, 0.001, 0.001))
+key_scale(stream, POUR_START + 4, (1, 1, 1))
+key_scale(stream, POUR_END, (1, 1, 1))
+key_scale(stream, POUR_END + 4, (0.001, 0.001, 0.001))
+truck.append(stream)
+
+# the truck backs up to the west forms like a real pour, chute over the slab;
+# the west side stays in frame for the whole camera move
+bpy.ops.object.empty_add(location=(0, 0, 0))
+truck_rig = bpy.context.active_object
+truck_rig.name = "Ready-mix truck"
+for part in truck:
+    part.parent = truck_rig
+truck_rig.location = (-LOT_W / 2 - 4.9, -3.0, 0)
 
 # --- the customer's building behind the lot --------------------------------
 BY = LOT_D / 2 + 14
@@ -282,7 +416,7 @@ except RuntimeError:
     bg.inputs["Color"].default_value = (0.55, 0.70, 0.90, 1)
     bg.inputs["Strength"].default_value = 1.0
 
-bpy.ops.object.empty_add(location=(0, 2, 0))
+bpy.ops.object.empty_add(location=(-4, 1, 0))  # left of centre keeps the truck in frame
 target = bpy.context.active_object
 bpy.ops.object.camera_add()
 cam = bpy.context.active_object

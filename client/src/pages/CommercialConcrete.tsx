@@ -6,13 +6,18 @@ import {
   Shield,
   Clock,
   MapPin,
-  Building2,
-  Users,
-  HardHat,
   Home as HomeIcon,
 } from "lucide-react";
 import { trackCall } from "@/lib/tracking";
 import { usePageSeo } from "@/hooks/usePageSeo";
+import { clientGroups } from "@/components/home/WhoWeServe";
+
+// Cities inside the ~50-mile radius from League City that the site's schema
+// already declares. Confirm the list with the owner before adding city pages.
+const serviceCities = [
+  "Houston", "League City", "Pearland", "Friendswood", "Clear Lake", "Webster",
+  "Pasadena", "Dickinson", "Texas City", "Galveston", "Baytown", "Sugar Land",
+];
 
 // Every service here is one N&P already lists elsewhere on the site
 // (Services, the concrete/commercial landing pages, replit.md). Don't add
@@ -52,24 +57,6 @@ const services = [
   },
 ];
 
-const audiences = [
-  {
-    icon: Building2,
-    title: "Business owners",
-    text: "A new lot, a bigger slab, or repairs before a small crack becomes a big one.",
-  },
-  {
-    icon: Users,
-    title: "Property managers",
-    text: "Parking lots, sidewalks, striping and seal coating across the properties you manage.",
-  },
-  {
-    icon: HardHat,
-    title: "Builders & developers",
-    text: "Site work, slabs and paving for commercial and multi-family projects.",
-  },
-];
-
 const steps = [
   { title: "Site visit", text: "We look at the site, take measurements and talk through what you need." },
   { title: "Written bid", text: "You get a free, itemized bid for the work." },
@@ -85,6 +72,10 @@ const faqs = [
     a: "Yes. Call or text (832) 226-4018 and we'll set up a time to look at the site.",
   },
   {
+    q: "Do you bid public projects for cities, counties and schools?",
+    a: "Send us the plans and specs. We'll review the scope and requirements and come back to you with a bid.",
+  },
+  {
     q: "Concrete or asphalt for a parking lot?",
     a: "Concrete usually costs more up front but lasts longer and needs less upkeep. Asphalt costs less to install but needs seal coating and restriping over time. We do both, and we'll tell you which fits your site and budget.",
   },
@@ -94,7 +85,7 @@ const faqs = [
   },
   {
     q: "What areas do you serve?",
-    a: "We're based in League City and work across Houston and the Greater Houston area.",
+    a: "We're based in League City and work across Houston and the surrounding cities, from Pearland and Friendswood to Pasadena, Baytown, Galveston and Sugar Land.",
   },
 ];
 
@@ -197,8 +188,8 @@ export default function CommercialConcrete() {
           <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-12 max-w-3xl">
             Who we work with
           </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {audiences.map((a) => (
+          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-8">
+            {clientGroups.map((a) => (
               <div key={a.title}>
                 <div className="w-14 h-14 bg-red-600 flex items-center justify-center mb-5">
                   <a.icon className="w-7 h-7 text-white" />
@@ -226,6 +217,27 @@ export default function CommercialConcrete() {
               </li>
             ))}
           </ol>
+        </div>
+      </section>
+
+      {/* Service area */}
+      <section className="py-16 md:py-20 bg-slate-50">
+        <div className="container mx-auto px-4 md:px-12">
+          <h2 className="text-3xl md:text-4xl font-bold text-slate-900 mb-4">Where we work</h2>
+          <p className="text-lg text-slate-600 mb-8 max-w-2xl">
+            Based in League City, working across Houston and the surrounding cities.
+          </p>
+          <ul className="flex flex-wrap gap-3">
+            {serviceCities.map((city) => (
+              <li
+                key={city}
+                className="flex items-center gap-2 bg-white border border-slate-200 px-4 py-2 font-medium text-slate-800"
+              >
+                <MapPin className="w-4 h-4 text-red-500" />
+                {city}
+              </li>
+            ))}
+          </ul>
         </div>
       </section>
 

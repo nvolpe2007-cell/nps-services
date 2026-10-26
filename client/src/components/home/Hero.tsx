@@ -86,7 +86,8 @@ export function Hero() {
               <div className="h-1 bg-red-500 mb-4 md:mb-6 w-20 md:w-[120px]" />
               <p className="text-base md:text-xl text-white/85 max-w-xl leading-relaxed">
                 Slabs, parking lots, sidewalks, concrete repair, striping and site work for
-                Houston-area businesses, property managers and builders.
+                developers, general contractors, property managers, cities and local
+                businesses across Greater Houston.
               </p>
               <p className="mt-3 text-sm md:text-base text-white/60">
                 17+ years in business &middot; A+ BBB rated &middot; Free bids
