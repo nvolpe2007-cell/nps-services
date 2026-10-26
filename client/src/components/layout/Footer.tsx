@@ -20,7 +20,7 @@ export function Footer() {
               />
             </Link>
             <p className="text-slate-300 text-sm leading-relaxed">
-              Excellence in construction. Building your vision with precision and integrity for over 17 years.
+              Commercial concrete, parking lots and site work across Greater Houston, for over 17 years.
             </p>
             <div className="flex space-x-4 pt-4">
               <a 
@@ -49,6 +49,7 @@ export function Footer() {
             <ul className="space-y-3">
               {[
                 { name: "Home", href: "/" },
+                { name: "Commercial Concrete", href: "/commercial-concrete" },
                 { name: "About Us", href: "/about" },
                 { name: "Services", href: "/services" },
                 { name: "Portfolio", href: "/portfolio" },
@@ -70,12 +71,13 @@ export function Footer() {
             <h3 className="text-lg font-bold mb-6 font-heading">Our Services</h3>
             <ul className="space-y-3">
               {[
-                "Residential Construction",
-                "Commercial Projects",
-                "Remodeling & Renovations",
-                "Concrete & Paving",
+                "Commercial Concrete",
+                "Parking Lots & Asphalt",
+                "Striping & Seal Coating",
                 "Site Work & Utilities",
+                "Commercial Construction",
                 "RV Park Construction",
+                "Residential Construction",
               ].map((service) => (
                 <li key={service} className="text-slate-300 text-sm flex items-start">
                    <span className="block w-1.5 h-1.5 bg-primary rounded-full mt-1.5 mr-2 flex-shrink-0"></span>

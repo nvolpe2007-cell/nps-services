@@ -8,9 +8,9 @@ import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function Home() {
   usePageSeo({
-    title: "N&P SERVICES | Houston's Parking Lot & Construction Experts",
+    title: "Commercial Concrete & Parking Lots in Houston | N&P Services",
     description:
-      "League City's trusted construction company with 17+ years experience. Asphalt, parking lots, concrete, commercial & residential construction. A+ BBB rated.",
+      "Commercial concrete slabs, parking lots, sidewalks, concrete repair, striping and site work across Greater Houston. 17+ years, A+ BBB rated. Free bids.",
     path: "/",
   });
 
