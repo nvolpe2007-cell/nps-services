@@ -22,6 +22,7 @@ import ResidentialLanding from "@/pages/landing/ResidentialLanding";
 import Blog from "@/pages/Blog";
 import BlogPost from "@/pages/BlogPost";
 import Products from "@/pages/Products";
+import CommercialConcrete from "@/pages/CommercialConcrete";
 
 function PageTransition({ children }: { children: React.ReactNode }) {
   const [location] = useLocation();
@@ -55,6 +56,7 @@ function Router() {
       <Route path="/" component={Home} />
       <Route path="/about" component={About} />
       <Route path="/services" component={Services} />
+      <Route path="/commercial-concrete" component={CommercialConcrete} />
       <Route path="/portfolio" component={Portfolio} />
             <Route path="/reviews" component={Testimonials} />
       <Route path="/contact" component={Contact} />

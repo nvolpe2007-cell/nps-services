@@ -48,9 +48,9 @@ export function CTASection() {
             animate={isInView ? { opacity: 1, y: 0 } : {}}
             transition={{ delay: 0.1, duration: 0.4 }}
           >
-            Let's Build<br />
+            Planning a Pour?<br />
             <span className="text-red-500">
-              Something Great
+              Get a Free Bid
             </span>
           </motion.h2>
 
@@ -60,7 +60,7 @@ export function CTASection() {
             animate={isInView ? { opacity: 1 } : {}}
             transition={{ delay: 0.2, duration: 0.4 }}
           >
-            Contact us today for a free consultation and estimate. Our team is ready to bring your vision to life.
+            Slab, parking lot, sidewalk or repair: tell us about the site and we'll come out, measure and send you a bid.
           </motion.p>
 
           <motion.div
@@ -74,7 +74,7 @@ export function CTASection() {
                 size="lg"
                 className="w-full sm:w-auto h-14 md:h-16 px-8 md:px-12 text-sm md:text-base font-bold tracking-wider uppercase bg-red-600 text-white active:bg-red-700 md:hover:bg-red-700 rounded-none"
               >
-                Get Your Free Quote
+                Request a Bid
                 <ArrowRight className="ml-2 md:ml-3 h-4 w-4 md:h-5 md:w-5" />
               </Button>
             </Link>

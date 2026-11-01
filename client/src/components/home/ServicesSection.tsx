@@ -6,38 +6,38 @@ import { useSimpleAnimations } from "@/hooks/useMobile";
 
 const services = [
   {
+    icon: PaintBucket,
+    title: "Commercial Concrete",
+    description: "Commercial slabs, sidewalks and walkways, poured and finished for daily traffic.",
+    items: ["Commercial Slabs", "Sidewalks & Walkways", "Foundations", "Concrete Repair & Resurfacing"],
+    color: "bg-red-600",
+  },
+  {
     icon: Car,
     title: "Asphalt & Parking Lots",
-    description: "Houston's parking lot and asphalt experts. New installations, resurfacing, striping, and repairs.",
-    items: ["New Installations", "Resurfacing", "Striping & Marking", "Pothole Repair"],
-    color: "bg-red-600",
-  },
-  {
-    icon: Building2,
-    title: "Commercial Projects",
-    description: "Full-service commercial construction from ground-up builds to tenant improvements.",
-    items: ["Office Buildings", "Retail Spaces", "Multi-Family", "Industrial"],
+    description: "Houston's parking lot and asphalt experts. New lots, resurfacing, striping and repairs.",
+    items: ["New Installations", "Resurfacing", "Striping & Marking", "Seal Coating"],
     color: "bg-slate-800",
-  },
-  {
-    icon: PaintBucket,
-    title: "Concrete Services",
-    description: "Expert concrete work for driveways, sidewalks, foundations, and decorative applications.",
-    items: ["Driveways", "Sidewalks", "Foundations", "Decorative"],
-    color: "bg-red-600",
   },
   {
     icon: Trees,
     title: "Site Work",
-    description: "Complete site preparation including land clearing, grading, and drainage systems.",
-    items: ["Land Clearing", "Grading", "Drainage", "Utilities"],
+    description: "Site preparation before the pour: land clearing, grading, drainage and utilities.",
+    items: ["Land Clearing", "Grading", "Drainage & Detention Ponds", "Utilities"],
+    color: "bg-red-600",
+  },
+  {
+    icon: Building2,
+    title: "Commercial Construction",
+    description: "Ground-up commercial builds and tenant improvements across Greater Houston.",
+    items: ["Steel & Metal Buildings", "Retail Spaces", "Multi-Family", "RV Parks"],
     color: "bg-slate-800",
   },
   {
     icon: Home,
     title: "Residential",
-    description: "Complete home building and renovation services for your dream home.",
-    items: ["New Builds", "Kitchens", "Bathrooms", "Additions"],
+    description: "We still take on home projects: driveways, patios, new builds and remodels.",
+    items: ["Driveways", "Patios", "New Builds", "Remodels"],
     color: "bg-red-600",
   },
 ];
@@ -61,10 +61,10 @@ export function ServicesSection() {
             What We Do
           </span>
           <h2 className="text-3xl md:text-5xl font-bold text-slate-900 mb-6">
-            Building Excellence Across Houston
+            Concrete and Paving for Houston Businesses
           </h2>
           <p className="text-lg text-slate-600 leading-relaxed">
-            From residential renovations to large-scale commercial projects, we deliver quality craftsmanship with over 17 years of experience.
+            Commercial concrete, parking lots and the site work underneath them, handled by one company with over 17 years of experience.
           </p>
         </motion.div>
 
@@ -111,9 +111,9 @@ export function ServicesSection() {
           animate={isInView ? { opacity: 1 } : {}}
           transition={{ duration: 0.4, delay: 0.4 }}
         >
-          <Link href="/services">
+          <Link href="/commercial-concrete">
             <button className="inline-flex items-center gap-3 bg-red-600 text-white px-10 py-5 text-sm font-bold tracking-wider uppercase hover:bg-red-700 active:bg-red-800 transition-colors rounded-lg shadow-lg shadow-red-600/25 hover:shadow-red-600/40">
-              View All Services
+              View Commercial Services
               <ArrowRight className="h-5 w-5" />
             </button>
           </Link>

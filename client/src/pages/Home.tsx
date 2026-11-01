@@ -4,13 +4,14 @@ import { ServicesSection } from "@/components/home/ServicesSection";
 import { StatsSection } from "@/components/home/StatsSection";
 import { TestimonialsSection } from "@/components/home/TestimonialsSection";
 import { CTASection } from "@/components/home/CTASection";
+import { WhoWeServe } from "@/components/home/WhoWeServe";
 import { usePageSeo } from "@/hooks/usePageSeo";
 
 export default function Home() {
   usePageSeo({
-    title: "N&P SERVICES | Houston's Parking Lot & Construction Experts",
+    title: "Commercial Concrete & Parking Lots in Houston | N&P Services",
     description:
-      "League City's trusted construction company with 17+ years experience. Asphalt, parking lots, concrete, commercial & residential construction. A+ BBB rated.",
+      "Commercial concrete slabs, parking lots, sidewalks, concrete repair, striping and site work across Greater Houston. 17+ years, A+ BBB rated. Free bids.",
     path: "/",
   });
 
@@ -18,6 +19,7 @@ export default function Home() {
     <div className="min-h-screen bg-background overflow-hidden">
       <Hero />
       <StatsSection />
+      <WhoWeServe />
       <ServicesSection />
       <ProjectShowcase />
       <TestimonialsSection />

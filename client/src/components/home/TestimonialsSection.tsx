@@ -1,4 +1,4 @@
-import { motion, useInView, AnimatePresence } from "framer-motion";
+﻿import { motion, useInView, AnimatePresence } from "framer-motion";
 import { useRef, useState, useEffect } from "react";
 import { Quote, ChevronLeft, ChevronRight, Star } from "lucide-react";
 import { useSimpleAnimations } from "@/hooks/useMobile";
@@ -81,7 +81,7 @@ export function TestimonialsSection() {
             <div className="inline-flex items-center gap-3 md:gap-4 bg-white px-4 md:px-6 py-3 md:py-4 shadow-lg">
               <div className="text-2xl md:text-3xl font-bold text-blue-600">A+</div>
               <div>
-                <div className="font-bold text-black text-sm md:text-base">BBB Accredited</div>
+                <div className="font-bold text-black text-sm md:text-base">A+ BBB Rating</div>
                 <div className="text-xs md:text-sm text-black/50">Better Business Bureau</div>
               </div>
             </div>
