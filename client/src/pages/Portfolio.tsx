@@ -222,9 +222,10 @@ function ProjectCard({ project, onOpenLightbox }: { project: typeof projects[0];
 
   return (
     <div className="group relative overflow-hidden rounded-xl shadow-lg bg-white h-80">
-      <img 
-        src={project.images[currentIndex]} 
-        alt={`${project.title} - Image ${currentIndex + 1}`} 
+      <img
+        src={project.images[currentIndex]}
+        alt={`${project.title} - Image ${currentIndex + 1}`}
+        loading="lazy"
         className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
       />
       

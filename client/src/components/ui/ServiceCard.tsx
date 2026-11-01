@@ -16,9 +16,10 @@ export function ServiceCard({ title, description, icon, image, link }: ServiceCa
     <Card className="overflow-hidden group h-full border-none shadow-lg hover:shadow-xl transition-shadow duration-300 flex flex-col">
       <div className="relative h-48 overflow-hidden">
         <div className="absolute inset-0 bg-primary/20 group-hover:bg-primary/10 transition-colors z-10" />
-        <img 
-          src={image} 
-          alt={title} 
+        <img
+          src={image}
+          alt={title}
+          loading="lazy"
           className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-500"
         />
         <div className="absolute bottom-4 left-4 z-20 bg-white/90 p-2 rounded-lg shadow-sm">

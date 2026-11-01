@@ -187,6 +187,7 @@ export default function Products() {
                     <img
                       src={product.image}
                       alt={product.imageAlt}
+                      loading="lazy"
                       className="w-full h-full object-cover object-center"
                     />
                   </div>
